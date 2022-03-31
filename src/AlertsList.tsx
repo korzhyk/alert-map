@@ -5,7 +5,7 @@ import Duration from './Duration'
 const andRx = /\s(?:та)\s/
 
 export default function AlertsList (props) {
-  const [show, setShow] = createSignal(true)
+  const [show, setShow] = createSignal(false)
   const toggle = () => setShow(!show())
   
   return <div class="absolute bottom-0 left-0 mx-2 max-h-screen flex flex-col">
