@@ -14,10 +14,10 @@ const ws = uWS
   compression: uWS.SHARED_COMPRESSOR,
   maxPayloadLength: 32,
   idleTimeout: 60,
-  open: ws => {
-    ws.subscribe('broadcast')
+  open: socket => {
+    socket.subscribe('broadcast')
     telegram.storage.client.HGETALL('alertHash').then(state => {
-      ws.send(JSON.stringify({ state, online: ws.numSubscribers('broadcast') }))
+      socket.send(JSON.stringify({ state, online: ws.numSubscribers('broadcast') }))
     }).catch(log)
   }
 })
