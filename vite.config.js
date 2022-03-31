@@ -41,7 +41,6 @@ export default defineConfig({
   })],
   server: {
     hmr: {
-      port: 3000,
       timeout: 3000
     }
   }
