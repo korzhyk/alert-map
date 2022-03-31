@@ -80,7 +80,7 @@ telegram.mtproto.updates.on('updates', updateInfo => {
 
 process.on('SIGINT', async () => {
   clearInterval(wsPing)
-  ws.us_listen_socket_close(listenSocket)
+  uWS.us_listen_socket_close(listenSocket)
   await telegram.storage.client.quit()
   process.exit(0)
 })
