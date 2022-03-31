@@ -5,7 +5,7 @@ const uWS = require('uWebSockets.js')
 
 const log = debug('server:listen')
 
-const port = +process.env.WS_PORT
+const port = +process.env.PORT
 
 let listenSocket
 const ws = uWS
@@ -17,7 +17,7 @@ const ws = uWS
   open: ws => {
     ws.subscribe('broadcast')
     telegram.storage.client.HGETALL('alertHash').then(state => {
-      ws.send(JSON.stringify({ state }))
+      ws.send(JSON.stringify({ state, online: ws.numSubscribers('broadcast') }))
     }).catch(log)
   }
 })
@@ -32,6 +32,10 @@ const ws = uWS
     process.exit()
   }
 })
+
+const wsPing = setInterval(() => {
+  ws.publish('broadcast', JSON.stringify({ online: ws.numSubscribers('broadcast') }))
+}, 3e4)
 
 const telegram = new API(process.env.API_ID, process.env.API_HASH)
 
@@ -75,6 +79,7 @@ telegram.mtproto.updates.on('updates', updateInfo => {
 })
 
 process.on('SIGINT', async () => {
+  clearInterval(wsPing)
   ws.us_listen_socket_close(listenSocket)
   await telegram.storage.client.quit()
   process.exit(0)
