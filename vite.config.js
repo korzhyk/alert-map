@@ -7,7 +7,7 @@ import SolidJS from 'vite-plugin-solid'
 export default defineConfig({
   plugins: [SolidJS(), WindiCSS(), VitePWA({
     registerType: 'autoUpdate',
-    includeAssets: ['favicon.png', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'ukrainian_geodata/hromady.geojson', 'ukrainian_geodata/rayony.geojson', , 'ukrainian_geodata/regiony.geojson'],
+    includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'ukrainian_geodata/hromady.geojson', 'ukrainian_geodata/rayony.geojson', 'ukrainian_geodata/regiony.geojson'],
     manifest: {
       short_name: 'Повітряна тривога',
       name: 'Мапа повітряної тривоги',
