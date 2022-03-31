@@ -209,7 +209,7 @@ function parseMessage(message) {
 function replaceDots (str) {
   str = str.replaceAll('.', '')
   if (str.indexOf('м') == 0) {
-    str = 'місто ' + str.slice(str.indexOf(' '))
+    str = 'місто' + str.slice(str.indexOf(' '))
   }
   return str.trim()
 }
