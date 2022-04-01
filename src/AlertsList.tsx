@@ -8,10 +8,10 @@ export default function AlertsList (props) {
   const [show, setShow] = createSignal(false)
   const toggle = () => setShow(!show())
   
-  return <div class="absolute bottom-0 left-0 mx-2 max-h-screen flex flex-col">
+  return <div class="absolute bottom-0 left-0 max-w-screen max-h-screen flex flex-col">
     <Connection>
       <Show when={show()}>
-        <div class="mx-2 my-4 p-2 flex flex-col min-w-xs bg-white/65 backdrop-filter backdrop-blur rounded-xl shadow-xl text-sm overflow-y-auto">
+        <div class="m-4 flex flex-col min-w-xs bg-white/65 backdrop-filter backdrop-blur rounded-xl shadow-xl text-sm overflow-y-auto">
           <div class="py-1.5 mb-0.5 px-3 flex justify-between font-medium border-b-px border-b-1 border-black/10">
             <h3>Повітряна тривога</h3>
             <h6>Триває</h6>
@@ -20,13 +20,13 @@ export default function AlertsList (props) {
             <For each={props.list}>
               {([unit, start], i) => <li class="flex justify-between py-2 px-3 hover:bg-black/5 rounded-xl cursor-pointer transition-colors hover:text-gray-900" onMouseEnter={ () => props.onEnter(i()) } onMouseLeave={ () => props.onLeave() }>
                 <span class>{ unit.split(andRx)[0] }</span>
-                <span class="ml-8"><Duration start={start * 1e3} /></span>
+                <span class="ml-4"><Duration start={start * 1e3} /></span>
               </li>}
             </For>
           </ul>
         </div>
       </Show>
-      <button onClick={props.list.length && toggle} class="mb-4 py-2 px-4 relative flex items-center place-self-start bg-white/65 text-opacity-90 font-light backdrop-filter backdrop-blur rounded-full shadow-xl "
+      <button onClick={props.list.length && toggle} class="m-4 py-2 px-4 relative flex items-center place-self-start bg-white/65 text-opacity-90 font-light backdrop-filter backdrop-blur rounded-full shadow-xl "
       classList={{
         'bg-white/65 text-opacity-90 active:top-px': props.list.length,
         'bg-white/45 opacity-90': !props.list.length
