@@ -73,6 +73,7 @@ export default function App() {
     })
     const egg = document.querySelector('a[href*="https://www.comebackalive.in.ua"]')
     if (egg) {
+      egg.addEventListener('touchstart', onPress, { once: true })
       egg.addEventListener('mousedown', onPress)
       egg.addEventListener('mouseup', onUp)
     }
@@ -234,6 +235,7 @@ function onUp (e) {
 }
 
 function onPress (e) {
+  e.preventDefault()
   if (rocketSent) return
   pressTimeout = setTimeout(() => {
     e.target.addEventListener('click', e => e.preventDefault(), { once: true })
