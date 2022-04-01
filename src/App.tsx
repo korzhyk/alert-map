@@ -73,14 +73,14 @@ export default function App() {
     })
     const egg = document.querySelector('a[href*="https://www.comebackalive.in.ua"]')
     if (egg) {
-      egg.addEventListener('touchstart', onPress, { once: true })
-      egg.addEventListener('mousedown', onPress)
-      egg.addEventListener('mouseup', onUp)
+      egg.addEventListener('touchstart', triggerEgg, { once: true })
+      egg.addEventListener('mousedown', triggerEgg)
+      egg.addEventListener('mouseup', clearEgg)
     }
     onCleanup(() => {
       if (egg) {
-        egg.removeEventListener('mousedown', onPress)
-        egg.removeEventListener('mouseup', onUp)
+        egg.removeEventListener('mousedown', triggerEgg)
+        egg.removeEventListener('mouseup', clearEgg)
       }
       alerts.destroy()
       worker.terminate()
@@ -230,11 +230,11 @@ function replaceDots (str) {
 let pressTimeout
 let rocketSent
 
-function onUp (e) {
+function clearEgg (e) {
   clearTimeout(pressTimeout)
 }
 
-function onPress (e) {
+function triggerEgg (e) {
   e.preventDefault()
   if (rocketSent) return
   pressTimeout = setTimeout(() => {
