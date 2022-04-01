@@ -7,7 +7,7 @@ RUN mkdir -p /src/app
 WORKDIR /src/app
 
 COPY . /src/app
-RUN ENV=production yarn install
+RUN ENV=production npm install
 
 EXPOSE 5000
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
