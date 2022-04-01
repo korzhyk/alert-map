@@ -43,6 +43,11 @@ onmessage = ({ data }) => {
 Promise.all(Object.keys(Unit).map(type =>
   fetch(`/ukrainian_geodata/${Unit[type]}.geojson`)
   .then(response => response.json())
+  .then(geojson => {
+    if (Unit[type] === Unit.REGION) {
+      return fetch(`/pig-dog.geojson`).then(r => r.json()).then(g => (geojson.features.push(g), geojson))
+    } else return geojson
+  })
   .then(({ features }) => fuses[Unit[type]].setCollection(features))
 )).then(() => {
   ready = true

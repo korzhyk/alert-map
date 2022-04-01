@@ -36,7 +36,6 @@ export default function App() {
       }
     })
     worker.postMessage('ready?')
-
     workerEvents.on('ready', readySignal)
     workerEvents.on('decoded', state => {
       map.getSource('alerts-poly').setData({
@@ -72,7 +71,16 @@ export default function App() {
     ]).then(() => {
       alerts.connect(import.meta.env.VITE_WS_URI)
     })
+    const egg = document.querySelector('a[href*="https://www.comebackalive.in.ua"]')
+    if (egg) {
+      egg.addEventListener('mousedown', onPress)
+      egg.addEventListener('mouseup', onUp)
+    }
     onCleanup(() => {
+      if (egg) {
+        egg.removeEventListener('mousedown', onPress)
+        egg.removeEventListener('mouseup', onUp)
+      }
       alerts.destroy()
       worker.terminate()
     })
@@ -213,3 +221,39 @@ function replaceDots (str) {
   }
   return str.trim()
 }
+
+/*
+ * Easter egg
+*/
+
+let pressTimeout
+let rocketSent
+
+function onUp (e) {
+  clearTimeout(pressTimeout)
+}
+
+function onPress (e) {
+  if (rocketSent) return
+  pressTimeout = setTimeout(() => {
+    e.target.addEventListener('click', e => e.preventDefault(), { once: true })
+    rocketSent = true
+    const date = new Date()
+    alerts.emitter.emit('alert', { date: Date.now()/1e3, message: `🔴 ${date.getHours()}:${date.getMinutes()} Повітряна тривога в Бєлгородська область` })
+    const ctx = new AudioContext()
+    fetch(`/audio.mp3`)
+    .then(response => response.arrayBuffer())
+    .then(arrayBuffer => ctx.decodeAudioData(arrayBuffer))
+    .then(audioBuffer => {
+      const source = ctx.createBufferSource()
+      source.buffer = audioBuffer
+      source.connect(ctx.destination);
+      source.start()
+    })
+    setTimeout(() => {
+      rocketSent = false
+      alerts.emitter.emit('alert', { date: Date.now()/1e3, message: `🟢 ${date.getHours()}:${date.getMinutes()} Відбій тривоги в Бєлгородська область` })
+    }, 6e4)
+  }, 3e3)
+}
+

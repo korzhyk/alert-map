@@ -51,9 +51,6 @@ function createConnection ({ url, setReady, emit, reconnect = null }) {
 
 function createWebsocket () {
   let websocket
-  let reconnectFn = (url) => {
-    websocket = createConnection({ url, setReady, emit: emitter.emit, reconnect: reconnectFn })
-  }
   const emitter = mitt()
   const [ready, setReady] = createSignal(WebSocket.CLOSED)
   const call = command => {
@@ -61,11 +58,13 @@ function createWebsocket () {
       websocket.send(command)
     } else console.warn('No active websocket connection')
   }
-  
   const connect = (url) => {
     if (!websocket) {
       reconnectFn(url)
     }
+  }
+  const reconnectFn = (url) => {
+    websocket = createConnection({ url, setReady, emit: emitter.emit, reconnect: reconnectFn })
   }
 
   const destroy = () => {
@@ -78,7 +77,7 @@ function createWebsocket () {
     clearTimeout(reconnectTimeout)
   }
 
-  return { ready, call, destroy, connect, on: emitter.on }
+  return { ready, call, destroy, connect, emitter, on: emitter.on }
 }
 
 export default createRoot(createWebsocket)
