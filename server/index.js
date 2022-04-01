@@ -64,7 +64,8 @@ telegram.mtproto.updates.on('updates', updateInfo => {
         const [ clear, alerts ] = parsed
         if (clear.length && alerts.length) {
           telegram.storage.client.HGET('alertHash', clear[0]).then(value => {
-            telegram.storage.client.HSET('alertHash', alerts[0], value || date)
+            alerts.forEach(unit => telegram.storage.client.HSETNX('alertHash', unit, value || date))
+            telegram.storage.client.HDEL('alertHash', clear[0])
           })
         } else {
           telegram.storage.client.HDEL('alertHash', ...clear)
