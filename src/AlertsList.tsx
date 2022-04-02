@@ -8,7 +8,7 @@ export default function AlertsList (props) {
   const [show, setShow] = createSignal(false)
   const toggle = () => setShow(!show())
   
-  return <div class="absolute bottom-0 left-0 max-w-screen max-h-screen flex flex-col">
+  return <div class="absolute bottom-0 left-0 flex flex-col max-h-screen max-w-screen <sm:w-full">
     <Connection>
       <Show when={props.list.length && show()}>
         <div class="m-4 mt-16 p-2 flex flex-col min-w-xs bg-white/65 backdrop-filter backdrop-blur rounded-xl shadow-xl text-sm overflow-y-auto">
