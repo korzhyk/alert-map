@@ -58,7 +58,7 @@ Promise.all(Object.keys(Unit).map(type =>
 })
 
 function handleDecodeState (state) {
-  const decoded = Object.keys(state).reduce((result, unit, i, units) => {
+  const decoded = Object.keys(state).sort().reduce((result, unit, i, units) => {
     const feature = geoDecode(unit)
 
     if (feature) {
