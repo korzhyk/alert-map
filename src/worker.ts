@@ -10,23 +10,20 @@ const ONE = { limit: 1 }
 const andRx = /\s(?:та)\s/
 const fuses = {
   [Unit.REGION]: new Fuse([], {
-    useExtendedSearch: true,
     keys: [
       'properties.region'
     ]
   }),
   [Unit.PROVINCE]: new Fuse([], {
-    useExtendedSearch: true,
     keys: [
       'properties.rayon'
     ]
   }),
   [Unit.DISTRICT]: new Fuse([], {
-    useExtendedSearch: true,
     keys: [
-      { name: "properties.region", weight: .5 },
+      { name: "properties.region", weight: .2 },
       { name: "properties.rayon", weight: .3 },
-      { name: "properties.hromada", weight: .2 }
+      { name: "properties.hromada", weight: .5 }
     ]
   })
 }
@@ -58,7 +55,6 @@ Promise.all(Object.keys(Unit).map(type =>
 })
 
 function handleDecodeState (state) {
-  // state['Донецька область'] = Date.now()/1e3
   const decoded = Object.keys(state).reduce((result, unit, i, units) => {
     const feature = geoDecode(unit)
 
@@ -82,25 +78,25 @@ function handleDecodeState (state) {
 
 function geoDecode (place) {
   if (andRx.test(place)) {
-    return place.split(andRx).map(geoDecode).filter((f, i, a) => f && i == a.indexOf(f))[0]
+    return place.split(andRx).map(geoDecode).filter(Boolean)[0]
   }
   let result = []
   if (~place.indexOf('область')) {
-    result = fuses[Unit.REGION].search(`="${place}"`, ONE)
+    result = fuses[Unit.REGION].search(`${place}`, ONE)
   }
   if (~place.indexOf('район')) {
-    result = fuses[Unit.PROVINCE].search(`="${place}"`, ONE)
+    result = fuses[Unit.PROVINCE].search(`${place}`, ONE)
   }
   if (~place.indexOf('громада')) {
-    result = fuses[Unit.DISTRICT].search(`^${place}`, ONE)
+    result = fuses[Unit.DISTRICT].search(`${place}`, ONE)
     if (!result.length) {
       place = place.replace('територіальна', 'міська')
-      result = fuses[Unit.DISTRICT].search(`^${place}`, ONE)
+      result = fuses[Unit.DISTRICT].search(`${place}`, ONE)
     }
   }
   if (place.indexOf('м') == 0) {
     place = place.slice(place.indexOf(' ')).trim()
-    result = fuses[Unit.DISTRICT].search(`^${place} міська громада|${place}`, ONE)
+    result = fuses[Unit.DISTRICT].search(`${place} міська громада|${place}`, ONE)
   }
   if (result.length == 0) console.warn('Decode for', place, 'failed, result is empty.')
   return result.map(r => r.item)[0]
