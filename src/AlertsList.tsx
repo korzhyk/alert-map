@@ -28,7 +28,7 @@ export default function AlertsList (props) {
       </Show>
       <div class="flex">
         {props.children}
-        <button onClick={props.list.length && toggle} class="mx-4 mb-4 py-2 px-4 relative flex items-center place-self-start bg-white/65 text-opacity-90 font-light backdrop-filter backdrop-blur rounded-full shadow-xl"
+        <button onClick={props.list.length && toggle} class="ml-4 mb-4 py-2 px-4 relative flex items-center place-self-start bg-white/65 text-opacity-90 font-light backdrop-filter backdrop-blur rounded-full shadow-xl"
         classList={{
           'bg-white/65 text-opacity-90 active:top-px': props.list.length,
           'bg-white/45 opacity-90': !props.list.length
