@@ -82,16 +82,15 @@ function geoDecode (place) {
   }
   let result = []
   if (~place.indexOf('область')) {
-    result = fuses[Unit.REGION].search(`${place}`, ONE)
+    result = fuses[Unit.REGION].search(place, ONE)
   }
   if (~place.indexOf('район')) {
-    result = fuses[Unit.PROVINCE].search(`${place}`, ONE)
+    result = fuses[Unit.PROVINCE].search(place, ONE)
   }
   if (~place.indexOf('громада')) {
-    result = fuses[Unit.DISTRICT].search(`${place}`, ONE)
+    result = fuses[Unit.DISTRICT].search(place.replace('територіальна', 'міська'), ONE)
     if (!result.length) {
-      place = place.replace('територіальна', 'міська')
-      result = fuses[Unit.DISTRICT].search(`${place}`, ONE)
+      result = fuses[Unit.DISTRICT].search(place, ONE)
     }
   }
   if (place.indexOf('м') == 0) {
