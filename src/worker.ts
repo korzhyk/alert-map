@@ -20,6 +20,7 @@ const fuses = {
     ]
   }),
   [Unit.DISTRICT]: new Fuse([], {
+    useExtendedSearch: true,
     keys: [
       { name: "properties.region", weight: .2 },
       { name: "properties.rayon", weight: .3 },
@@ -95,7 +96,7 @@ function geoDecode (place) {
   }
   if (place.indexOf('м') == 0) {
     place = place.slice(place.indexOf(' ')).trim()
-    result = fuses[Unit.DISTRICT].search(`${place} міська громада|${place}`, ONE)
+    result = fuses[Unit.DISTRICT].search(`^${place} міська громада|^${place}`, ONE)
   }
   if (result.length == 0) console.warn('Decode for', place, 'failed, result is empty.')
   return result.map(r => r.item)[0]
