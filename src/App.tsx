@@ -109,8 +109,8 @@ function initMap (container) {
         fitBoundsOptions: {
           padding: 5
         },
-        maxZoom: 9,
-        minZoom: 3.5
+        maxZoom: 6,
+        minZoom: 4
       })
       map.on('load', () => {
         let firstSymbolId
