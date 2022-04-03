@@ -68,7 +68,9 @@ telegram.mtproto.updates.on('updates', updateInfo => {
             telegram.storage.client.HDEL('alertHash', clear[0])
           })
         } else {
-          telegram.storage.client.HDEL('alertHash', ...clear)
+          setTimeout(() => {
+            telegram.storage.client.HDEL('alertHash', ...clear)
+          }, 100)
           alerts.forEach(unit => telegram.storage.client.HSETNX('alertHash', unit, date))
         }
       } catch (e) {
