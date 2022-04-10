@@ -6,7 +6,7 @@ export default function Connection(props) {
   return (
     <Show when={props.state !== WebSocket.OPEN} fallback={props.children}>
       <button
-        class="z-1 blur-box l-4 mb-4 py-2 px-4 flex items-center absolute top-4 left-4 font-light"
+        class="z-1 absolute bottom-4 left-4 blur-box py-2 px-4 flex items-center font-light"
         onClick={props.connect}
       >
         {props.state === WebSocket.CLOSED ? (
