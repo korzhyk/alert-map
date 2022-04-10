@@ -1,268 +1,113 @@
 import 'virtual:windi.css'
-import 'maplibre-gl/dist/maplibre-gl.css'
 import debug from 'debug'
-import { onMount, onCleanup, createSignal } from 'solid-js'
-import mitt from 'mitt'
-import alerts from './alerts'
-import AlertsList from './AlertsList'
+import { RpcProvider } from '@playcode/worker-rpc'
+import { createSignal, onCleanup } from 'solid-js'
+import { unwrap } from 'solid-js/store'
+import { Icon } from 'solid-heroicons'
+import { userGroup } from 'solid-heroicons/outline'
+import Alerts from './Alerts'
+import { useAlerts } from './AlertsContext'
+import Connection from './Connection'
+import Map from './Map'
 // @ts-ignore
 import GeoDecodeWorker from './worker?worker'
 
-interface Alert {
-  id?: number,
-  date?: number,
-  message?: string,
-  parsed?: string[][]
-}
-
-const log = debug('App')
-const workerEvents = mitt()
-let map, [ workerReady, readySignal ] = waitFor()
+const log = debug('App:Main')
 
 export default function App() {
-  const [online, setOnline] = createSignal(0)
-  const [state, setState] = createSignal({})
-  const [showState, setShowState] = createSignal([])
+  const [store, { setDecoded, connect }] = useAlerts()
+  const [map, setMap] = createSignal()
 
-  let container
-  onMount(() => {
-    const worker = new GeoDecodeWorker()
-    worker.addEventListener('message', ({ data }) => {
-      if (typeof data == 'object' && !Array.isArray(data)) {
-        for (const event in data) {
-          workerEvents.emit(event, data[event])
-        }
-      } else { 
-        workerEvents.emit('*', data)
-      }
-    })
-    worker.postMessage('ready?')
-    workerEvents.on('ready', readySignal)
-    workerEvents.on('decoded', state => {
-      map.getSource('alerts-poly').setData({
+  const worker = new GeoDecodeWorker()
+  const rpcProvider = new RpcProvider((message, transfer) => worker.postMessage(message, transfer))
+  worker.onmessage = (e) => rpcProvider.dispatch(e.data)
+
+  onCleanup(() => {
+    worker.terminate()
+  })
+
+  const showFeatures = () => {
+    return async (m) => {
+      if (!m) return
+      await rpcProvider.rpc('ready')
+      const decoded = await rpcProvider.rpc('decode', unwrap(store.state))
+      const show = Object.keys(decoded).sort()
+      setDecoded(show)
+      m.getSource('alerts-poly')?.setData({
         type: 'FeatureCollection',
-        features: state.map(([unit, start, feature]) => feature)
+        features: show.map((unit) => decoded[unit])
       })
-      setShowState(state)
-    })
-    alerts.on('online', setOnline)
-    alerts.on('state', state => {
-      setState(state)
-      worker.postMessage({ decodeState: state })
-    })
-    alerts.on('alert', (alert: Alert) => {
-      log('alert: %o', alert)
-      if (!alert.parsed) {
-        alert.parsed = parseMessage(alert.message)
-      }
-      const newState = state()
-      const [ clear, alerts ] = alert.parsed
-      if (clear.length && alerts.length) {
-        newState[alerts[0]] = newState[clear[0]]
-        delete newState[clear[0]]
-      } else {
-        alerts.forEach(u => (newState[u] = alert.date))
-        clear.forEach(u => delete newState[u])
-      }
-      setState(newState)
-      worker.postMessage({ decodeState: newState })
-    })
-    Promise.all([
-      initMap(container),
-      workerReady
-    ]).then(() => {
-      alerts.connect(import.meta.env.VITE_WS_URI)
-    })
-    const egg = document.querySelector('a[href*="https://www.comebackalive.in.ua"]')
-    if (egg) {
-      egg.addEventListener('touchstart', triggerEgg, { once: true })
-      egg.addEventListener('mousedown', triggerEgg)
-      egg.addEventListener('mouseup', clearEgg)
     }
-    onCleanup(() => {
-      if (egg) {
-        egg.removeEventListener('mousedown', triggerEgg)
-        egg.removeEventListener('mouseup', clearEgg)
-      }
-      alerts.destroy()
-      worker.terminate()
-    })
-  })
-  return <div class="h-full">
-    <div ref={container} class="h-full" />
-    <AlertsList list={showState()} onEnter={onEnter} onLeave={onLeave}>
-      <div class="ml-4 mb-4 py-2 px-4 flex items-center bg-white/65 text-opacity-90 font-light backdrop-filter backdrop-blur rounded-full shadow-xl" title="Кількість користувачів котрі переглядають мапу">
-        <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-        { online() }
-      </div>
-    </AlertsList>
-  </div>
-}
+  }
 
-function initMap (container) {
-  return import('maplibre-gl').then(({ Map, LngLatBounds, LngLat }) => {
-    return new Promise(resolve => {
-      map = new Map({
-        container,
-        style: import.meta.env.VITE_STYLE_URI,
-        bounds: new LngLatBounds(new LngLat(21, 44), new LngLat(41, 53)),
-        fitBoundsOptions: {
-          padding: 5
-        },
-        maxZoom: 6,
-        minZoom: 4
-      })
-      map.on('load', () => {
-        let firstSymbolId
-        const layers = map.getStyle().layers
-        for (let i = 0, l = layers.length; i < l; i++) {
-          if (layers[i].type === 'symbol') {
-          firstSymbolId = layers[i].id
-          break
-          }
-        }
-        map.addSource('alerts-poly', {
-          generateId: true,
-          type: 'geojson',
-          data: null
-        })
-        map.addLayer({
-          id: 'alerts-poly',
-          type: 'fill',
-          source: 'alerts-poly',
-          paint: {
-            'fill-color': '#F00',
-            'fill-opacity': [
-              'case', ['boolean', ['feature-state', 'hover'], false],
-              .5, .3
-            ]
-          }
-        }, firstSymbolId)
-        map.on('mousemove', 'alerts-poly', (e) => {
-          if (e.features.length > 0) {
-            onEnter(e.features[0].id)
-          }
-        })
-        map.on('mouseleave', 'alerts-poly', onLeave)
-        resolve(map)
-      })
+  const onLoad = (map) => {
+    showFeatures()(map)
+    setMap(map)
+    const layers = map.getStyle().layers
+    let symbolsLayerId
+    for (let i = 0, l = layers.length; i < l; i++) {
+      if (layers[i].type === 'symbol') {
+        symbolsLayerId = layers[i].id
+        break
+      }
+    }
+    map.addSource('alerts-poly', {
+      generateId: true,
+      type: 'geojson',
+      data: null
     })
-  })
+    map.addLayer(
+      {
+        id: 'alerts-poly',
+        type: 'fill',
+        source: 'alerts-poly',
+        paint: {
+          'fill-color': '#F00',
+          'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 0.5, 0.3]
+        }
+      },
+      symbolsLayerId
+    )
+    map.on('mousemove', 'alerts-poly', (e) => onEnter.call(map, e.features[0]?.id))
+    map.on('mouseleave', 'alerts-poly', onLeave.bind(map))
+  }
+
+  return (
+    <>
+      <Connection state={store.readyState} connect={connect}>
+        <Alerts onEnter={onEnter.bind(map())} onLeave={onLeave.bind(map())}>
+          <div
+            class="z-1 blur-box ml-4 mb-4 py-2 px-4 flex items-center font-light"
+            title="Кількість користувачів котрі переглядають мапу"
+          >
+            <Icon path={userGroup} class="icon mr-1.5 text-blue-600" />
+            {store.online}
+          </div>
+        </Alerts>
+      </Connection>
+      <Map onLoad={onLoad} showFeatures={showFeatures(store.state)} />
+    </>
+  )
 }
 
 /*
  * Map interaction handlers
  */
 
- let hoveredStateId = null
+let hoveredStateId = null
 
- function onClick (id) {
- 
- }
- 
- function onEnter (id) {
+function onEnter(id) {
+  if (typeof id === 'undefined') return log('[onEnter] invalid feature id: %s', id)
   if (hoveredStateId != null) {
-    map.setFeatureState({ source: 'alerts-poly', id: hoveredStateId }, { hover: false })
+    this.setFeatureState({ source: 'alerts-poly', id: hoveredStateId }, { hover: false })
   }
   hoveredStateId = id
-  map.setFeatureState({ source: 'alerts-poly', id }, { hover: true })
- }
- 
- 
- function onLeave () {
+  this.setFeatureState({ source: 'alerts-poly', id }, { hover: true })
+}
+
+function onLeave() {
   if (hoveredStateId != null) {
-    map.setFeatureState({ source: 'alerts-poly', id: hoveredStateId }, { hover: false })
+    this.setFeatureState({ source: 'alerts-poly', id: hoveredStateId }, { hover: false })
   }
   hoveredStateId = null
- }
- 
-/*
- * Utils
- */
-
-function waitFor () {
-  let resolve
-  const p = new Promise(r => {
-    resolve = r
-  })
-  return [p, resolve]
 }
-
-const mainRx = /тривог[аи] в (.+)/
-const stillRx = /^- (.+)/gm
-const clearRx = /(🟢|відбій)/i
-const pendingRx = /(🟡|триває)/i
-const airalertRx = /(🔴|повітряна)/i
-
-function parseMessage(message) {
-  const type = pendingRx.test(message)
-  ? 'pending' : airalertRx.test(message)
-  ? 'alert' : clearRx.test(message)
-  ? 'clear' : 'unknown'
-  const except = []
-  const main = []
-
-  let m = mainRx.exec(message)
-
-  if (m) {
-    main.push(replaceDots(m[1]))
-  }
-
-  switch (type) {
-    case 'alert':
-      return [except, main]
-    case 'pending':
-      while ((m = stillRx.exec(message))) {
-        except.push(replaceDots(m[1]))
-      }
-    case 'clear':
-      return [main, except]
-    default:
-      return [[], []]
-  }
-}
-
-function replaceDots (str) {
-  str = str.replaceAll('.', '')
-  if (str.indexOf('м') == 0) {
-    str = 'місто' + str.slice(str.indexOf(' '))
-  }
-  return str.trim()
-}
-
-/*
- * Easter egg
-*/
-
-let pressTimeout
-let rocketSent
-
-function clearEgg (e) {
-  clearTimeout(pressTimeout)
-}
-
-function triggerEgg (e) {
-  e.preventDefault()
-  if (rocketSent) return
-  pressTimeout = setTimeout(() => {
-    e.target.addEventListener('click', e => e.preventDefault(), { once: true })
-    rocketSent = true
-    const date = new Date()
-    alerts.emitter.emit('alert', { date: Date.now()/1e3, message: `🔴 ${date.getHours()}:${date.getMinutes()} Повітряна тривога в Бєлгородська область` })
-    const ctx = new AudioContext()
-    fetch(`/audio.mp3`)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => ctx.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      const source = ctx.createBufferSource()
-      source.buffer = audioBuffer
-      source.connect(ctx.destination);
-      source.start()
-    })
-    setTimeout(() => {
-      rocketSent = false
-      alerts.emitter.emit('alert', { date: Date.now()/1e3, message: `🟢 ${date.getHours()}:${date.getMinutes()} Відбій тривоги в Бєлгородська область` })
-    }, 6e4)
-  }, 3e3)
-}
-

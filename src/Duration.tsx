@@ -4,7 +4,7 @@ import differenceInMinutes from 'date-fns/differenceInMinutes'
 import { uk } from 'date-fns/locale'
 import { createSignal, onCleanup, onMount } from 'solid-js'
 
-export default function Duration (props) {
+export default function Duration(props) {
   let timeout,
     duration = 1000,
     format = ['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']
