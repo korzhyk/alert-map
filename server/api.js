@@ -1,14 +1,14 @@
+const debug = require('debug')
+const input = require('input')
 const { createHmac } = require('crypto')
 const MTProto = require('@mtproto/core')
 const { sleep } = require('@mtproto/core/src/utils/common')
 const RedisStorage = require('./redis')
-const input = require('input')
-const debug = require('debug')
 
 const log = debug('server:api')
 
 class API {
-  constructor (api_id, api_hash) {
+  constructor(api_id, api_hash) {
     this.storage = new RedisStorage(createHmac('sha256', api_hash).update(api_id).digest('hex'))
     this.mtproto = new MTProto({
       api_id,
@@ -19,7 +19,7 @@ class API {
     })
   }
 
-  async call (method, params, options = {}) {
+  async call(method, params, options = {}) {
     try {
       const result = await this.mtproto.call(method, params, options)
       return result
@@ -61,7 +61,7 @@ class API {
               password
             })
 
-            const checkPasswordResult = await this.checkPassword({ srp_id, A, M1 })
+            await this.checkPassword({ srp_id, A, M1 })
             break
           default:
             log('error:', error)
@@ -99,7 +99,7 @@ class API {
     }
   }
 
-  sendCode (phone) {
+  sendCode(phone) {
     return this.call('auth.sendCode', {
       phone_number: phone,
       settings: {
@@ -108,7 +108,7 @@ class API {
     })
   }
 
-  signIn ({ code, phone, phone_code_hash }) {
+  signIn({ code, phone, phone_code_hash }) {
     return this.call('auth.signIn', {
       phone_code: code,
       phone_number: phone,
@@ -116,7 +116,7 @@ class API {
     })
   }
 
-  signUp ({ phone, phone_code_hash }) { 
+  signUp({ phone, phone_code_hash }) {
     return this.call('auth.signUp', {
       phone_number: phone,
       phone_code_hash: phone_code_hash,
@@ -125,11 +125,11 @@ class API {
     })
   }
 
-  getPassword () {
+  getPassword() {
     return this.call('account.getPassword')
   }
 
-  checkPassword ({ srp_id, A, M1 }) {
+  checkPassword({ srp_id, A, M1 }) {
     return this.call('auth.checkPassword', {
       password: {
         _: 'inputCheckPasswordSRP',
@@ -141,4 +141,40 @@ class API {
   }
 }
 
-module.exports = API
+const getChannelByUserName = (pool, username) =>
+  pool.client.call('contacts.resolveUsername', { username })
+
+const handleChannelUpdates = (pool, channelId) => {
+  if (!pool.state.handlers.has('updates')) {
+    pool.client.mtproto.updates.on('updates', (updateInfo) => {
+      const updates = updateInfo.updates.filter(
+        ({ _, message }) =>
+          _ === 'updateNewChannelMessage' && pool.state.channelsIds.has(message.peer_id.channel_id)
+      )
+      updates.length && pool.onUpdate(updates)
+    })
+    pool.state.handlers.add('updates')
+  }
+  pool.state.channelsIds.add(channelId)
+}
+
+const handleUpdatesFactory = async (dependencies, options) => {
+  const pool = {
+    getChannelByUserName,
+    handleChannelUpdates,
+    ...dependencies,
+    options,
+    state: {
+      handlers: new Set(),
+      channelsIds: new Set()
+    }
+  }
+
+  const lookupResult = await pool.getChannelByUserName(pool, options.channel)
+
+  if (lookupResult.peer?._ === 'peerChannel') {
+    pool.handleChannelUpdates(pool, lookupResult.peer.channel_id)
+  }
+}
+
+module.exports = { API, handleUpdatesFactory }
