@@ -51,20 +51,24 @@ const redis = telegram.storage.client
 handleUpdatesFactory({ client: telegram, onUpdate }, { channel: 'air_alert_ua' })
 
 async function onUpdate(updates) {
-  log('new updates %i', updates.length)
+  log('updates count: %i', updates.length)
 
   for (const update of updates) {
-    const { id, date, message } = update.message
-    broadcast({ alert: { id, date, message } })
+    const alert = ['id', 'date', 'message'].reduce(
+      (acc, prop) => ((acc[prop] = update.message[prop]), acc),
+      {}
+    )
+    log('update: %o', alert)
+    broadcast({ alert })
     try {
-      const [clear, alerts] = parseMessage(message)
+      const [clear, alerts] = parseMessage(alert.message)
       let transition
       if (clear.length && alerts.length) {
         transition = await redis.HGET('alertHash', clear[0])
       }
       await Promise.all(
         alerts
-          .map((unit) => redis.HSETNX('alertHash', unit, transition || date))
+          .map((unit) => redis.HSETNX('alertHash', unit, transition || alert.date))
           .concat(redis.HDEL('alertHash', ...clear))
       )
     } catch (e) {
