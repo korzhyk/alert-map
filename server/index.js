@@ -55,9 +55,9 @@ async function onUpdate(updates) {
 
   for (const update of updates) {
     const { id, date, message } = update.message
-    let parsed
+    broadcast({ alert: { id, date, message } })
     try {
-      const [clear, alerts] = (parsed = parseMessage(message))
+      const [clear, alerts] = parseMessage(message)
       let transition
       if (clear.length && alerts.length) {
         transition = await redis.HGET('alertHash', clear[0])
@@ -70,7 +70,6 @@ async function onUpdate(updates) {
     } catch (e) {
       log(e.message)
     }
-    broadcast({ alert: { id, date, message, parsed } })
   }
   redis
     .HGETALL('alertHash')
