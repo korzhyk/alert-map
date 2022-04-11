@@ -1,9 +1,8 @@
 import { onMount, createSignal, createEffect } from 'solid-js'
 
 export default function Map(props) {
-  let container,
-    map,
-    loaded = false
+  let container, map
+  const [loaded, setLoaded] = createSignal()
   const [progress, setProgress] = createSignal('Мапа завантажується…')
 
   createEffect(() => {
@@ -11,7 +10,7 @@ export default function Map(props) {
   })
 
   onMount(async () => {
-    loaded = await Promise.resolve()
+    await Promise.resolve()
       .then(() => {
         setProgress('Завантаження стилів…')
         return import('maplibre-gl/dist/maplibre-gl.css')
@@ -29,8 +28,8 @@ export default function Map(props) {
           fitBoundsOptions: {
             padding: 5
           },
-          maxZoom: 6,
-          minZoom: 3.5
+          maxZoom: 7,
+          minZoom: 3.75
         })
         return new Promise((resolve) => {
           setProgress('Завантаження стилів шарів…')
@@ -40,20 +39,24 @@ export default function Map(props) {
       .then(() => {
         setProgress('Мапу завантажено.')
         props.onLoad?.(map)
-        return true
+        setLoaded(true)
       })
   })
 
   return (
-    <div ref={container} class="h-full bg-[rgba(252, 247, 229, 1)]">
+    <>
       <div
-        class="m-auto opacity-50 text-size-xl font-bold"
+        class="absolute inset-0 opacity-50 text-size-xl font-bold flex items-center justify-center"
         classList={{
-          hidden: loaded
+          'hidden': loaded()
         }}
       >
         {progress()}
       </div>
-    </div>
+      <div
+        ref={container}
+        class="h-full bg-[rgba(252, 247, 229, 1)] dark:(filter invert hue-rotate-180)"
+      />
+    </>
   )
 }

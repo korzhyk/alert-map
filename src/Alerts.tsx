@@ -5,13 +5,15 @@ import Duration from './Duration'
 import { useAlerts } from './AlertsContext'
 
 const andRx = /\s(?:та)\s/
+const andSplit = (str) => str.split(andRx)[0]
 
 export default function Alerts(props) {
   const [show, setShow] = createSignal(false)
   const toggle = () => setShow(!show())
 
   const [store] = useAlerts()
-  const hasList = createMemo(() => store.decoded.length)
+  const list = createMemo(() => props.list || store.state)
+  const hasList = createMemo(() => list().length)
 
   return (
     <div class="absolute bottom-0 left-0 flex flex-col max-h-screen max-w-screen <sm:w-full">
@@ -21,15 +23,15 @@ export default function Alerts(props) {
             <h3>Повітряна тривога</h3>
             <h6>Триває</h6>
           </div>
-          <ul class="text-gray-600 overflow-y-auto">
+          <ul class="overflow-y-auto">
             <For each={store.decoded}>
               {(unit, i) => (
                 <li
-                  class="flex justify-between py-2 px-3 hover:bg-black/5 rounded-xl cursor-pointer transition-colors hover:text-gray-900"
+                  class="flex justify-between py-2 px-3 hover:bg-black/10 rounded-xl cursor-pointer transition-colors"
                   onMouseEnter={() => props.onEnter(i())}
                   onMouseLeave={() => props.onLeave()}
                 >
-                  <span>{unit.split(andRx)[0]}</span>
+                  <span>{andSplit(unit)}</span>
                   <span class="ml-4 text-right">
                     <Duration start={store.state[unit] * 1e3} />
                   </span>
@@ -61,7 +63,7 @@ export default function Alerts(props) {
             </>
           ) : (
             <>
-              <Icon path={viewList} class="icon mr-1.5 text-red-600" />
+              <Icon path={viewList} class="icon mr-1.5 text-red-600 dark:text-red-400" />
               Показати списком ({hasList()})
             </>
           )}

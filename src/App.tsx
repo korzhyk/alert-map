@@ -75,12 +75,12 @@ export default function App() {
   return (
     <>
       <Connection state={store.readyState} connect={connect}>
-        <Alerts onEnter={onEnter.bind(map())} onLeave={onLeave.bind(map())}>
+        <Alerts onEnter={onEnter.bind(map())} onLeave={onLeave.bind(map())} list={store.decoded}>
           <div
             class="z-1 blur-box ml-4 mb-4 py-2 px-4 flex items-center font-light"
             title="Кількість користувачів котрі переглядають мапу"
           >
-            <Icon path={userGroup} class="icon mr-1.5 text-blue-600" />
+            <Icon path={userGroup} class="icon mr-1.5 text-blue-600 dark:text-blue-400" />
             {store.online}
           </div>
         </Alerts>
