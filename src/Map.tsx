@@ -2,7 +2,7 @@ import { onMount, createSignal, createEffect } from 'solid-js'
 
 export default function Map(props) {
   let container, map
-  const [loaded, setLoaded] = createSignal()
+  const [loaded, setLoaded] = createSignal(false)
   const [progress, setProgress] = createSignal('Мапа завантажується…')
 
   createEffect(() => {

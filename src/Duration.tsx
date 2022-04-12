@@ -26,5 +26,5 @@ export default function Duration(props) {
     update()
     onCleanup(() => clearTimeout(timeout))
   })
-  return <span classList={{ 'text-red-600 font-medium': fresh() }}>{formatted()}</span>
+  return <span classList={{ 'dark:text-red-300 text-red-600 font-medium': fresh() }}>{formatted()}</span>
 }

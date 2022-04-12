@@ -1,7 +1,7 @@
 import 'virtual:windi.css'
 import debug from 'debug'
 import { RpcProvider } from '@playcode/worker-rpc'
-import { createSignal, onCleanup } from 'solid-js'
+import { createMemo, createSignal, onCleanup } from 'solid-js'
 import { unwrap } from 'solid-js/store'
 import { Icon } from 'solid-heroicons'
 import { userGroup } from 'solid-heroicons/outline'
@@ -17,6 +17,7 @@ const log = debug('App:Main')
 export default function App() {
   const [store, { setDecoded, connect }] = useAlerts()
   const [map, setMap] = createSignal()
+  const list = createMemo(() => store.decoded.length && store.decoded)
 
   const worker = new GeoDecodeWorker()
   const rpcProvider = new RpcProvider((message, transfer) => worker.postMessage(message, transfer))
@@ -75,7 +76,7 @@ export default function App() {
   return (
     <>
       <Connection state={store.readyState} connect={connect}>
-        <Alerts onEnter={onEnter.bind(map())} onLeave={onLeave.bind(map())} list={store.decoded}>
+        <Alerts onEnter={onEnter.bind(map())} onLeave={onLeave.bind(map())} list={list()}>
           <div
             class="z-1 blur-box ml-4 mb-4 py-2 px-4 flex items-center font-light"
             title="Кількість користувачів котрі переглядають мапу"

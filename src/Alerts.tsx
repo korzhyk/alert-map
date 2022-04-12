@@ -12,7 +12,7 @@ export default function Alerts(props) {
   const toggle = () => setShow(!show())
 
   const [store] = useAlerts()
-  const list = createMemo(() => props.list || store.state)
+  const list = createMemo(() => props.list || Object.keys(store.state))
   const hasList = createMemo(() => list().length)
 
   return (
@@ -24,7 +24,7 @@ export default function Alerts(props) {
             <h6>Триває</h6>
           </div>
           <ul class="overflow-y-auto">
-            <For each={store.decoded}>
+            <For each={list()}>
               {(unit, i) => (
                 <li
                   class="flex justify-between py-2 px-3 hover:bg-black/10 rounded-xl cursor-pointer transition-colors"
@@ -45,7 +45,7 @@ export default function Alerts(props) {
         {props.children}
         <button
           onClick={hasList && toggle}
-          class="z-1 blur-box ml-4 mb-4 py-2 px-4 relative flex items-center place-self-start text-opacity-90 font-light"
+          class="z-1 blur-box ml-4 mb-4 py-2 px-4 relative flex items-center place-self-start text-opacity-90"
           classList={{
             'active:top-px': hasList(),
             'bg-opacity-45 opacity-90': !hasList()
