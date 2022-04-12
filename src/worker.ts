@@ -85,7 +85,7 @@ function geoDecode(place) {
   if (~place.indexOf('громада')) {
     result = fuses[Unit.DISTRICT].search(`="${place}"`, ONE)
     if (!result.length) {
-      result = fuses[Unit.DISTRICT].search(`^${place.replace('територіальна', 'міська')}`, ONE)
+      result = fuses[Unit.DISTRICT].search(`^${place.replace('територіальна', 'міська')}|^${place}`, ONE)
     }
   }
   if (place.indexOf('м') == 0) {
