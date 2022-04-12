@@ -45,14 +45,11 @@ export default function Map(props) {
 
   return (
     <>
-      <div
-        class="absolute inset-0 opacity-50 text-size-xl font-bold flex items-center justify-center"
-        classList={{
-          'hidden': loaded()
-        }}
-      >
-        {progress()}
-      </div>
+      {!loaded() && (
+        <div class="absolute inset-0 opacity-50 text-size-xl font-bold flex items-center justify-center">
+          {progress()}
+        </div>
+      )}
       <div
         ref={container}
         class="h-full bg-[rgba(252, 247, 229, 1)] dark:(filter invert hue-rotate-180)"
