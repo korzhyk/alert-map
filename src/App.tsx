@@ -27,11 +27,11 @@ export default function App() {
     worker.terminate()
   })
 
-  const showFeatures = () => {
+  const showFeatures = (add) => {
     return async (m) => {
       if (!m) return
       await rpcProvider.rpc('ready')
-      const decoded = await rpcProvider.rpc('decode', unwrap(store.state))
+      const decoded = await rpcProvider.rpc('decode', { ...unwrap(store.state), ...add })
       const show = Object.keys(decoded).sort()
       setDecoded(show)
       m.getSource('alerts-poly')?.setData({
@@ -73,6 +73,15 @@ export default function App() {
     map.on('mouseleave', 'alerts-poly', onLeave.bind(map))
   }
 
+  const cb = (yes) => showFeatures(yes ? { 'Бєлгородська область': yes } : null)(map())
+
+  const egg = document.querySelector('a[href*="https://www.comebackalive.in.ua"]')
+  if (egg) {
+    egg.addEventListener('touchstart', (e) => triggerEgg(e, cb), { once: true })
+    egg.addEventListener('mousedown', (e) => triggerEgg(e, cb))
+    egg.addEventListener('mouseup', clearEgg)
+  }
+
   return (
     <>
       <Connection state={store.readyState} connect={connect}>
@@ -111,4 +120,39 @@ function onLeave() {
     this.setFeatureState({ source: 'alerts-poly', id: hoveredStateId }, { hover: false })
   }
   hoveredStateId = null
+}
+
+/*
+ * Easter egg
+ */
+
+let pressTimeout
+let rocketSent
+
+function clearEgg(e) {
+  clearTimeout(pressTimeout)
+}
+
+function triggerEgg(e, callback) {
+  e.preventDefault()
+  if (rocketSent) return
+  pressTimeout = setTimeout(() => {
+    e.target.addEventListener('click', (e) => e.preventDefault(), { once: true })
+    rocketSent = true
+    const ctx = new AudioContext()
+    fetch(`/audio.mp3`)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
+      .then((audioBuffer) => {
+        const source = ctx.createBufferSource()
+        source.buffer = audioBuffer
+        source.connect(ctx.destination)
+        source.start()
+      })
+    callback(rocketSent)
+    setTimeout(() => {
+      rocketSent = false
+      callback(rocketSent)
+    }, 6e4)
+  }, 3e3)
 }

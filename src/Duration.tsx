@@ -10,8 +10,8 @@ export default function Duration(props) {
     format = ['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']
   const [fresh, setFresh] = createSignal(true)
   const [formatted, setFormatted] = createSignal()
+  const start = props.start || new Date()
   const update = () => {
-    const start = props.start || new Date()
     const end = props.end || new Date()
     const interval = intervalToDuration({ start, end })
     timeout = setTimeout(update, duration)
@@ -26,5 +26,7 @@ export default function Duration(props) {
     update()
     onCleanup(() => clearTimeout(timeout))
   })
-  return <span classList={{ 'dark:text-red-300 text-red-600 font-medium': fresh() }}>{formatted()}</span>
+  return (
+    <span classList={{ 'dark:text-red-300 text-red-600 font-medium': fresh() }}>{formatted()}</span>
+  )
 }
