@@ -50,7 +50,7 @@ const telegram = new API(process.env.API_ID, process.env.API_HASH)
 const redis = telegram.storage.client
 
 const telegramHealthCheck = setInterval(() => {
-  telegram.getUser().catch(e => log('error on user request'))
+  telegram.getUser().then(user => user || log('failed to get user'))
 }, 6e4)
 
 handleUpdatesFactory({ client: telegram, onUpdate }, { channel: 'air_alert_ua' })
