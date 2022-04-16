@@ -101,7 +101,7 @@ class API {
 
   async getUser() {
     try {
-      const user = await api.call('users.getFullUser', {
+      const user = await this.call('users.getFullUser', {
         id: {
           _: 'inputUserSelf'
         }
