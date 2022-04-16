@@ -44,9 +44,14 @@ const broadcast = (data) => {
     JSON.stringify({ ...data, online: ws.numSubscribers('broadcast') })
   )
 }
+
 const wsPing = setInterval(broadcast, 6e4)
 const telegram = new API(process.env.API_ID, process.env.API_HASH)
 const redis = telegram.storage.client
+
+const telegramHealthCheck = setInterval(() => {
+  telegram.getUser().catch(e => log('error on user request'))
+}, 6e4)
 
 handleUpdatesFactory({ client: telegram, onUpdate }, { channel: 'air_alert_ua' })
 
@@ -83,6 +88,7 @@ async function onUpdate(updates) {
 
 process.on('SIGINT', async () => {
   clearInterval(wsPing)
+  clearInterval(telegramHealthCheck)
   uWS.us_listen_socket_close(listenSocket)
   await redis.quit()
   process.exit(0)

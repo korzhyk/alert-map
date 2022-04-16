@@ -99,6 +99,19 @@ class API {
     }
   }
 
+  async getUser() {
+    try {
+      const user = await api.call('users.getFullUser', {
+        id: {
+          _: 'inputUserSelf'
+        }
+      })
+      return user
+    } catch (error) {
+      return null
+    }
+  }
+
   sendCode(phone) {
     return this.call('auth.sendCode', {
       phone_number: phone,
@@ -144,7 +157,8 @@ class API {
 const getChannelByUserName = (pool, username) =>
   pool.client.call('contacts.resolveUsername', { username })
 
-const handleChannelUpdates = (pool, channelId) => {
+const handleChannelUpdates = (pool, channel) => {
+  pool.state.channelsIds.add(channel.id)
   if (!pool.state.handlers.has('updates')) {
     pool.client.mtproto.updates.on('updates', (updateInfo) => {
       const updates = updateInfo.updates.filter(
@@ -155,11 +169,23 @@ const handleChannelUpdates = (pool, channelId) => {
     })
     pool.state.handlers.add('updates')
   }
-  pool.state.channelsIds.add(channelId)
+}
+
+const loadHistory = async (pool, channel) => {
+  const historyResult = await pool.client.call('messages.getHistory', {
+    peer: {
+      _: 'inputPeerChannel',
+      channel_id: channel.id,
+      access_hash: channel.access_hash
+    },
+    limit: pool.options.history || 50
+  })
+  pool.onUpdate(historyResult.messages.reverse().map((message) => ({ message })))
 }
 
 const handleUpdatesFactory = async (dependencies, options) => {
   const pool = {
+    loadHistory,
     getChannelByUserName,
     handleChannelUpdates,
     ...dependencies,
@@ -173,7 +199,9 @@ const handleUpdatesFactory = async (dependencies, options) => {
   const lookupResult = await pool.getChannelByUserName(pool, options.channel)
 
   if (lookupResult.peer?._ === 'peerChannel') {
-    pool.handleChannelUpdates(pool, lookupResult.peer.channel_id)
+    const channel = lookupResult.chats.find((chat) => chat.id === lookupResult.peer.channel_id)
+    pool.loadHistory(pool, channel)
+    pool.handleChannelUpdates(pool, channel)
   }
 }
 
