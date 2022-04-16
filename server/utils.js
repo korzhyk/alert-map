@@ -1,5 +1,5 @@
-const mainRx = /тривог[аи] в (?<unit>.+?)\.?$/m
-const stillRx = /^- (.+)/gm
+const mainRx = /тривог[аи] в (.+?)\.?$/m
+const stillRx = /^- (.+?)\.?$/gm
 const clearRx = /(🟢|відбій)/i
 const pendingRx = /(🟡|триває)/i
 const airalertRx = /(🔴|повітряна)/i
