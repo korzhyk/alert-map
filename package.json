@@ -1,7 +1,7 @@
 {
   "name": "alert-map",
   "version": "0.2.0",
-  "description": "Interactive map of air alerts",
+  "description": "Realtime map of active air alerts in Ukraine",
   "author": "Andrii Korzh <andriii.korzh@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -11,7 +11,7 @@
     "start": "node server"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "devDependencies": {
     "@playcode/worker-rpc": "^0.4.0",
