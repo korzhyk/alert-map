@@ -4,7 +4,7 @@ import { RpcProvider } from '@playcode/worker-rpc'
 import { createMemo, createSignal, onCleanup } from 'solid-js'
 import { unwrap } from 'solid-js/store'
 import { Icon } from 'solid-heroicons'
-import { userGroup } from 'solid-heroicons/outline'
+import { user, users, userGroup } from 'solid-heroicons/outline'
 import Alerts from './Alerts'
 import { useAlerts } from './AlertsContext'
 import Connection from './Connection'
@@ -90,7 +90,10 @@ export default function App() {
             class="z-1 blur-box ml-4 mb-4 py-2 px-4 flex items-center font-light"
             title="Кількість користувачів котрі переглядають мапу"
           >
-            <Icon path={userGroup} class="icon mr-1.5 text-blue-600 dark:text-blue-400" />
+            <Icon
+              path={store.online == 1 ? user : store.online == 2 ? users : userGroup}
+              class="icon mr-1.5 text-blue-600 dark:text-blue-400"
+            />
             {store.online}
           </div>
         </Alerts>
