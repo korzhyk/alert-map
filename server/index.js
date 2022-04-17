@@ -60,34 +60,36 @@ let seq = Promise.resolve()
 
 async function onUpdate(updates) {
   await seq
-  log('updates count: %i', updates.length)
-
-  for (const update of updates) {
-    const alert = ['id', 'date', 'message'].reduce(
-      (acc, prop) => ((acc[prop] = update.message[prop]), acc),
-      {}
-    )
-    log('update: %o', alert)
-    broadcast({ alert })
-    try {
-      const [clear, alerts] = parseMessage(alert.message)
-      let transition
-      if (clear.length && alerts.length) {
-        transition = await redis.HGET(ALERTS_HASH, clear[0])
+  seq = new Promise(async resolve => {
+    log('updates count: %i', updates.length)
+    for (const update of updates) {
+      const alert = ['id', 'date', 'message'].reduce(
+        (acc, prop) => ((acc[prop] = update.message[prop]), acc),
+        {}
+      )
+      log('update: %o', alert)
+      broadcast({ alert })
+      try {
+        const [clear, alerts] = parseMessage(alert.message)
+        let transition
+        if (clear.length && alerts.length) {
+          transition = await redis.HGET(ALERTS_HASH, clear[0])
+        }
+        await Promise.all(
+          alerts
+            .map((unit) => redis.HSETNX(ALERTS_HASH, unit, transition || alert.date))
+            .concat(redis.HDEL(ALERTS_HASH, ...clear))
+        )
+      } catch (e) {
+        log(e.message)
       }
-      await (seq = Promise.all(
-        alerts
-          .map((unit) => redis.HSETNX(ALERTS_HASH, unit, transition || alert.date))
-          .concat(redis.HDEL(ALERTS_HASH, ...clear))
-      ))
-    } catch (e) {
-      log(e.message)
     }
-  }
-  redis
-    .HGETALL(ALERTS_HASH)
-    .then((state) => broadcast({ state }))
-    .catch(log)
+    resolve()
+    redis
+      .HGETALL(ALERTS_HASH)
+      .then((state) => broadcast({ state }))
+      .catch(log)
+  })
 }
 
 process.on('SIGINT', async () => {
