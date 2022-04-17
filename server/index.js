@@ -6,6 +6,7 @@ const { parseMessage } = require('./utils')
 
 const log = debug('server:listen')
 const port = +process.env.PORT
+const ALERTS_HASH = 'alertHash'
 
 let listenSocket
 const ws = uWS
@@ -17,7 +18,7 @@ const ws = uWS
     open: (socket) => {
       socket.subscribe('broadcast')
       redis
-        .HGETALL('alertHash')
+        .HGETALL(ALERTS_HASH)
         .then((state) => {
           socket.send(JSON.stringify({ state, online: ws.numSubscribers('broadcast') }))
         })
@@ -50,12 +51,15 @@ const telegram = new API(process.env.API_ID, process.env.API_HASH)
 const redis = telegram.storage.client
 
 const telegramHealthCheck = setInterval(() => {
-  telegram.getUser().then(user => user || log('failed to get user'))
+  telegram.getUser().then((user) => user || log('failed to get user'))
 }, 6e4)
 
 handleUpdatesFactory({ client: telegram, onUpdate }, { channel: 'air_alert_ua' })
 
+let seq = Promise.resolve()
+
 async function onUpdate(updates) {
+  await seq
   log('updates count: %i', updates.length)
 
   for (const update of updates) {
@@ -69,19 +73,19 @@ async function onUpdate(updates) {
       const [clear, alerts] = parseMessage(alert.message)
       let transition
       if (clear.length && alerts.length) {
-        transition = await redis.HGET('alertHash', clear[0])
+        transition = await redis.HGET(ALERTS_HASH, clear[0])
       }
-      await Promise.all(
+      await (seq = Promise.all(
         alerts
-          .map((unit) => redis.HSETNX('alertHash', unit, transition || alert.date))
-          .concat(redis.HDEL('alertHash', ...clear))
-      )
+          .map((unit) => redis.HSETNX(ALERTS_HASH, unit, transition || alert.date))
+          .concat(redis.HDEL(ALERTS_HASH, ...clear))
+      ))
     } catch (e) {
       log(e.message)
     }
   }
   redis
-    .HGETALL('alertHash')
+    .HGETALL(ALERTS_HASH)
     .then((state) => broadcast({ state }))
     .catch(log)
 }
