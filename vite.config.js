@@ -35,11 +35,6 @@ export default defineConfig({
                 statuses: [0, 200]
               }
             }
-          },
-          {
-            handler: 'NetworkOnly',
-            urlPattern: /\/preview\.png/,
-            method: 'GET'
           }
         ]
       },
