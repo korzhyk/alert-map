@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@mtproto/core": "^6.2.0",
+    "async-limiter": "^2.0.0",
     "debug": "^4.3.4",
     "dotenv": "^16.0.0",
     "input": "^1.0.1",

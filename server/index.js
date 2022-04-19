@@ -1,6 +1,7 @@
 require('dotenv').config()
 const debug = require('debug')
 const uWS = require('uWebSockets.js')
+const Limiter = require('async-limiter')
 const { API, handleUpdatesFactory } = require('./api')
 const { parseMessage } = require('./utils')
 
@@ -54,13 +55,15 @@ const telegramHealthCheck = setInterval(() => {
   telegram.getUser().then((user) => user || log('failed to get user'))
 }, 6e4)
 
-handleUpdatesFactory({ client: telegram, onUpdate }, { channel: 'air_alert_ua' })
+const queue = new Limiter({ concurrency: 1 })
 
-let seq = Promise.resolve()
+handleUpdatesFactory(
+  { client: telegram, onUpdate: onUpdate.bind(queue) },
+  { channel: 'air_alert_ua' }
+)
 
-async function onUpdate(updates) {
-  await seq
-  seq = new Promise(async resolve => {
+function onUpdate(updates) {
+  this.push(async (done) => {
     log('updates count: %i', updates.length)
     for (const update of updates) {
       const alert = ['id', 'date', 'message'].reduce(
@@ -84,7 +87,9 @@ async function onUpdate(updates) {
         log(e.message)
       }
     }
-    resolve()
+    done()
+  })
+  this.onDoneCbs.length || this.onDone(() => {
     redis
       .HGETALL(ALERTS_HASH)
       .then((state) => broadcast({ state }))
