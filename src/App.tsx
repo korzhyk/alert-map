@@ -77,7 +77,7 @@ export default function App() {
 
   const egg = document.querySelector('a[href*="https://www.comebackalive.in.ua"]')
   if (egg) {
-    egg.addEventListener('touchstart', (e) => triggerEgg(e, cb), { once: true })
+    egg.addEventListener('touchstart', (e) => triggerEgg(e, cb), { passive: true, once: true })
     egg.addEventListener('mousedown', (e) => triggerEgg(e, cb))
     egg.addEventListener('mouseup', clearEgg)
   }
