@@ -8,7 +8,7 @@ export function createWebsocket(setStore) {
   const updateState = () => setStore('readyState', ws.readyState)
   const connect = (url) => {
     if (ws && ws.readyState === WebSocket.OPEN) return ws
-    ws = new ReconnectingWebSocket(url, [], { connectionTimeout: 256 })
+    ws = new ReconnectingWebSocket(url, [], { connectionTimeout: 2e3 })
     ws.addEventListener('open', updateState)
     ws.addEventListener('close', updateState)
     ws.addEventListener('error', updateState)
