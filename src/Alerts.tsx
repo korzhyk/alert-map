@@ -19,7 +19,7 @@ export default function Alerts(props) {
     <div class="absolute bottom-0 left-0 flex flex-col max-h-screen max-w-screen <sm:w-full">
       <Show when={hasList() && show()}>
         <div class="z-1 blur-box m-4 p-2 flex flex-col min-w-xs rounded-xl text-sm overflow-y-auto">
-          <div class="py-2 mb-2 px-3 flex justify-between font-medium border-b-px border-b-1 border-black/10">
+          <div class="py-2 mb-2 px-3 flex justify-between font-medium border-b-px border-b-1 border-gray-500/30">
             <h3>Повітряна тривога</h3>
             <h6>Триває</h6>
           </div>
@@ -27,7 +27,7 @@ export default function Alerts(props) {
             <For each={list()}>
               {(unit, i) => (
                 <li
-                  class="flex justify-between py-2 px-3 hover:bg-black/10 rounded-xl cursor-pointer transition-colors"
+                  class="flex justify-between py-2 px-3 hover:bg-gray-500/20 rounded-xl cursor-pointer transition-colors"
                   onMouseEnter={() => props.onEnter(i())}
                   onMouseLeave={() => props.onLeave()}
                 >
