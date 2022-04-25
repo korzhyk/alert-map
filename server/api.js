@@ -26,8 +26,9 @@ class API {
     } catch (error) {
       const { error_code, error_message } = error
 
-      if (error_code === 401) {
+      if (error_code === 401 || error_code === 406) {
         switch (error_message) {
+          case 'AUTH_KEY_DUPLICATED':
           case 'AUTH_KEY_UNREGISTERED':
             const phone = await input.text('Phone number')
             const { phone_code_hash } = await this.sendCode(phone)
@@ -45,7 +46,7 @@ class API {
                   phone_code_hash
                 })
               }
-            } catch (error) {}
+            } catch (error) { log('error: %o', error) }
             break
           case 'SESSION_PASSWORD_NEEDED':
             // 2FA
@@ -64,7 +65,7 @@ class API {
             await this.checkPassword({ srp_id, A, M1 })
             break
           default:
-            log('error:', error)
+            log('error: %o', error)
             return
         }
         return this.call(method, params, options)
@@ -94,7 +95,7 @@ class API {
 
         return this.call(method, params, options)
       }
-
+      log('error: %o', error)
       return Promise.reject(error)
     }
   }
