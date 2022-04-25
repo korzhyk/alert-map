@@ -31,7 +31,10 @@ export default function App() {
     return async (m) => {
       if (!m) return
       await rpcProvider.rpc('ready')
-      const decoded = await rpcProvider.rpc('decode', { ...unwrap(store.state), ...add })
+      const decoded = await rpcProvider.rpc('decode', {
+        ...unwrap(store.state),
+        ...add
+      })
       const show = Object.keys(decoded).sort()
       setDecoded(show)
       m.getSource('alerts-poly')?.setData({
@@ -77,7 +80,10 @@ export default function App() {
 
   const egg = document.querySelector('a[href*="https://www.comebackalive.in.ua"]')
   if (egg) {
-    egg.addEventListener('touchstart', (e) => triggerEgg(e, cb), { passive: true, once: true })
+    egg.addEventListener('touchstart', (e) => triggerEgg(e, cb), {
+      passive: true,
+      once: true
+    })
     egg.addEventListener('mousedown', (e) => triggerEgg(e, cb))
     egg.addEventListener('mouseup', clearEgg)
   }
@@ -140,7 +146,9 @@ function triggerEgg(e, callback) {
   e.preventDefault()
   if (rocketSent) return
   pressTimeout = setTimeout(() => {
-    e.target.addEventListener('click', (e) => e.preventDefault(), { once: true })
+    e.target.addEventListener('click', (e) => e.preventDefault(), {
+      once: true
+    })
     rocketSent = true
     const ctx = new AudioContext()
     fetch(`/audio.mp3`)
