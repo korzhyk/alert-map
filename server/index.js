@@ -89,12 +89,13 @@ function onUpdate(updates) {
     }
     done()
   })
-  this.onDoneCbs.length || this.onDone(() => {
-    redis
-      .HGETALL(ALERTS_HASH)
-      .then((state) => broadcast({ state }))
-      .catch(log)
-  })
+  this.onDoneCbs.length ||
+    this.onDone(() => {
+      redis
+        .HGETALL(ALERTS_HASH)
+        .then((state) => broadcast({ state }))
+        .catch(log)
+    })
 }
 
 process.on('SIGINT', async () => {
