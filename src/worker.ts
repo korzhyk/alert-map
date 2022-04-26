@@ -4,6 +4,7 @@ import Fuse from 'fuse.js'
 const rpcProvider = new RpcProvider((message, transfer) => postMessage(message, transfer))
 rpcProvider.registerRpcHandler('ready', async () => await readyPromise)
 rpcProvider.registerRpcHandler('decode', (s) => handleDecodeState(s))
+rpcProvider.registerRpcHandler('ff', async () => await ff)
 onmessage = (e) => rpcProvider.dispatch(e.data)
 
 enum Unit {
@@ -33,17 +34,19 @@ const fuses = {
   })
 }
 
+const ff = fetch(`/ff.geojson`).then((r) => r.json())
+
+ff.then(({ features }) => {
+  fuses.ff = new Fuse(features, {
+    useExtendedSearch: true,
+    keys: ['properties.region']
+  })
+})
+
 const readyPromise = Promise.all(
   Object.keys(Unit).map((type) =>
     fetch(`/ukrainian_geodata/${Unit[type]}.geojson`)
       .then((response) => response.json())
-      .then((geojson) => {
-        if (Unit[type] === Unit.REGION) {
-          return fetch(`/pig-dog.geojson`)
-            .then((r) => r.json())
-            .then((g) => (geojson.features.push(g), geojson))
-        } else return geojson
-      })
       .then(({ features }) => fuses[Unit[type]].setCollection(features))
   )
 ).catch((error) => {
@@ -76,19 +79,23 @@ function geoDecode(place) {
     return place.split(andRx).map(geoDecode).filter(Boolean)[0]
   }
   let result = []
+  if (fuses.ff) {
+    result = fuses.ff.search(`="${place}"`, ONE)
+    if (result.length) return result[0].item
+  }
   if (~place.indexOf('область')) {
     result = fuses[Unit.REGION].search(`="${place}"`, ONE)
-  }
-  if (~place.indexOf('район')) {
+  } else if (~place.indexOf('район')) {
     result = fuses[Unit.PROVINCE].search(`="${place}"`, ONE)
-  }
-  if (~place.indexOf('громада')) {
+  } else if (~place.indexOf('громада')) {
     result = fuses[Unit.DISTRICT].search(`="${place}"`, ONE)
     if (!result.length) {
-      result = fuses[Unit.DISTRICT].search(`^${place.replace('територіальна', 'міська')}|^${place}`, ONE)
+      result = fuses[Unit.DISTRICT].search(
+        `^${place.replace('територіальна', 'міська')}|^${place}`,
+        ONE
+      )
     }
-  }
-  if (place.indexOf('м') == 0) {
+  } else if (place.indexOf('м') == 0) {
     place = place.slice(place.indexOf(' ')).trim()
     result = fuses[Unit.DISTRICT].search(`^${place} міська громада|^${place}`, ONE)
   }

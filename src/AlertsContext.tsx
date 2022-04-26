@@ -18,6 +18,7 @@ export const AlertsProvider = (props) => {
   const [store, setStore] = createStore({ ...defaultState })
   const { connect, destroy } = createWebsocket(setStore)
   const setDecoded = (decoded) => setStore('decoded', decoded)
+  const add = (region, date) => setStore('state', region, date)
   const c = () => ws.reconnect()
 
   onMount(() => {
@@ -26,7 +27,7 @@ export const AlertsProvider = (props) => {
   })
 
   return (
-    <AlertsContext.Provider value={[store, { setDecoded, connect: c }]}>
+    <AlertsContext.Provider value={[store, { add, setDecoded, connect: c }]}>
       {props.children}
     </AlertsContext.Provider>
   )

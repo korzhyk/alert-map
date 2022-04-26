@@ -14,7 +14,7 @@ export default defineConfig({
         'apple-touch-icon.png',
         'audio.mp3',
         'favicon.ico',
-        'pig-dog.geojson',
+        'ff.geojson',
         'robots.txt',
         'ukrainian_geodata/hromady.geojson',
         'ukrainian_geodata/rayony.geojson',

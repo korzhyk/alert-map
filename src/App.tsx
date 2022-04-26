@@ -15,7 +15,7 @@ import GeoDecodeWorker from './worker?worker'
 const log = debug('App:Main')
 
 export default function App() {
-  const [store, { setDecoded, connect }] = useAlerts()
+  const [store, { add, setDecoded, connect }] = useAlerts()
   const [map, setMap] = createSignal()
   const list = createMemo(() => store.decoded.length && store.decoded)
 
@@ -27,14 +27,11 @@ export default function App() {
     worker.terminate()
   })
 
-  const showFeatures = (add) => {
+  const showFeatures = () => {
     return async (m) => {
       if (!m) return
       await rpcProvider.rpc('ready')
-      const decoded = await rpcProvider.rpc('decode', {
-        ...unwrap(store.state),
-        ...add
-      })
+      const decoded = await rpcProvider.rpc('decode', unwrap(store.state))
       const show = Object.keys(decoded).sort()
       setDecoded(show)
       m.getSource('alerts-poly')?.setData({
@@ -74,18 +71,29 @@ export default function App() {
     )
     map.on('mousemove', 'alerts-poly', (e) => onEnter.call(map, e.features[0]?.id))
     map.on('mouseleave', 'alerts-poly', onLeave.bind(map))
-  }
-
-  const cb = (yes) => showFeatures(yes ? { 'Бєлгородська область': yes } : null)(map())
-
-  const egg = document.querySelector('a[href*="https://www.comebackalive.in.ua"]')
-  if (egg) {
-    egg.addEventListener('touchstart', (e) => triggerEgg(e, cb), {
-      passive: true,
-      once: true
+    rpcProvider.rpc('ff').then((data) => {
+      map.addSource('ff', {
+        type: 'geojson',
+        data
+      })
+      map.addLayer(
+        {
+          id: 'ff',
+          type: 'fill',
+          source: 'ff',
+          paint: {
+            'fill-color': 'rgba(0,0,0,0)'
+          }
+        },
+        symbolsLayerId
+      )
+      map.on('dblclick', 'ff', (e) => {
+        if (!e.features[0].properties.region) return
+        e.preventDefault()
+        triggerEgg(e)
+        add(e.features[0].properties.region, Date.now() / 1e3)
+      })
     })
-    egg.addEventListener('mousedown', (e) => triggerEgg(e, cb))
-    egg.addEventListener('mouseup', clearEgg)
   }
 
   return (
@@ -135,35 +143,15 @@ function onLeave() {
  * Easter egg
  */
 
-let pressTimeout
-let rocketSent
-
-function clearEgg(e) {
-  clearTimeout(pressTimeout)
-}
-
-function triggerEgg(e, callback) {
-  e.preventDefault()
-  if (rocketSent) return
-  pressTimeout = setTimeout(() => {
-    e.target.addEventListener('click', (e) => e.preventDefault(), {
-      once: true
+function triggerEgg(e) {
+  const ctx = new AudioContext()
+  fetch(`/audio.mp3`)
+    .then((response) => response.arrayBuffer())
+    .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
+    .then((audioBuffer) => {
+      const source = ctx.createBufferSource()
+      source.buffer = audioBuffer
+      source.connect(ctx.destination)
+      source.start()
     })
-    rocketSent = true
-    const ctx = new AudioContext()
-    fetch(`/audio.mp3`)
-      .then((response) => response.arrayBuffer())
-      .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
-      .then((audioBuffer) => {
-        const source = ctx.createBufferSource()
-        source.buffer = audioBuffer
-        source.connect(ctx.destination)
-        source.start()
-      })
-    callback(rocketSent)
-    setTimeout(() => {
-      rocketSent = false
-      callback(rocketSent)
-    }, 6e4)
-  }, 3e3)
 }
