@@ -16,7 +16,7 @@ export default function Alerts(props) {
   const hasList = createMemo(() => list().length)
 
   return (
-    <div class="absolute bottom-0 left-0 flex flex-col max-h-screen max-w-screen <sm:w-full">
+    <div class="absolute bottom-0 left-0 flex flex-col max-h-screen max-w-screen lt-sm:w-full">
       <Show when={hasList() && show()}>
         <div class="z-1 blur-box m-4 p-2 flex flex-col min-w-xs rounded-xl text-sm overflow-y-auto">
           <div class="py-2 mb-2 px-3 flex justify-between font-medium border-b-px border-b-1 border-gray-500/30">
