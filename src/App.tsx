@@ -1,4 +1,4 @@
-import 'virtual:windi.css'
+import 'uno.css'
 import debug from 'debug'
 import { RpcProvider } from '@playcode/worker-rpc'
 import { createMemo, createSignal, onCleanup } from 'solid-js'
@@ -106,7 +106,7 @@ export default function App() {
           >
             <Icon
               path={store.online == 1 ? user : store.online == 2 ? users : userGroup}
-              class="icon mr-1.5 text-blue-600 dark:text-blue-400"
+              class="icon mr-1.5 text-blue-600 @dark:text-blue-400"
             />
             {store.online}
           </div>

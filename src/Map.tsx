@@ -52,7 +52,7 @@ export default function Map(props) {
       )}
       <div
         ref={container}
-        class="h-full bg-[rgba(252, 247, 229, 1)] dark:(filter invert hue-rotate-180)"
+        class="h-full bg-[rgba(252, 247, 229, 1)] filter @dark:invert @dark:hue-rotate-180"
       />
     </>
   )

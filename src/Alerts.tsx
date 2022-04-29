@@ -63,7 +63,7 @@ export default function Alerts(props) {
             </>
           ) : (
             <>
-              <Icon path={viewList} class="icon mr-1.5 text-red-600 dark:text-red-400" />
+              <Icon path={viewList} class="icon mr-1.5 text-red-600 @dark:text-red-400" />
               Показати списком ({hasList()})
             </>
           )}

@@ -1,13 +1,21 @@
 import { defineConfig } from 'vite'
-import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import SolidJS from 'vite-plugin-solid'
+import Unocss from 'unocss/vite'
+import presetWind from '@unocss/preset-wind'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     SolidJS(),
-    WindiCSS(),
+    Unocss({
+      presets: [presetWind()],
+      shortcuts: {
+        'icon': 'w-6 h-6 stroke-2',
+        'blur-box':
+          'bg-white/70 @dark:bg-black/70 backdrop-filter backdrop-blur rounded-full shadow-xl'
+      }
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: [

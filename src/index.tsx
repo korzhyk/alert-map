@@ -1,3 +1,4 @@
+import '@unocss/reset/tailwind.css'
 import { registerSW } from 'virtual:pwa-register'
 import { render } from 'solid-js/web'
 import { AlertsProvider } from './AlertsContext'
