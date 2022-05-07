@@ -24,7 +24,7 @@ export default function Map(props) {
         map = new Map({
           container,
           style: import.meta.env.VITE_STYLE_URI,
-          bounds: new LngLatBounds(new LngLat(21, 44), new LngLat(41, 53)),
+          bounds: new LngLatBounds(new LngLat(22.12, 44.05), new LngLat(40.17, 52.37)),
           fitBoundsOptions: {
             padding: 5
           },
