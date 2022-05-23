@@ -74,17 +74,20 @@ function onUpdate(updates) {
       broadcast({ alert })
       try {
         const [clear, alerts] = parseMessage(alert.message)
-        let transition
+        let ts
         if (clear.length && alerts.length) {
-          transition = await redis.HGET(ALERTS_HASH, clear[0])
+          ts = await redis.HGET(ALERTS_HASH, clear[0])
+        }
+        if (!ts) {
+          ts = String(alert.date)
         }
         await Promise.all(
           alerts
-            .map((unit) => redis.HSETNX(ALERTS_HASH, unit, transition || alert.date))
-            .concat(redis.HDEL(ALERTS_HASH, ...clear))
+            .map((unit) => redis.HSETNX(ALERTS_HASH, unit, ts))
+            .concat(clear.length && redis.HDEL(ALERTS_HASH, ...clear))
         )
       } catch (e) {
-        log(e.message)
+        log('processing update error: %o', e)
       }
     }
     done()
