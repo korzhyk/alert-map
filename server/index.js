@@ -6,7 +6,7 @@ const { API, handleUpdatesFactory } = require('./api')
 const { parseMessage } = require('./utils')
 
 const log = debug('server:listen')
-const port = +process.env.PORT
+const port = +process.env.PORT || 5000
 const ALERTS_HASH = 'alertHash'
 
 let listenSocket
