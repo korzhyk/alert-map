@@ -1,6 +1,6 @@
 {
   "name": "alert-map",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Realtime map of active air alerts in Ukraine",
   "author": "Andrii Korzh <andriii.korzh@gmail.com>",
   "license": "MIT",
