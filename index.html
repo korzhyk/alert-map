@@ -31,9 +31,9 @@
     <noscript>Для роботи даного додатку потрібно увімкнути JavaScript</noscript>
     <div id="app" class="absolute inset-0"></div>
     <script type="module" src="/src"></script>
-    <div class="absolute right-4 top-4 flex">
+    <div class="absolute right-4 top-4 flex place-items-center">
       <a
-        class="w-8 h-8 block shadow-xl rounded-full overflow-hidden text-xs transition-shadow text-transparent hover:shadow-lg"
+        class="w-7 h-7 block rounded-full overflow-hidden text-transparent relative active:top-px"
         href="https://www.comebackalive.in.ua"
         target="_blank"
         title="Повернись живим"
@@ -42,12 +42,33 @@
         <div class="h-1/2 bg-[#ffd700]">живим</div>
       </a>
       <a
-        class="rounded-full ml-2"
+        class="ml-2 relative active:top-px"
+        href="mailto:map@air-alert.pp.ua"
+        target="_blank"
+        title="Надіслати листа"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+          />
+        </svg>
+        <span class="sr-only">Send email to developer</span>
+      </a>
+      <a
+        class="ml-2 relative active:top-px"
         href="https://github.com/korzhyk/alert-map"
         target="_blank"
         title="Проєкт на GitHub"
       >
-        <svg class="w-8 h-8" viewBox="0 0 16 16" version="1.1">
+        <svg class="w-7 h-7" viewBox="0 0 16 16">
           <path
             fill="currentColor"
             fill-rule="evenodd"
