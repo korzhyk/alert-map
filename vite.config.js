@@ -48,12 +48,12 @@ export default defineConfig({
       },
       manifest: {
         short_name: 'Повітряна тривога',
-        name: 'Мапа повітряної тривоги',
+        name: 'Мапа повітряної тривоги в Україні',
         display: 'standalone',
         start_url: '/',
         background_color: '#1351af',
         theme_color: '#1351af',
-        description: 'Інтерактивна мапа повітряної тривоги',
+        description: 'Інтерактивна мапа повітряної тривоги в Україні',
         icons: [
           {
             src: 'favicon.png',
