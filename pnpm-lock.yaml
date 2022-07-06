@@ -22,7 +22,7 @@ specifiers:
   vite: 2.9.13
   vite-plugin-pwa: 0.12.2
   vite-plugin-solid: 2.2.6
-  windicss: 3.5.1
+  windicss: 3.5.6
   workbox-window: 6.5.3
 
 dependencies:
@@ -49,7 +49,7 @@ devDependencies:
   vite: 2.9.13
   vite-plugin-pwa: 0.12.2_vite@2.9.13
   vite-plugin-solid: 2.2.6
-  windicss: 3.5.1
+  windicss: 3.5.6
   workbox-window: 6.5.3
 
 packages:
@@ -3876,8 +3876,8 @@ packages:
       isexe: 2.0.0
     dev: true
 
-  /windicss/3.5.1:
-    resolution: {integrity: sha512-E1hYZATcZFci/XhGS0sJAMRxULjnK+glNukE78Ku7xeb3jxgMY55fFOdIrav+GjQCsgR+IZxPq9/DwmO6eyc4Q==}
+  /windicss/3.5.6:
+    resolution: {integrity: sha512-P1mzPEjgFMZLX0ZqfFht4fhV/FX8DTG7ERG1fBLiWvd34pTLVReS5CVsewKn9PApSgXnVfPWwvq+qUsRwpnwFA==}
     engines: {node: '>= 12'}
     hasBin: true
     dev: true
