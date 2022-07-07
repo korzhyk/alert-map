@@ -17,8 +17,8 @@ export const AlertsProvider = (props) => {
   let ws
   const [store, setStore] = createStore({ ...defaultState })
   const { connect, destroy } = createWebsocket(setStore)
-  const setDecoded = (decoded) => setStore('decoded', decoded)
-  const add = (region, date) => setStore('state', region, date)
+  const setDecoded = (decoded) => setStore({ decoded })
+  const add = (region, date) => setStore({ state: { ...store.state, [region]: date } })
   const c = () => ws.reconnect()
 
   onMount(() => {
