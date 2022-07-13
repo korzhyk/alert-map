@@ -16,7 +16,7 @@ specifiers:
   reconnecting-websocket: 4.4.0
   redis: 4.2.0
   solid-heroicons: 2.0.3
-  solid-js: 1.4.6
+  solid-js: 1.4.7
   uWebSockets.js: github:uNetworking/uWebSockets.js#v20.6.0
   unocss: 0.43.2
   vite: 3.0.0
@@ -44,7 +44,7 @@ devDependencies:
   mitt: 3.0.0
   reconnecting-websocket: 4.4.0
   solid-heroicons: 2.0.3
-  solid-js: 1.4.6
+  solid-js: 1.4.7
   unocss: 0.43.2_vite@3.0.0
   vite: 3.0.0
   vite-plugin-pwa: 0.12.3_vite@3.0.0
@@ -3489,14 +3489,14 @@ packages:
   /solid-heroicons/2.0.3:
     resolution: {integrity: sha512-sHlEaCaFFD8s/RDWTlmfIC/5dUPOtRB/UqOTpXQLq/BUZ94jWS58CANwONBclxwKFFGu6iasaP5zN4iYqORlVg==}
     dependencies:
-      solid-js: 1.4.6
+      solid-js: 1.4.7
     dev: true
 
-  /solid-js/1.4.6:
-    resolution: {integrity: sha512-vF0x5qbVCDi8zlEyN92y/i+pS7QNYh3uNvbSyUYDhLifKuYqGcJwGxbH9zzDX5sR8o1ijgzI6BEAXlcR7Mkkjw==}
+  /solid-js/1.4.7:
+    resolution: {integrity: sha512-u3hoe5w3xseAc/8zLwYaQVGanWXknMMQkzryNz7lOPy2ygW6DhCtfMseun4kLflRNRzrUUpTV3W5p7j2SGcHCQ==}
     dev: true
 
-  /solid-refresh/0.4.0_solid-js@1.4.6:
+  /solid-refresh/0.4.0_solid-js@1.4.7:
     resolution: {integrity: sha512-5XCUz845n/sHPzKK2i2G2EeV61tAmzv6SqzqhXcPaYhrgzVy7nKTQaBpKK8InKrriq9Z2JFF/mguIU00t/73xw==}
     peerDependencies:
       solid-js: ^1.3.0
@@ -3504,7 +3504,7 @@ packages:
       '@babel/generator': 7.17.9
       '@babel/helper-module-imports': 7.16.7
       '@babel/types': 7.17.0
-      solid-js: 1.4.6
+      solid-js: 1.4.7
     dev: true
 
   /source-map-js/1.0.2:
@@ -3828,8 +3828,8 @@ packages:
       '@babel/preset-typescript': 7.16.7_@babel+core@7.17.9
       babel-preset-solid: 1.3.17_@babel+core@7.17.9
       merge-anything: 5.0.2
-      solid-js: 1.4.6
-      solid-refresh: 0.4.0_solid-js@1.4.6
+      solid-js: 1.4.7
+      solid-refresh: 0.4.0_solid-js@1.4.7
       vite: 2.9.13
     transitivePeerDependencies:
       - less
