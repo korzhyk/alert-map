@@ -6,7 +6,7 @@ specifiers:
   '@unocss/preset-wind': 0.44.5
   '@unocss/reset': 0.44.5
   async-limiter: 2.0.0
-  date-fns: 2.28.0
+  date-fns: 2.29.1
   debug: 4.3.4
   dotenv: 16.0.1
   fuse.js: 6.6.2
@@ -38,7 +38,7 @@ devDependencies:
   '@playcode/worker-rpc': 0.5.0
   '@unocss/preset-wind': 0.44.5
   '@unocss/reset': 0.44.5
-  date-fns: 2.28.0
+  date-fns: 2.29.1
   fuse.js: 6.6.2
   maplibre-gl: 2.1.9
   mitt: 3.0.0
@@ -2071,8 +2071,8 @@ packages:
     resolution: {integrity: sha512-umPSgYwZkdFoUrH5hIq5kf0wPSXiro51nPw0j2K/c83KflkPSTBGMz6NJvMB+07VlL0y7VPo6QJcDjcgKTTm3w==}
     dev: true
 
-  /date-fns/2.28.0:
-    resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}
+  /date-fns/2.29.1:
+    resolution: {integrity: sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==}
     engines: {node: '>=0.11'}
     dev: true
 
