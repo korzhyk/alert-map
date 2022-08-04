@@ -1,13 +1,25 @@
-FROM node:16-alpine
+FROM node:16-alpine AS pnpm
 
 RUN apk add git libc6-compat
 RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
+RUN npm install pnpm@7 --location=global
 
-RUN mkdir -p /src/app
-WORKDIR /src/app
+FROM pnpm AS builder
 
-COPY . /src/app
-RUN ENV=production npm install
+WORKDIR "/app"
+COPY . .
+
+RUN pnpm install -P
+
+FROM pnpm AS production
+
+ENV NODE_ENV=production
+
+WORKDIR "/app"
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=builder /app/node_modules ./node_modules
 
 EXPOSE 5000
-CMD [ "npm", "start" ]
+
+CMD [ "sh", "-c", "pnpm start"]
