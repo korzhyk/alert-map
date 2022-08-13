@@ -19,7 +19,7 @@
     "@unocss/reset": "0.45.6",
     "date-fns": "2.29.1",
     "fuse.js": "6.6.2",
-    "maplibre-gl": "2.2.1",
+    "maplibre-gl": "2.3.0",
     "mitt": "3.0.0",
     "reconnecting-websocket": "4.4.0",
     "solid-heroicons": "2.0.3",

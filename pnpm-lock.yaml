@@ -11,7 +11,7 @@ specifiers:
   dotenv: 16.0.1
   fuse.js: 6.6.2
   input: 1.0.1
-  maplibre-gl: 2.2.1
+  maplibre-gl: 2.3.0
   mitt: 3.0.0
   reconnecting-websocket: 4.4.0
   redis: 4.2.0
@@ -40,7 +40,7 @@ devDependencies:
   '@unocss/reset': 0.45.6
   date-fns: 2.29.1
   fuse.js: 6.6.2
-  maplibre-gl: 2.2.1
+  maplibre-gl: 2.3.0
   mitt: 3.0.0
   reconnecting-websocket: 4.4.0
   solid-heroicons: 2.0.3
@@ -3001,8 +3001,8 @@ packages:
       semver: 6.3.0
     dev: false
 
-  /maplibre-gl/2.2.1:
-    resolution: {integrity: sha512-5WSzGRwbxcIkZ/DRDI+A3/o69IoLKFN80jtVqiqUuw0y1u24ZwVvqSr2fqLslUa0Yig1Z50w+wWdnER3JNOzPQ==}
+  /maplibre-gl/2.3.0:
+    resolution: {integrity: sha512-91vc5Quu9UDw0S90pJMDuE24XvXUjIYGaD5DTlhNs3egVmX0QwCpWl1R2tots3slHbZRJcQdRGUNxW7hKpi0Ow==}
     requiresBuild: true
     dependencies:
       '@mapbox/geojson-rewind': 0.5.2
