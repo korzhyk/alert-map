@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@mtproto/core': 6.2.0
   '@playcode/worker-rpc': 0.5.0
-  '@unocss/preset-wind': 0.45.9
+  '@unocss/preset-wind': 0.45.12
   '@unocss/reset': 0.45.9
   async-limiter: 2.0.0
   date-fns: 2.29.2
@@ -36,7 +36,7 @@ dependencies:
 
 devDependencies:
   '@playcode/worker-rpc': 0.5.0
-  '@unocss/preset-wind': 0.45.9
+  '@unocss/preset-wind': 0.45.12
   '@unocss/reset': 0.45.9
   date-fns: 2.29.2
   fuse.js: 6.6.2
@@ -1589,6 +1589,10 @@ packages:
       unconfig: 0.3.5
     dev: true
 
+  /@unocss/core/0.45.12:
+    resolution: {integrity: sha512-21ri/IF/r82lYJTSZ8kBwesSPysaMopMbPy6AtHgCQIHQPsdx6lOzg9Wq5rh+5IjXywXSmuRMuHiYSPjI0yxdw==}
+    dev: true
+
   /@unocss/core/0.45.9:
     resolution: {integrity: sha512-ZUHgE8q7oYNFW+lPyH71n2weR9mhYL4WY/FL6K+sa9mVEYA4Lq15sCKTB+fbowB4CDLxZ8BEGNX3I9Qpn46lHA==}
     dev: true
@@ -1614,6 +1618,12 @@ packages:
       ohmyfetch: 0.4.18
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@unocss/preset-mini/0.45.12:
+    resolution: {integrity: sha512-2t+ia6CRnzYJQ9WSGpJgc6GOYY4BXU55TI7YdZMhNLB4+2fHt699W/EzEb8pAo+dHRcJob71Wu5RrGpF6F+HvA==}
+    dependencies:
+      '@unocss/core': 0.45.12
     dev: true
 
   /@unocss/preset-mini/0.45.9:
@@ -1647,6 +1657,13 @@ packages:
     dependencies:
       '@unocss/core': 0.45.9
       ohmyfetch: 0.4.18
+    dev: true
+
+  /@unocss/preset-wind/0.45.12:
+    resolution: {integrity: sha512-xZ8GNKEr4xWdbffBVgSxsWI86IMU/akvuDXMDBeA3C+yrkQFrohMn077ztF9PypXP6/CzTLtSc2x5HyHdFNQyA==}
+    dependencies:
+      '@unocss/core': 0.45.12
+      '@unocss/preset-mini': 0.45.12
     dev: true
 
   /@unocss/preset-wind/0.45.9:
