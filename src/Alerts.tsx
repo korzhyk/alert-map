@@ -1,6 +1,6 @@
 import { createSignal, For, Show, createMemo } from 'solid-js'
 import { Icon } from 'solid-heroicons'
-import { informationCircle, viewList, x } from 'solid-heroicons/outline'
+import { informationCircle, viewList, xMark } from 'solid-heroicons/outline'
 import Duration from './Duration'
 import { useAlerts } from './AlertsContext'
 
@@ -58,7 +58,7 @@ export default function Alerts(props) {
             </>
           ) : show() ? (
             <>
-              <Icon path={x} class="icon mr-1.5" />
+              <Icon path={xMark} class="icon mr-1.5" />
               Сховати
             </>
           ) : (
