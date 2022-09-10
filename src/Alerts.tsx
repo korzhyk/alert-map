@@ -1,6 +1,6 @@
 import { createSignal, For, Show, createMemo } from 'solid-js'
 import { Icon } from 'solid-heroicons'
-import { informationCircle, viewList, x } from 'solid-heroicons/outline'
+import { informationCircle, viewList, xMark } from 'solid-heroicons/outline'
 import Duration from './Duration'
 import { useAlerts } from './AlertsContext'
 
