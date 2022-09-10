@@ -58,7 +58,7 @@ export default function Alerts(props) {
             </>
           ) : show() ? (
             <>
-              <Icon path={x} class="icon mr-1.5" />
+              <Icon path={xMark} class="icon mr-1.5" />
               Сховати
             </>
           ) : (
