@@ -1,6 +1,6 @@
 import { Show } from 'solid-js'
 import { Icon } from 'solid-heroicons'
-import { wifi, refresh } from 'solid-heroicons/outline'
+import { wifi, arrowPath } from 'solid-heroicons/outline'
 
 export default function Connection(props) {
   return (
@@ -16,7 +16,7 @@ export default function Connection(props) {
           </>
         ) : (
           <>
-            <Icon path={refresh} class="icon text-yellow-400 mr-1.5" />
+            <Icon path={arrowPath} class="icon text-yellow-400 mr-1.5" />
             Спроба під’єднання…
           </>
         )}
