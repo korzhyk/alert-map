@@ -13,7 +13,7 @@ specifiers:
   maplibre-gl: 2.4.0
   mitt: 3.0.0
   reconnecting-websocket: 4.4.0
-  redis: 4.2.0
+  redis: 4.3.1
   solid-heroicons: 3.1.0
   solid-js: 1.5.4
   uWebSockets.js: github:uNetworking/uWebSockets.js#v20.6.0
@@ -29,7 +29,7 @@ dependencies:
   async-limiter: 2.0.0
   debug: 4.3.4
   input: 1.0.1
-  redis: 4.2.0
+  redis: 4.3.1
   uWebSockets.js: github.com/uNetworking/uWebSockets.js/a58e810e47a23696410f6073c8c905dc38f75da5
 
 devDependencies:
@@ -1413,16 +1413,16 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@redis/bloom/1.0.2_@redis+client@1.2.0:
+  /@redis/bloom/1.0.2_@redis+client@1.3.0:
     resolution: {integrity: sha512-EBw7Ag1hPgFzdznK2PBblc1kdlj5B5Cw3XwI9/oG7tSn85/HKy3X9xHy/8tm/eNXJYHLXHJL/pkwBpFMVVefkw==}
     peerDependencies:
       '@redis/client': ^1.0.0
     dependencies:
-      '@redis/client': 1.2.0
+      '@redis/client': 1.3.0
     dev: false
 
-  /@redis/client/1.2.0:
-    resolution: {integrity: sha512-a8Nlw5fv2EIAFJxTDSSDVUT7yfBGpZO96ybZXzQpgkyLg/dxtQ1uiwTc0EGfzg1mrPjZokeBSEGTbGXekqTNOg==}
+  /@redis/client/1.3.0:
+    resolution: {integrity: sha512-XCFV60nloXAefDsPnYMjHGtvbtHR8fV5Om8cQ0JYqTNbWcQo/4AryzJ2luRj4blveWazRK/j40gES8M7Cp6cfQ==}
     engines: {node: '>=14'}
     dependencies:
       cluster-key-slot: 1.1.0
@@ -1430,36 +1430,36 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /@redis/graph/1.0.1_@redis+client@1.2.0:
+  /@redis/graph/1.0.1_@redis+client@1.3.0:
     resolution: {integrity: sha512-oDE4myMCJOCVKYMygEMWuriBgqlS5FqdWerikMoJxzmmTUErnTRRgmIDa2VcgytACZMFqpAOWDzops4DOlnkfQ==}
     peerDependencies:
       '@redis/client': ^1.0.0
     dependencies:
-      '@redis/client': 1.2.0
+      '@redis/client': 1.3.0
     dev: false
 
-  /@redis/json/1.0.3_@redis+client@1.2.0:
-    resolution: {integrity: sha512-4X0Qv0BzD9Zlb0edkUoau5c1bInWSICqXAGrpwEltkncUwcxJIGEcVryZhLgb0p/3PkKaLIWkjhHRtLe9yiA7Q==}
+  /@redis/json/1.0.4_@redis+client@1.3.0:
+    resolution: {integrity: sha512-LUZE2Gdrhg0Rx7AN+cZkb1e6HjoSKaeeW8rYnt89Tly13GBI5eP4CwDVr+MY8BAYfCg4/N15OUrtLoona9uSgw==}
     peerDependencies:
       '@redis/client': ^1.0.0
     dependencies:
-      '@redis/client': 1.2.0
+      '@redis/client': 1.3.0
     dev: false
 
-  /@redis/search/1.0.6_@redis+client@1.2.0:
-    resolution: {integrity: sha512-pP+ZQRis5P21SD6fjyCeLcQdps+LuTzp2wdUbzxEmNhleighDDTD5ck8+cYof+WLec4csZX7ks+BuoMw0RaZrA==}
+  /@redis/search/1.1.0_@redis+client@1.3.0:
+    resolution: {integrity: sha512-NyFZEVnxIJEybpy+YskjgOJRNsfTYqaPbK/Buv6W2kmFNaRk85JiqjJZA5QkRmWvGbyQYwoO5QfDi2wHskKrQQ==}
     peerDependencies:
       '@redis/client': ^1.0.0
     dependencies:
-      '@redis/client': 1.2.0
+      '@redis/client': 1.3.0
     dev: false
 
-  /@redis/time-series/1.0.3_@redis+client@1.2.0:
+  /@redis/time-series/1.0.3_@redis+client@1.3.0:
     resolution: {integrity: sha512-OFp0q4SGrTH0Mruf6oFsHGea58u8vS/iI5+NpYdicaM+7BgqBZH8FFvNZ8rYYLrUO/QRqMq72NpXmxLVNcdmjA==}
     peerDependencies:
       '@redis/client': ^1.0.0
     dependencies:
-      '@redis/client': 1.2.0
+      '@redis/client': 1.3.0
     dev: false
 
   /@rollup/plugin-babel/5.3.1_q3l62ihf3ahlxy4z4l26r2w4zm:
@@ -3349,15 +3349,15 @@ packages:
     resolution: {integrity: sha512-D2E33ceRPga0NvTDhJmphEgJ7FUYF0v4lr1ki0csq06OdlxKfugGzN0dSkxM/NfqCxYELK4KcaTOUOjTV6Dcng==}
     dev: true
 
-  /redis/4.2.0:
-    resolution: {integrity: sha512-bCR0gKVhIXFg8zCQjXEANzgI01DDixtPZgIUZHBCmwqixnu+MK3Tb2yqGjh+HCLASQVVgApiwhNkv+FoedZOGQ==}
+  /redis/4.3.1:
+    resolution: {integrity: sha512-cM7yFU5CA6zyCF7N/+SSTcSJQSRMEKN0k0Whhu6J7n9mmXRoXugfWDBo5iOzGwABmsWKSwGPTU5J4Bxbl+0mrA==}
     dependencies:
-      '@redis/bloom': 1.0.2_@redis+client@1.2.0
-      '@redis/client': 1.2.0
-      '@redis/graph': 1.0.1_@redis+client@1.2.0
-      '@redis/json': 1.0.3_@redis+client@1.2.0
-      '@redis/search': 1.0.6_@redis+client@1.2.0
-      '@redis/time-series': 1.0.3_@redis+client@1.2.0
+      '@redis/bloom': 1.0.2_@redis+client@1.3.0
+      '@redis/client': 1.3.0
+      '@redis/graph': 1.0.1_@redis+client@1.3.0
+      '@redis/json': 1.0.4_@redis+client@1.3.0
+      '@redis/search': 1.1.0_@redis+client@1.3.0
+      '@redis/time-series': 1.0.3_@redis+client@1.3.0
     dev: false
 
   /regenerate-unicode-properties/10.0.1:
