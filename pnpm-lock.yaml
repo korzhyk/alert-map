@@ -8,7 +8,6 @@ specifiers:
   async-limiter: 2.0.0
   date-fns: 2.29.2
   debug: 4.3.4
-  dotenv: 16.0.1
   fuse.js: 6.6.2
   input: 1.0.1
   maplibre-gl: 2.4.0
@@ -29,7 +28,6 @@ dependencies:
   '@mtproto/core': 6.2.0
   async-limiter: 2.0.0
   debug: 4.3.4
-  dotenv: 16.0.1
   input: 1.0.1
   redis: 4.2.0
   uWebSockets.js: github.com/uNetworking/uWebSockets.js/a58e810e47a23696410f6073c8c905dc38f75da5
@@ -2154,11 +2152,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       is-obj: 2.0.0
-    dev: false
-
-  /dotenv/16.0.1:
-    resolution: {integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==}
-    engines: {node: '>=12'}
     dev: false
 
   /duplexer/0.1.2:

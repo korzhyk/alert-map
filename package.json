@@ -35,7 +35,6 @@
     "@mtproto/core": "6.2.0",
     "async-limiter": "2.0.0",
     "debug": "4.3.4",
-    "dotenv": "16.0.1",
     "input": "1.0.1",
     "redis": "4.2.0",
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.6.0"

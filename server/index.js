@@ -1,4 +1,3 @@
-require('dotenv').config()
 const debug = require('debug')
 const uWS = require('uWebSockets.js')
 const Limiter = require('async-limiter')
