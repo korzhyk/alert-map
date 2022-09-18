@@ -19,7 +19,7 @@ specifiers:
   uWebSockets.js: github:uNetworking/uWebSockets.js#v20.6.0
   unocss: 0.45.21
   vite: 3.1.2
-  vite-plugin-pwa: 0.12.7
+  vite-plugin-pwa: 0.12.8
   vite-plugin-solid: 2.3.2
   windicss: 3.5.6
   workbox-window: 6.5.4
@@ -45,7 +45,7 @@ devDependencies:
   solid-js: 1.5.5
   unocss: 0.45.21_vite@3.1.2
   vite: 3.1.2
-  vite-plugin-pwa: 0.12.7_etjhesf6sppszzcdjjh7iyjgym
+  vite-plugin-pwa: 0.12.8_etjhesf6sppszzcdjjh7iyjgym
   vite-plugin-solid: 2.3.2_solid-js@1.5.5+vite@3.1.2
   windicss: 3.5.6
   workbox-window: 6.5.4
@@ -3853,8 +3853,8 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite-plugin-pwa/0.12.7_etjhesf6sppszzcdjjh7iyjgym:
-    resolution: {integrity: sha512-salSwS1wWc1niNWfhX2W6gtfXmk+XESMz62w95EHLq6fSM2bDgDm1APmvq1nkDcxH6Onky7HxysCBKMzvOHXYg==}
+  /vite-plugin-pwa/0.12.8_etjhesf6sppszzcdjjh7iyjgym:
+    resolution: {integrity: sha512-pSiFHmnJGMQJJL8aJzQ8SaraZBSBPMGvGUkCNzheIq9UQCEk/eP3UmANNmS9eupuhIpTK8AdxTOHcaMcAqAbCA==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0-0
       workbox-window: ^6.4.0
