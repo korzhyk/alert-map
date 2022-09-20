@@ -4,7 +4,7 @@ specifiers:
   '@mtproto/core': 6.2.0
   '@playcode/worker-rpc': 0.5.0
   '@unocss/preset-wind': 0.45.22
-  '@unocss/reset': 0.45.21
+  '@unocss/reset': 0.45.22
   async-limiter: 2.0.0
   date-fns: 2.29.3
   debug: 4.3.4
@@ -35,7 +35,7 @@ dependencies:
 devDependencies:
   '@playcode/worker-rpc': 0.5.0
   '@unocss/preset-wind': 0.45.22
-  '@unocss/reset': 0.45.21
+  '@unocss/reset': 0.45.22
   date-fns: 2.29.3
   fuse.js: 6.6.2
   maplibre-gl: 2.4.0
@@ -1685,6 +1685,10 @@ packages:
 
   /@unocss/reset/0.45.21:
     resolution: {integrity: sha512-9JyC8P8qci1fuUvIOZXfO0jsug2YOUlFq8bx904J4sQ33qFl4NhkrpXAU+kFs0HS5SvgUx7BDfLY7W7BGG3RxQ==}
+    dev: true
+
+  /@unocss/reset/0.45.22:
+    resolution: {integrity: sha512-jNLWr5tZ2X+fMCNXYXJe5/AUeTPeWcXke0XpWSXrQ7f5Bbk1TpbUFcV7ln4DvUwRkQsmcDYxdj7em/wN1U0mSQ==}
     dev: true
 
   /@unocss/scope/0.45.21:
