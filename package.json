@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@playcode/worker-rpc": "0.5.0",
-    "@unocss/preset-wind": "0.45.25",
+    "@unocss/preset-wind": "0.45.26",
     "@unocss/reset": "0.45.25",
     "date-fns": "2.29.3",
     "fuse.js": "6.6.2",
