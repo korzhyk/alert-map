@@ -18,7 +18,7 @@ specifiers:
   solid-js: 1.5.7
   uWebSockets.js: github:uNetworking/uWebSockets.js#v20.6.0
   unocss: 0.45.26
-  vite: 3.1.5
+  vite: 3.1.6
   vite-plugin-pwa: 0.13.1
   vite-plugin-solid: 2.3.9
   windicss: 3.5.6
@@ -43,10 +43,10 @@ devDependencies:
   reconnecting-websocket: 4.4.0
   solid-heroicons: 3.1.0_solid-js@1.5.7
   solid-js: 1.5.7
-  unocss: 0.45.26_vite@3.1.5
-  vite: 3.1.5
-  vite-plugin-pwa: 0.13.1_rfjiqafm77fwd63o7sz7kvqcly
-  vite-plugin-solid: 2.3.9_solid-js@1.5.7+vite@3.1.5
+  unocss: 0.45.26_vite@3.1.6
+  vite: 3.1.6
+  vite-plugin-pwa: 0.13.1_gyrleic7ffhni7br4mjyda3ene
+  vite-plugin-solid: 2.3.9_solid-js@1.5.7+vite@3.1.6
   windicss: 3.5.6
   workbox-window: 6.5.4
 
@@ -1573,12 +1573,12 @@ packages:
     resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
     dev: true
 
-  /@unocss/astro/0.45.26_vite@3.1.5:
+  /@unocss/astro/0.45.26_vite@3.1.6:
     resolution: {integrity: sha512-jAdbYNwjyzh05B4B7lhuHYmkNfmIZsQGhRNXogOx0t1BMzRZg9jID5xsJiujaElQL6ll53pbuRRyGV80o75n0Q==}
     dependencies:
       '@unocss/core': 0.45.26
       '@unocss/reset': 0.45.26
-      '@unocss/vite': 0.45.26_vite@3.1.5
+      '@unocss/vite': 0.45.26_vite@3.1.6
     transitivePeerDependencies:
       - vite
     dev: true
@@ -1711,7 +1711,7 @@ packages:
       '@unocss/core': 0.45.26
     dev: true
 
-  /@unocss/vite/0.45.26_vite@3.1.5:
+  /@unocss/vite/0.45.26_vite@3.1.6:
     resolution: {integrity: sha512-9BNJXBN0UG+olMbfIcVcrJgBetyO3HOP6Wx3r5Oc8iwfYSxrWQlHFF+yVJi/+oxsENfsjAgCRH7O+nF4FrXceA==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0
@@ -1724,7 +1724,7 @@ packages:
       '@unocss/scope': 0.45.26
       '@unocss/transformer-directives': 0.45.26
       magic-string: 0.26.3
-      vite: 3.1.5
+      vite: 3.1.6
     dev: true
 
   /acorn/8.7.1:
@@ -3832,7 +3832,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unocss/0.45.26_vite@3.1.5:
+  /unocss/0.45.26_vite@3.1.6:
     resolution: {integrity: sha512-d8mDD6YewHfSCA2uGbBzKY/UnQRSrIDgP7gI61Ll6XY+DcLCVMn0vc1BubQGEL2K0wP9wDsI8HDR6VzDI/0w9w==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -3841,7 +3841,7 @@ packages:
       '@unocss/webpack':
         optional: true
     dependencies:
-      '@unocss/astro': 0.45.26_vite@3.1.5
+      '@unocss/astro': 0.45.26_vite@3.1.6
       '@unocss/cli': 0.45.26
       '@unocss/core': 0.45.26
       '@unocss/preset-attributify': 0.45.26
@@ -3857,7 +3857,7 @@ packages:
       '@unocss/transformer-compile-class': 0.45.26
       '@unocss/transformer-directives': 0.45.26
       '@unocss/transformer-variant-group': 0.45.26
-      '@unocss/vite': 0.45.26_vite@3.1.5
+      '@unocss/vite': 0.45.26_vite@3.1.6
     transitivePeerDependencies:
       - supports-color
       - vite
@@ -3874,7 +3874,7 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite-plugin-pwa/0.13.1_rfjiqafm77fwd63o7sz7kvqcly:
+  /vite-plugin-pwa/0.13.1_gyrleic7ffhni7br4mjyda3ene:
     resolution: {integrity: sha512-NR3dIa+o2hzlzo4lF4Gu0cYvoMjSw2DdRc6Epw1yjmCqWaGuN86WK9JqZie4arNlE1ZuWT3CLiMdiX5wcmmUmg==}
     peerDependencies:
       vite: ^3.1.0
@@ -3884,7 +3884,7 @@ packages:
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0
       rollup: 2.79.0
-      vite: 3.1.5
+      vite: 3.1.6
       workbox-build: 6.5.4
       workbox-window: 6.5.4
     transitivePeerDependencies:
@@ -3892,7 +3892,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid/2.3.9_solid-js@1.5.7+vite@3.1.5:
+  /vite-plugin-solid/2.3.9_solid-js@1.5.7+vite@3.1.6:
     resolution: {integrity: sha512-+lprsYgt9DVNp0kbDj2d2HWAPI13L8ff5xslk9SjiPBcsY/YUZ/1Wj0J/Oj5aiVAhwfPm8IcM3bzyHJUPlmc8w==}
     peerDependencies:
       solid-js: ^1.3.17
@@ -3904,13 +3904,13 @@ packages:
       merge-anything: 5.0.2
       solid-js: 1.5.7
       solid-refresh: 0.4.1_solid-js@1.5.7
-      vite: 3.1.5
+      vite: 3.1.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/3.1.5:
-    resolution: {integrity: sha512-V4Avke0b7h2zTWVJf8vq6TE3aH061NQ3b1ixHQyqdoE/5HIVsxVLCyTLjJtHVcsJ5fIKSHvOtflWpgavHS8RPw==}
+  /vite/3.1.6:
+    resolution: {integrity: sha512-qMXIwnehvvcK5XfJiXQUiTxoYAEMKhM+jqCY6ZSTKFBKu1hJnAKEzP3AOcnTerI0cMZYAaJ4wpW1wiXLMDt4mA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
