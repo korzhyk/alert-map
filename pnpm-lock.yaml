@@ -19,7 +19,7 @@ specifiers:
   uWebSockets.js: github:uNetworking/uWebSockets.js#v20.6.0
   unocss: 0.46.3
   vite: 3.2.2
-  vite-plugin-pwa: 0.13.1
+  vite-plugin-pwa: 0.13.2
   vite-plugin-solid: 2.3.10
   windicss: 3.5.6
   workbox-window: 6.5.4
@@ -45,7 +45,7 @@ devDependencies:
   solid-js: 1.6.1
   unocss: 0.46.3_vite@3.2.2
   vite: 3.2.2
-  vite-plugin-pwa: 0.13.1_myl6patgrxx3pi23owcfujsiju
+  vite-plugin-pwa: 0.13.2_myl6patgrxx3pi23owcfujsiju
   vite-plugin-solid: 2.3.10_solid-js@1.6.1+vite@3.2.2
   windicss: 3.5.6
   workbox-window: 6.5.4
@@ -3490,14 +3490,6 @@ packages:
       terser: 5.13.0
     dev: true
 
-  /rollup/2.79.0:
-    resolution: {integrity: sha512-x4KsrCgwQ7ZJPcFA/SUu6QVcYlO7uRLfLAy0DSA4NS2eG8japdbpM50ToH7z4iObodRYOJ0soneF0iaQRJ6zhA==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /rollup/2.79.1:
     resolution: {integrity: sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==}
     engines: {node: '>=10.0.0'}
@@ -3904,8 +3896,8 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite-plugin-pwa/0.13.1_myl6patgrxx3pi23owcfujsiju:
-    resolution: {integrity: sha512-NR3dIa+o2hzlzo4lF4Gu0cYvoMjSw2DdRc6Epw1yjmCqWaGuN86WK9JqZie4arNlE1ZuWT3CLiMdiX5wcmmUmg==}
+  /vite-plugin-pwa/0.13.2_myl6patgrxx3pi23owcfujsiju:
+    resolution: {integrity: sha512-RwWJBaeMATrdicNFCXWb3aUELnmTk4Um72hE97nz9HKYG165kQGUE/TSrXOLExiPWJ23doV1Uw4IcHnOix17aA==}
     peerDependencies:
       vite: ^3.1.0
       workbox-window: ^6.5.4
@@ -3913,7 +3905,7 @@ packages:
       debug: 4.3.4
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0
-      rollup: 2.79.0
+      rollup: 2.79.1
       vite: 3.2.2
       workbox-build: 6.5.4
       workbox-window: 6.5.4
