@@ -25,3 +25,20 @@ registerSW({
       }, 6e5)
   }
 })
+
+function captureMap (selector = 'canvas.maplibregl-canvas') {
+  document.querySelector(selector)?.toBlob((blob) => {
+    navigator.clipboard.write([
+      new ClipboardItem({
+        [blob.type]: blob
+      })
+    ])
+  })
+}
+
+document.querySelectorAll('a[href="#capture-map"]').forEach(el => {
+  el.addEventListener('click', (event) => {
+    event.preventDefault()
+    captureMap()
+  })
+})

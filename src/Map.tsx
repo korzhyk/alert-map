@@ -29,7 +29,8 @@ export default function Map(props) {
             padding: 5
           },
           maxZoom: 7,
-          minZoom: 3.75
+          minZoom: 3.75,
+          preserveDrawingBuffer: true
         })
         return new Promise((resolve) => {
           setProgress('Завантаження стилів шарів…')
