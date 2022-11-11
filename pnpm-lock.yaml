@@ -14,7 +14,7 @@ specifiers:
   mitt: 3.0.0
   reconnecting-websocket: 4.4.0
   redis: 4.3.1
-  solid-heroicons: 3.1.0
+  solid-heroicons: 3.1.1
   solid-js: 1.6.2
   uWebSockets.js: github:uNetworking/uWebSockets.js#v20.6.0
   unocss: 0.46.4
@@ -41,7 +41,7 @@ devDependencies:
   maplibre-gl: 2.4.0
   mitt: 3.0.0
   reconnecting-websocket: 4.4.0
-  solid-heroicons: 3.1.0_solid-js@1.6.2
+  solid-heroicons: 3.1.1_solid-js@1.6.2
   solid-js: 1.6.2
   unocss: 0.46.4_vite@3.2.3
   vite: 3.2.3
@@ -3579,8 +3579,8 @@ packages:
       totalist: 3.0.0
     dev: true
 
-  /solid-heroicons/3.1.0_solid-js@1.6.2:
-    resolution: {integrity: sha512-cOw5cxS3zgcoOChyvobvHZmHSCinnkkpsiyEiMW+irltb/6iwKq123CUD/W70astfwBvVopnixCQIF19JUzzMA==}
+  /solid-heroicons/3.1.1_solid-js@1.6.2:
+    resolution: {integrity: sha512-wfU/SqxqxWxInvfFlKJfCBPnJ94Zq1GQFiFL3M0KwZzT81lSF5yIC4HA/Czp3DYrn+dUumjO0qdrx8Ab3cy2sA==}
     peerDependencies:
       solid-js: '>= ^1.2.5'
     dependencies:
