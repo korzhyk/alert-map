@@ -32,7 +32,15 @@ export default function App() {
       if (!m) return
       await rpcProvider.rpc('ready')
       const decoded = await rpcProvider.rpc('decode', unwrap(store.state))
-      const show = Object.keys(decoded).sort()
+      const show = Object.keys(decoded).sort((a, b) => {
+        if (a.indexOf('м') == 0) {
+          return -1
+        }
+        if (b.indexOf('м') == 0) {
+          return 1
+        }
+        return a.localeCompare(b)
+      })
       setDecoded(show)
       m.getSource('alerts-poly')?.setData({
         type: 'FeatureCollection',
