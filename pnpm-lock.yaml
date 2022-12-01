@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@mtproto/core': 6.2.0
   '@playcode/worker-rpc': 0.5.0
-  '@unocss/preset-wind': 0.47.3
+  '@unocss/preset-wind': 0.47.4
   '@unocss/reset': 0.47.3
   async-limiter: 2.0.0
   date-fns: 2.29.3
@@ -34,7 +34,7 @@ dependencies:
 
 devDependencies:
   '@playcode/worker-rpc': 0.5.0
-  '@unocss/preset-wind': 0.47.3
+  '@unocss/preset-wind': 0.47.4
   '@unocss/reset': 0.47.3
   date-fns: 2.29.3
   fuse.js: 6.6.2
@@ -1638,6 +1638,10 @@ packages:
     resolution: {integrity: sha512-mHtWe6ptDAMPjmQA0Tp3xbOseen6llr8ngAryuQS6nlH/3lolrAEMgGHJdxEPJeCPmNbDDNYHuEsjEtkWstsPQ==}
     dev: true
 
+  /@unocss/core/0.47.4:
+    resolution: {integrity: sha512-4yyjWeHhhB+7PMGj3ZFDD8bGfpMxeH1shgu+sLrFOB8Kt0eaiR+Z07/rZecazGqJDzCX539CMaGpcfxGsvmHsQ==}
+    dev: true
+
   /@unocss/inspector/0.47.3:
     resolution: {integrity: sha512-pmHFNo0ReIPPaVOXSBBswgbTdeeOdALdunirQDhwYZ/SoJ8lDCYKxKIZrZj54Ci+f3GSenuluZ1W/LhBVDpGSg==}
     dependencies:
@@ -1665,6 +1669,12 @@ packages:
     resolution: {integrity: sha512-3H2HpOeEQLcKH0KB50UCTvIs3NjxlyJ4GbsBOYel5/EESfVuuMOPH4Hu0ukueeHtKaT5psJalvGUUeoUm66ulg==}
     dependencies:
       '@unocss/core': 0.47.3
+    dev: true
+
+  /@unocss/preset-mini/0.47.4:
+    resolution: {integrity: sha512-bReqL5Pycn5SmdNRv9ZZqJCM8Gte2lqWAa+RAT/67/ymXlionsup6AweMfuCoJN1cZwlOXoEhOcqTjbMm+/TJQ==}
+    dependencies:
+      '@unocss/core': 0.47.4
     dev: true
 
   /@unocss/preset-tagify/0.47.3:
@@ -1699,6 +1709,13 @@ packages:
     dependencies:
       '@unocss/core': 0.47.3
       '@unocss/preset-mini': 0.47.3
+    dev: true
+
+  /@unocss/preset-wind/0.47.4:
+    resolution: {integrity: sha512-+inc8H2fNWeOh/Xf/7+1rx4s8+XaB/DA3IBDzNE7KW4KilfNTyWYk8jGbMJoc12NtCG9iTk2C+I9uN1cVLjcsQ==}
+    dependencies:
+      '@unocss/core': 0.47.4
+      '@unocss/preset-mini': 0.47.4
     dev: true
 
   /@unocss/reset/0.47.3:
