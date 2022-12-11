@@ -1,5 +1,6 @@
 const debug = require('debug')
-const uWS = require('uWebSockets.js')
+const path = require('path')
+const { SHARED_COMPRESSOR,  App, us_listen_socket_close } = require('@sifrr/server')
 const Limiter = require('async-limiter')
 const { API, handleUpdatesFactory } = require('./api')
 const { parseMessage } = require('./utils')
@@ -9,10 +10,9 @@ const port = +process.env.PORT || 5000
 const ALERTS_HASH = 'alertHash'
 
 let listenSocket
-const ws = uWS
-  .App()
+const ws = new App()
   .ws('/ADB9004C-7C71-495F-8F3C-D69830B81597', {
-    compression: uWS.SHARED_COMPRESSOR,
+    compression: SHARED_COMPRESSOR,
     maxPayloadLength: 32,
     idleTimeout: 60,
     open: (socket) => {
@@ -28,7 +28,8 @@ const ws = uWS
     },
     message: (socket) => socket.send('pong')
   })
-  .any('/*', (res) => res.end('🚨'))
+  .file('/', path.resolve(__dirname, '../dist/index.html'))
+  .folder('/', path.resolve(__dirname, '../dist'))
   .listen(port, (token) => {
     listenSocket = token
     if (token) {
@@ -103,7 +104,7 @@ function onUpdate(updates) {
 process.on('SIGINT', async () => {
   clearInterval(wsPing)
   clearInterval(telegramHealthCheck)
-  uWS.us_listen_socket_close(listenSocket)
+  us_listen_socket_close(listenSocket)
   await redis.quit()
   process.exit(0)
 })
