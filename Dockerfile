@@ -1,4 +1,4 @@
-FROM node:16-alpine AS dependencies
+FROM node:19-alpine AS dependencies
 
 RUN apk add git libc6-compat
 RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
