@@ -16,7 +16,7 @@ specifiers:
   reconnecting-websocket: 4.4.0
   redis: 4.3.1
   solid-heroicons: 3.1.1
-  solid-js: 1.6.5
+  solid-js: 1.6.6
   uWebSockets.js: github:uNetworking/uWebSockets.js#v20.15.0
   unocss: 0.47.6
   vite: 4.0.2
@@ -43,12 +43,12 @@ devDependencies:
   maplibre-gl: 2.4.0
   mitt: 3.0.0
   reconnecting-websocket: 4.4.0
-  solid-heroicons: 3.1.1_solid-js@1.6.5
-  solid-js: 1.6.5
+  solid-heroicons: 3.1.1_solid-js@1.6.6
+  solid-js: 1.6.6
   unocss: 0.47.6_vite@4.0.2
   vite: 4.0.2
   vite-plugin-pwa: 0.14.0_gusaiip33kkuwpygl36cqmizje
-  vite-plugin-solid: 2.5.0_solid-js@1.6.5+vite@4.0.2
+  vite-plugin-solid: 2.5.0_solid-js@1.6.6+vite@4.0.2
   windicss: 3.5.6
   workbox-window: 6.5.4
 
@@ -3696,21 +3696,21 @@ packages:
       totalist: 3.0.0
     dev: true
 
-  /solid-heroicons/3.1.1_solid-js@1.6.5:
+  /solid-heroicons/3.1.1_solid-js@1.6.6:
     resolution: {integrity: sha512-wfU/SqxqxWxInvfFlKJfCBPnJ94Zq1GQFiFL3M0KwZzT81lSF5yIC4HA/Czp3DYrn+dUumjO0qdrx8Ab3cy2sA==}
     peerDependencies:
       solid-js: '>= ^1.2.5'
     dependencies:
-      solid-js: 1.6.5
+      solid-js: 1.6.6
     dev: true
 
-  /solid-js/1.6.5:
-    resolution: {integrity: sha512-q1/wIIRmrWltNnP3PW/e29eRWCC24hX5amBiOXomw2kDiM6JZZ10l+chK/Oi/6ipwUxeabYl5YD2lJOObY9heA==}
+  /solid-js/1.6.6:
+    resolution: {integrity: sha512-5x33mEbPI8QLuywvFjQP4krjWDr8xiYFgZx9KCBH7b0ZzypQCHaUubob7bK6i+1u6nhaAqhWtvXS587Kb8DShA==}
     dependencies:
       csstype: 3.1.1
     dev: true
 
-  /solid-refresh/0.4.1_solid-js@1.6.5:
+  /solid-refresh/0.4.1_solid-js@1.6.6:
     resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
     peerDependencies:
       solid-js: ^1.3
@@ -3718,7 +3718,7 @@ packages:
       '@babel/generator': 7.20.5
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.20.5
-      solid-js: 1.6.5
+      solid-js: 1.6.6
     dev: true
 
   /source-map-js/1.0.2:
@@ -4066,7 +4066,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid/2.5.0_solid-js@1.6.5+vite@4.0.2:
+  /vite-plugin-solid/2.5.0_solid-js@1.6.6+vite@4.0.2:
     resolution: {integrity: sha512-VneGd3RyFJvwaiffsqgymeMaofn0IzQLPwDzafTV2f1agoWeeJlk5VrI5WqT9BTtLe69vNNbCJWqLhHr9fOdDw==}
     peerDependencies:
       solid-js: ^1.3.17 || ^1.4.0 || ^1.5.0 || ^1.6.0
@@ -4076,8 +4076,8 @@ packages:
       '@babel/preset-typescript': 7.18.6_@babel+core@7.20.5
       babel-preset-solid: 1.6.3_@babel+core@7.20.5
       merge-anything: 5.1.4
-      solid-js: 1.6.5
-      solid-refresh: 0.4.1_solid-js@1.6.5
+      solid-js: 1.6.6
+      solid-refresh: 0.4.1_solid-js@1.6.6
       vite: 4.0.2
       vitefu: 0.2.3_vite@4.0.2
     transitivePeerDependencies:
