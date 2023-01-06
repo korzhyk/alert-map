@@ -4,7 +4,7 @@ specifiers:
   '@mtproto/core': 6.2.0
   '@playcode/worker-rpc': 0.5.0
   '@sifrr/server': ^0.0.9
-  '@unocss/preset-wind': 0.48.1
+  '@unocss/preset-wind': 0.48.2
   '@unocss/reset': 0.48.1
   async-limiter: 2.0.0
   date-fns: 2.29.3
@@ -36,7 +36,7 @@ dependencies:
 
 devDependencies:
   '@playcode/worker-rpc': 0.5.0
-  '@unocss/preset-wind': 0.48.1
+  '@unocss/preset-wind': 0.48.2
   '@unocss/reset': 0.48.1
   date-fns: 2.29.3
   fuse.js: 6.6.2
@@ -1880,8 +1880,8 @@ packages:
     resolution: {integrity: sha512-WvAvChbJ65l97mHismyApeFVgNeGR4uSZl1BzVY+E/fRmyooE4QxiCm3g2akox6mQryzxvBvgSpP9aPzH676ZQ==}
     dev: true
 
-  /@unocss/core/0.48.1:
-    resolution: {integrity: sha512-GCc7gmZwOL5v7uftWBSyzsiXqn/l2/x0pWf/WzJ9UTpc/0fslF01yk+GepRwys9nZyAipIYtL3kSd6oWeobRGg==}
+  /@unocss/core/0.48.2:
+    resolution: {integrity: sha512-QRgvN3IxIbkdM9LcSvgDq7ANIZ2XmCYvn6NOo2PHtvIi8fwebrjUpgw1HtAJkVnhAGWAhDLYDYrtsb+XpF/rkg==}
     dev: true
 
   /@unocss/inspector/0.48.0:
@@ -1913,10 +1913,10 @@ packages:
       '@unocss/core': 0.48.0
     dev: true
 
-  /@unocss/preset-mini/0.48.1:
-    resolution: {integrity: sha512-3tOLm8Xs9hXgnyxmHTdFshGYCP2PhZCQf1a2w88X0Jd2FnwqfjQ00Rh8wSgDfet/BSvbhcdt7DuqQgeHzYWEUQ==}
+  /@unocss/preset-mini/0.48.2:
+    resolution: {integrity: sha512-6PnOe3bOTfm0o1pkPY0bLjSeiPfo59dYuG5U1Z5wAVy6f9XXAXKuB8xMwrlHlPnJMJvF+No9arotq+24AYclKw==}
     dependencies:
-      '@unocss/core': 0.48.1
+      '@unocss/core': 0.48.2
     dev: true
 
   /@unocss/preset-tagify/0.48.0:
@@ -1953,11 +1953,11 @@ packages:
       '@unocss/preset-mini': 0.48.0
     dev: true
 
-  /@unocss/preset-wind/0.48.1:
-    resolution: {integrity: sha512-NUgrB5MxnD6gmvS2c2MCMAFg7hs1iP2SBSNvm1CPFDsBEMywmmHvfKMIcf3SnBnr9byRY56IovQ9wOhXurZB5A==}
+  /@unocss/preset-wind/0.48.2:
+    resolution: {integrity: sha512-rRP13G4mLgNcsd3uK2sdqDTG2lZkQj3BhCYMVYwphnIRTz1hhywXVb2NbshulVUTNVvqwFtoNxwESghKjjrW+Q==}
     dependencies:
-      '@unocss/core': 0.48.1
-      '@unocss/preset-mini': 0.48.1
+      '@unocss/core': 0.48.2
+      '@unocss/preset-mini': 0.48.2
     dev: true
 
   /@unocss/reset/0.48.0:
