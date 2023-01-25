@@ -4,7 +4,7 @@ specifiers:
   '@mtproto/core': 6.2.0
   '@playcode/worker-rpc': 0.5.0
   '@sifrr/server': ^0.0.9
-  '@unocss/preset-wind': 0.48.5
+  '@unocss/preset-wind': 0.49.0
   '@unocss/reset': 0.49.0
   async-limiter: 2.0.0
   date-fns: 2.29.3
@@ -36,7 +36,7 @@ dependencies:
 
 devDependencies:
   '@playcode/worker-rpc': 0.5.0
-  '@unocss/preset-wind': 0.48.5
+  '@unocss/preset-wind': 0.49.0
   '@unocss/reset': 0.49.0
   date-fns: 2.29.3
   fuse.js: 6.6.2
@@ -1880,10 +1880,6 @@ packages:
       unconfig: 0.3.7
     dev: true
 
-  /@unocss/core/0.48.5:
-    resolution: {integrity: sha512-goidlxqDEW14yYzLIqyUsoVPvrq3BuxvzY+87tulfHtiHWXd7fITSjHu80Bn0J6LZm1bVn2/D5nfE7ZLU/uW8g==}
-    dev: true
-
   /@unocss/core/0.49.0:
     resolution: {integrity: sha512-rnA93tsfqMJ8isrmgh8w48oJZryWdtLQD2JpERwW95xi4WdWWIFozR9xMwvd6xOGOaBhbttak6xdsv4nmCFvIA==}
     dev: true
@@ -1909,12 +1905,6 @@ packages:
       ohmyfetch: 0.4.21
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@unocss/preset-mini/0.48.5:
-    resolution: {integrity: sha512-jMKUCkbKsgLkEAeaB7qV/ExZ1W9yAnRQ/PwrnGnxbIIAxDIylfPDBL2bR2w2TucHblpqCf6Twb09r1F6qfy3yQ==}
-    dependencies:
-      '@unocss/core': 0.48.5
     dev: true
 
   /@unocss/preset-mini/0.49.0:
@@ -1948,13 +1938,6 @@ packages:
     dependencies:
       '@unocss/core': 0.49.0
       ohmyfetch: 0.4.21
-    dev: true
-
-  /@unocss/preset-wind/0.48.5:
-    resolution: {integrity: sha512-uSlViwl+1mJeClxJcwE6QA3SIOnOpL+Nes8VeO4NQADhn8ywhgjouAi2fy/gxQAcGtAV5PODn2jrG2M80+Ghkw==}
-    dependencies:
-      '@unocss/core': 0.48.5
-      '@unocss/preset-mini': 0.48.5
     dev: true
 
   /@unocss/preset-wind/0.49.0:
