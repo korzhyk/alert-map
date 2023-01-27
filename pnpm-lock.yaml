@@ -5,7 +5,7 @@ specifiers:
   '@playcode/worker-rpc': 0.5.0
   '@sifrr/server': ^0.0.9
   '@unocss/preset-wind': 0.49.1
-  '@unocss/reset': 0.49.0
+  '@unocss/reset': 0.49.1
   async-limiter: 2.0.0
   date-fns: 2.29.3
   debug: 4.3.4
@@ -37,7 +37,7 @@ dependencies:
 devDependencies:
   '@playcode/worker-rpc': 0.5.0
   '@unocss/preset-wind': 0.49.1
-  '@unocss/reset': 0.49.0
+  '@unocss/reset': 0.49.1
   date-fns: 2.29.3
   fuse.js: 6.6.2
   maplibre-gl: 2.4.0
@@ -1966,6 +1966,10 @@ packages:
 
   /@unocss/reset/0.49.0:
     resolution: {integrity: sha512-OvLVSv4Q9lWXQYQWMvdhlufVV3UUvJ9jeh3OLTvYwkdxUovdGOK7IJfP0F9sEOth/wI7BD1Z6Zyn8A/gjJ9MQA==}
+    dev: true
+
+  /@unocss/reset/0.49.1:
+    resolution: {integrity: sha512-T1027YK21UDzhgA4qB+L1E8jhNY3dGHqCB15HqB63V5zgVLyw10Hmh0koinrkwtPhxDhLluURuu0tDm7/isvcA==}
     dev: true
 
   /@unocss/scope/0.49.0:
