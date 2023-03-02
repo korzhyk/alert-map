@@ -21,7 +21,7 @@ specifiers:
   unocss: 0.50.3
   vite: 4.1.4
   vite-plugin-pwa: 0.14.4
-  vite-plugin-solid: 2.6.0
+  vite-plugin-solid: 2.6.1
   windicss: 3.5.6
   workbox-window: 6.5.4
 
@@ -48,7 +48,7 @@ devDependencies:
   unocss: 0.50.3_vite@4.1.4
   vite: 4.1.4
   vite-plugin-pwa: 0.14.4_pchkumgzq6po4w4enhsumrku2u
-  vite-plugin-solid: 2.6.0_solid-js@1.6.11+vite@4.1.4
+  vite-plugin-solid: 2.6.1_solid-js@1.6.11+vite@4.1.4
   windicss: 3.5.6
   workbox-window: 6.5.4
 
@@ -111,10 +111,10 @@ packages:
       '@babel/helper-compilation-targets': 7.20.0_@babel+core@7.20.5
       '@babel/helper-module-transforms': 7.20.2
       '@babel/helpers': 7.20.6
-      '@babel/parser': 7.20.5
+      '@babel/parser': 7.21.2
       '@babel/template': 7.18.10
       '@babel/traverse': 7.20.5
-      '@babel/types': 7.20.5
+      '@babel/types': 7.21.2
       convert-source-map: 1.9.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
@@ -130,6 +130,16 @@ packages:
     dependencies:
       '@babel/types': 7.21.2
       '@jridgewell/gen-mapping': 0.3.2
+      jsesc: 2.5.2
+    dev: true
+
+  /@babel/generator/7.21.1:
+    resolution: {integrity: sha512-1lT45bAYlQhFn/BHivJs43AiW2rg3/UbLyShGfF3C0KmHvO5fSghWd5kBJy30kpRRucGzXStvnnCFniCR2kXAA==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/types': 7.21.2
+      '@jridgewell/gen-mapping': 0.3.2
+      '@jridgewell/trace-mapping': 0.3.17
       jsesc: 2.5.2
     dev: true
 
@@ -376,14 +386,6 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       chalk: 2.4.2
       js-tokens: 4.0.0
-    dev: true
-
-  /@babel/parser/7.20.5:
-    resolution: {integrity: sha512-r27t/cy/m9uKLXQNWWebeCUHgnAZq0CpG1OwKRxzJMP1vpSU4bSIK2hq+/cp0bQxetkXx38n09rNu8jVkcK/zA==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      '@babel/types': 7.21.2
     dev: true
 
   /@babel/parser/7.21.2:
@@ -1267,7 +1269,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.5
+      '@babel/generator': 7.21.1
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-function-name': 7.19.0
       '@babel/helper-hoist-variables': 7.18.6
@@ -1278,15 +1280,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@babel/types/7.20.5:
-    resolution: {integrity: sha512-c9fst/h2/dcF7H+MJKZ2T0KjEQ8hY/BNnDk/H3XY8C4Aw/eWQXWn/lWntHF9ooUBnGmEvbfGrTgLWc+um0YDUg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': 7.19.4
-      '@babel/helper-validator-identifier': 7.19.1
-      to-fast-properties: 2.0.0
     dev: true
 
   /@babel/types/7.21.2:
@@ -3767,12 +3760,12 @@ packages:
       csstype: 3.1.1
     dev: true
 
-  /solid-refresh/0.4.1_solid-js@1.6.11:
-    resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
+  /solid-refresh/0.5.0_solid-js@1.6.11:
+    resolution: {integrity: sha512-kBsHSjqBUMXD2I7cU/batNE5WlXGiB5Otob9JDx4Zl5+Vt+a5naGxjPf81fg/c4lh++IdX2GF5CORxEcVzyTgg==}
     peerDependencies:
       solid-js: ^1.3
     dependencies:
-      '@babel/generator': 7.20.5
+      '@babel/generator': 7.21.1
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.21.2
       solid-js: 1.6.11
@@ -4112,8 +4105,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid/2.6.0_solid-js@1.6.11+vite@4.1.4:
-    resolution: {integrity: sha512-zw9LRfLwUIDyg9oyuHdpkuO+ds98WPmZXy05AhQc7/2Zn7nWqoWm455y0zD621T8qpmJsInkwm7ttHqFLjhMWg==}
+  /vite-plugin-solid/2.6.1_solid-js@1.6.11+vite@4.1.4:
+    resolution: {integrity: sha512-/khM/ha3B5/pTWQWVJd/0n6ODPIrOcajwhbrD8Gnv37XmJJssu+KA8ssN73raMIicf2eiQKiTAV39w7dSl4Irg==}
     peerDependencies:
       solid-js: ^1.3.17 || ^1.4.0 || ^1.5.0 || ^1.6.0
       vite: ^3.0.0 || ^4.0.0
@@ -4124,7 +4117,7 @@ packages:
       babel-preset-solid: 1.6.3_@babel+core@7.20.5
       merge-anything: 5.1.4
       solid-js: 1.6.11
-      solid-refresh: 0.4.1_solid-js@1.6.11
+      solid-refresh: 0.5.0_solid-js@1.6.11
       vite: 4.1.4
       vitefu: 0.2.3_vite@4.1.4
     transitivePeerDependencies:
