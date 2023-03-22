@@ -20,7 +20,7 @@ specifiers:
   uWebSockets.js: github:uNetworking/uWebSockets.js#v20.15.0
   unocss: 0.50.6
   vite: 4.2.1
-  vite-plugin-pwa: 0.14.4
+  vite-plugin-pwa: 0.14.5
   vite-plugin-solid: 2.6.1
   windicss: 3.5.6
   workbox-window: 6.5.4
@@ -47,7 +47,7 @@ devDependencies:
   solid-js: 1.6.15
   unocss: 0.50.6_vite@4.2.1
   vite: 4.2.1
-  vite-plugin-pwa: 0.14.4_2zwjfzulkrffi34qjwvtq6zb6a
+  vite-plugin-pwa: 0.14.5_2zwjfzulkrffi34qjwvtq6zb6a
   vite-plugin-solid: 2.6.1_solid-js@1.6.15+vite@4.2.1
   windicss: 3.5.6
   workbox-window: 6.5.4
@@ -107,7 +107,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.5
+      '@babel/generator': 7.21.1
       '@babel/helper-compilation-targets': 7.20.0_@babel+core@7.20.5
       '@babel/helper-module-transforms': 7.20.2
       '@babel/helpers': 7.20.6
@@ -122,15 +122,6 @@ packages:
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@babel/generator/7.20.5:
-    resolution: {integrity: sha512-jl7JY2Ykn9S0yj4DQP82sYvPU+T3g0HFcWTqDLqiuA9tGRNIj9VfbtXGAYTTkyNEnQk1jkMGOdYka8aG/lulCA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.21.2
-      '@jridgewell/gen-mapping': 0.3.2
-      jsesc: 2.5.2
     dev: true
 
   /@babel/generator/7.21.1:
@@ -1729,7 +1720,7 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rollup/plugin-replace/5.0.1_rollup@3.12.1:
+  /@rollup/plugin-replace/5.0.1_rollup@3.19.1:
     resolution: {integrity: sha512-Z3MfsJ4CK17BfGrZgvrcp/l6WXoKb0kokULO+zt/7bmcyayokDaQ2K3eDJcRLCTAlp5FPI4/gz9MHAsosz4Rag==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1738,9 +1729,9 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.12.1
+      '@rollup/pluginutils': 5.0.2_rollup@3.19.1
       magic-string: 0.26.7
-      rollup: 3.12.1
+      rollup: 3.19.1
     dev: true
 
   /@rollup/pluginutils/3.1.0_rollup@2.79.1:
@@ -1769,7 +1760,7 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rollup/pluginutils/5.0.2_rollup@3.12.1:
+  /@rollup/pluginutils/5.0.2_rollup@3.19.1:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1781,7 +1772,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.12.1
+      rollup: 3.19.1
     dev: true
 
   /@sifrr/server/0.0.9_uWebSockets.js@20.15.0:
@@ -3668,14 +3659,6 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rollup/3.12.1:
-    resolution: {integrity: sha512-t9elERrz2i4UU9z7AwISj3CQcXP39cWxgRWLdf4Tm6aKm1eYrqHIgjzXBgb67GNY1sZckTFFi0oMozh3/S++Ig==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /rollup/3.19.1:
     resolution: {integrity: sha512-lAbrdN7neYCg/8WaoWn/ckzCtz+jr70GFfYdlf50OF7387HTg+wiuiqJRFYawwSPpqfqDNYqK7smY/ks2iAudg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
@@ -4094,17 +4077,17 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite-plugin-pwa/0.14.4_2zwjfzulkrffi34qjwvtq6zb6a:
-    resolution: {integrity: sha512-M7Ct0so8OlouMkTWgXnl8W1xU95glITSKIe7qswZf1tniAstO2idElGCnsrTJ5NPNSx1XqfTCOUj8j94S6FD7Q==}
+  /vite-plugin-pwa/0.14.5_2zwjfzulkrffi34qjwvtq6zb6a:
+    resolution: {integrity: sha512-LH3VCtoWx0scfim8Ph+daVl45uVRyWzXn3C3GUq92uWUui1p8eh+DjTQ23Pvb7SJ0SJtxZ99LCpOLCkFkaxokg==}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0
       workbox-window: ^6.5.4
     dependencies:
-      '@rollup/plugin-replace': 5.0.1_rollup@3.12.1
+      '@rollup/plugin-replace': 5.0.1_rollup@3.19.1
       debug: 4.3.4
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0
-      rollup: 3.12.1
+      rollup: 3.19.1
       vite: 4.2.1
       workbox-build: 6.5.4
       workbox-window: 6.5.4
