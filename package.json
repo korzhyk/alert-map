@@ -26,7 +26,7 @@
     "solid-js": "1.6.16",
     "unocss": "0.50.6",
     "vite": "4.2.1",
-    "vite-plugin-pwa": "0.14.6",
+    "vite-plugin-pwa": "0.14.7",
     "vite-plugin-solid": "2.6.1",
     "windicss": "3.5.6",
     "workbox-window": "6.5.4"
