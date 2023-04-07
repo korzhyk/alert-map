@@ -23,7 +23,7 @@
     "mitt": "3.0.0",
     "reconnecting-websocket": "4.4.0",
     "solid-heroicons": "3.1.1",
-    "solid-js": "1.7.2",
+    "solid-js": "1.7.3",
     "unocss": "0.50.6",
     "vite": "4.2.1",
     "vite-plugin-pwa": "0.14.7",
