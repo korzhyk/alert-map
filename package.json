@@ -24,7 +24,7 @@
     "reconnecting-websocket": "4.4.0",
     "solid-heroicons": "3.1.1",
     "solid-js": "1.7.3",
-    "unocss": "0.51.5",
+    "unocss": "0.51.6",
     "vite": "4.3.1",
     "vite-plugin-pwa": "0.14.7",
     "vite-plugin-solid": "2.7.0",
