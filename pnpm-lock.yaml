@@ -31,8 +31,8 @@ devDependencies:
     specifier: 0.52.1
     version: 0.52.1
   '@unocss/reset':
-    specifier: 0.52.0
-    version: 0.52.0
+    specifier: 0.52.1
+    version: 0.52.1
   date-fns:
     specifier: 2.30.0
     version: 2.30.0
@@ -2004,6 +2004,10 @@ packages:
 
   /@unocss/reset@0.52.0:
     resolution: {integrity: sha512-hRdgzpxWkDriRneLCv8cRNWBVNJ9FQVLY6jLk7C3MMaab0FH9JufdNwRw/yiqtEEhnnT2GF8IfN3HY69T01tNw==}
+    dev: true
+
+  /@unocss/reset@0.52.1:
+    resolution: {integrity: sha512-i44MLj0No/Lg72mqaaAwTHe5E0gVwtCH5r069J7jZt1AlhpE605iEAJcbeO/hhCzMscCl9h44cQLUhq7HWrHVw==}
     dev: true
 
   /@unocss/scope@0.52.0:
