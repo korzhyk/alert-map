@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
   '@mtproto/core':
@@ -40,8 +44,8 @@ devDependencies:
     specifier: 6.6.2
     version: 6.6.2
   maplibre-gl:
-    specifier: 3.0.0
-    version: 3.0.0
+    specifier: 3.0.1
+    version: 3.0.1
   mitt:
     specifier: 3.0.0
     version: 3.0.0
@@ -1549,7 +1553,7 @@ packages:
     hasBin: true
     dependencies:
       get-stream: 6.0.1
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /@mapbox/jsonlint-lines-primitives@2.0.2:
@@ -1580,8 +1584,8 @@ packages:
     engines: {node: '>=6.0.0'}
     dev: true
 
-  /@maplibre/maplibre-gl-style-spec@19.2.0:
-    resolution: {integrity: sha512-RQcFaiOqSSqxCHpcQw9tPvMK4fK36Czzm0GNgRum0Q+AcLchtYSshRDz8+0gfQqb1gxGBMXayJc+t/xmFeXSdg==}
+  /@maplibre/maplibre-gl-style-spec@19.2.1:
+    resolution: {integrity: sha512-ZVT5QlkVhlxlPav+ca0NO3Moc7EzbHDO2FXW4ic3Q0Vm+TDUw9I8A2EBws7xUUQZf7HQB3kQ+3Jsh5mFLRD4GQ==}
     hasBin: true
     dependencies:
       '@mapbox/jsonlint-lines-primitives': 2.0.2
@@ -3283,8 +3287,8 @@ packages:
       semver: 6.3.0
     dev: false
 
-  /maplibre-gl@3.0.0:
-    resolution: {integrity: sha512-Yvtd36FJQWYymVNRG0Wv4uJfhvlVRR9GZQEBtMbubdH5NUOKqxt8A/OKVtzGPM+MVedTicg56pVxlRq643Hjuw==}
+  /maplibre-gl@3.0.1:
+    resolution: {integrity: sha512-OdFpejEkvaDwwVT9qAn6oA2h7093VlemaenF2/ssfD3TadNPz5oIVPzywn3cgso5i1D7IMKvEpba0A8A5qvXow==}
     engines: {node: '>=16.14.0', npm: '>=8.1.0'}
     dependencies:
       '@mapbox/geojson-rewind': 0.5.2
@@ -3294,7 +3298,7 @@ packages:
       '@mapbox/unitbezier': 0.0.1
       '@mapbox/vector-tile': 1.3.1
       '@mapbox/whoots-js': 3.1.0
-      '@maplibre/maplibre-gl-style-spec': 19.2.0
+      '@maplibre/maplibre-gl-style-spec': 19.2.1
       '@types/geojson': 7946.0.10
       '@types/mapbox__point-geometry': 0.1.2
       '@types/mapbox__vector-tile': 1.3.0
@@ -3365,6 +3369,7 @@ packages:
 
   /minimist@1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
+    dev: false
 
   /minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
