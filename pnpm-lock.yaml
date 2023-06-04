@@ -32,8 +32,8 @@ devDependencies:
     specifier: 0.5.0
     version: 0.5.0
   '@unocss/preset-wind':
-    specifier: 0.52.7
-    version: 0.52.7
+    specifier: 0.53.0
+    version: 0.53.0
   '@unocss/reset':
     specifier: 0.52.7
     version: 0.52.7
@@ -1903,10 +1903,20 @@ packages:
     resolution: {integrity: sha512-dZonrlfu33SkUMsZXlsyYSM79tr2nLer/hBEU2ZaemRik2KchxIUNlZV6kX1f1k3m+gEtVQOyx1MImpgLS8PWg==}
     dev: true
 
+  /@unocss/core@0.53.0:
+    resolution: {integrity: sha512-MB6hqSN2wjmm3NNYspNqzxvMv7LnyLqz0uCWr15elRqnjsuq01w7DZ1iPS9ckA2M3YjQIRTXR9YPtDbSqY0jcA==}
+    dev: true
+
   /@unocss/extractor-arbitrary-variants@0.52.7:
     resolution: {integrity: sha512-nJ4iE7nIRpoOIQfD8S58yG4qJd6AhVPEfEOf7ksX1u8xLf71rrBIojwraRXvv7aPqNdZiWvXdh/znpA/QC5b9w==}
     dependencies:
       '@unocss/core': 0.52.7
+    dev: true
+
+  /@unocss/extractor-arbitrary-variants@0.53.0:
+    resolution: {integrity: sha512-f1v2E5PherulTAdrsXXb5Knaz4Viu2dM71WalNYhb+j9QqwGngagLrMzRzeIRLOEI2c0D0l7HBQtew+QFWsXcg==}
+    dependencies:
+      '@unocss/core': 0.53.0
     dev: true
 
   /@unocss/inspector@0.52.7:
@@ -1953,6 +1963,13 @@ packages:
       '@unocss/extractor-arbitrary-variants': 0.52.7
     dev: true
 
+  /@unocss/preset-mini@0.53.0:
+    resolution: {integrity: sha512-hGj9ltZUJIuPT+9bO+R0OlsQOSlV7rjQRkSSMnUaDsuKfzhahsyc7QglNHZI4wuTI/9iSJKGUD4nvTe559+8Hg==}
+    dependencies:
+      '@unocss/core': 0.53.0
+      '@unocss/extractor-arbitrary-variants': 0.53.0
+    dev: true
+
   /@unocss/preset-tagify@0.52.7:
     resolution: {integrity: sha512-Zoard/LvUT03buLkDAnFAsgUUDfqIrVXADQFqRN7uDkf5lXocqjp56IzHng1Py2EJY4RpqHx+Mixn0fBH45E4g==}
     dependencies:
@@ -1986,6 +2003,13 @@ packages:
     dependencies:
       '@unocss/core': 0.52.7
       '@unocss/preset-mini': 0.52.7
+    dev: true
+
+  /@unocss/preset-wind@0.53.0:
+    resolution: {integrity: sha512-vb9tV3Cze+w8OZyOd/Xi6Zn8F8+EV53AZIqCrQvMD/6ZeqQJ9gjFx/Q69H/bu009wnPleQpce6RKJcNqMzif8g==}
+    dependencies:
+      '@unocss/core': 0.53.0
+      '@unocss/preset-mini': 0.53.0
     dev: true
 
   /@unocss/reset@0.52.7:
