@@ -1,11 +1,4 @@
-import { RpcProvider } from '@playcode/worker-rpc'
 import Fuse from 'fuse.js'
-
-const rpcProvider = new RpcProvider((message, transfer) => postMessage(message, transfer))
-rpcProvider.registerRpcHandler('ready', async () => await readyPromise)
-rpcProvider.registerRpcHandler('decode', (s) => handleDecodeState(s))
-rpcProvider.registerRpcHandler('ff', async () => await ff)
-onmessage = (e) => rpcProvider.dispatch(e.data)
 
 enum Unit {
   REGION = 'regiony',
@@ -34,44 +27,62 @@ const fuses = {
   })
 }
 
-const ff = fetch(`/ff.geojson`).then((r) => r.json())
+const readyPromise = Promise.all(Object.keys(Unit).map((type) =>
+  fetch(`/ukrainian_geodata/${Unit[type]}.geojson`)
+    .then((response) => response.json()).catch(e => ({ features: [] }))
+    .then(({ features }) => {
+      console.info(`Search collection "${Unit[type]}" is populated with ${features.length} items`)
+      fuses[Unit[type]].setCollection(features)
+    })
+))
+  .catch((error) => postMessage({ error }))
 
-ff.then(({ features }) => {
-  fuses.ff = new Fuse(features, {
-    useExtendedSearch: true,
-    keys: ['properties.region']
+onmessage = (e) => {
+  switch (e.data.type) {
+    case 'decode':
+      readyPromise
+        .then(() => handleDecodeState(e.data.payload))
+        .then(decode => {
+          postMessage({ ...e.data, payload: decode })
+        })
+      break
+    default:
+      console.log(e)
+  }
+}
+
+let eggFuse
+readyPromise.then(() => {
+  fetch(`/egg.geojson`).then((r) => r.json()).then(({ features }) => {
+    eggFuse = new Fuse(features, {
+      useExtendedSearch: true,
+      keys: ['properties.region']
+    })
   })
 })
 
-const readyPromise = Promise.all(
-  Object.keys(Unit).map((type) =>
-    fetch(`/ukrainian_geodata/${Unit[type]}.geojson`)
-      .then((response) => response.json())
-      .then(({ features }) => fuses[Unit[type]].setCollection(features))
-  )
-).catch((error) => {
-  console.log(error)
-  postMessage({ error })
-})
-
 function handleDecodeState(state) {
-  return Object.keys(state).reduce((result, unit, i, units) => {
+  const result = []
+  if (!state) return result
+  for (const [unit] of state) {
     const feature = geoDecode(unit)
     if (feature) {
       let { hromada, rayon, region } = feature.properties
-      if (hromada && (~units.indexOf(rayon) || ~units.indexOf(region))) {
-        return result
+      if (hromada && (state.has(rayon) || state.has(region))) {
+        continue
       }
       if (!hromada && !region) {
         const hromadaInRayon = fuses[Unit.DISTRICT].search(`^${rayon}`, ONE)[0]
-        if (hromadaInRayon && ~units.indexOf(hromadaInRayon.item.properties.region)) {
-          return result
+        if (hromadaInRayon && state.has(hromadaInRayon.item.properties.region)) {
+          continue
         }
       }
-      result[unit] = feature
+
+      feature.id = feature.properties.fid || feature.properties.id
+      result.push([unit, feature])
     }
-    return result
-  }, {})
+  }
+  return result
 }
 
 function geoDecode(place) {
@@ -79,8 +90,8 @@ function geoDecode(place) {
     return place.split(andRx).map(geoDecode).filter(Boolean)[0]
   }
   let result = []
-  if (fuses.ff) {
-    result = fuses.ff.search(`="${place}"`, ONE)
+  if (typeof eggFuse !== 'undefined') {
+    result = eggFuse.search(`="${place}"`, ONE)
     if (result.length) return result[0].item
   }
   if (~place.indexOf('область')) {
@@ -99,6 +110,8 @@ function geoDecode(place) {
     place = place.slice(place.indexOf(' ')).trim()
     result = fuses[Unit.DISTRICT].search(`^${place} міська громада|^${place}`, ONE)
   }
-  if (result.length == 0) console.warn('Decode for', place, 'failed, result is empty.')
-  return result.map((r) => r.item)[0]
+  if (result.length == 0) {
+    console.warn('Decode for', place, 'failed, result is empty.')
+  }
+  return result[0]?.item
 }

@@ -1,26 +1,45 @@
-import { Show } from 'solid-js'
-import { Icon } from 'solid-heroicons'
-import { wifi, arrowPath } from 'solid-heroicons/outline'
+import { createSignal, createContext, useContext, onMount, onCleanup } from "solid-js"
+import { createWebsocket } from './websocket'
 
-export default function Connection(props) {
+const ConnectionContext = createContext()
+
+export function useConnection() { return useContext(ConnectionContext) }
+
+export function ConnectionProvider(props) {
+  let websocket
+  const pendingHandlers = []
+  const [state, setState] = createSignal(-1)
+
+  const connection = [
+    state,
+    {
+      onMessage(callback) {
+        if (websocket) {
+          websocket.addEventListener('message', callback)
+        } else {
+          pendingHandlers.push(callback)
+        }
+      }
+    }
+  ]
+
+  onMount(() => {
+    websocket = createWebsocket(props.urlProvider, props.options)
+    const updateState = () => setState(websocket.readyState)
+    websocket.addEventListener('open', updateState)
+    websocket.addEventListener('close', updateState)
+    websocket.addEventListener('error', updateState)
+    pendingHandlers.forEach(handler => websocket.addEventListener('message', handler))
+    pendingHandlers.length = 0
+  })
+
+  onCleanup(() => {
+    websocket?.close(1000, 'disconnect')
+  })
+
   return (
-    <Show when={props.state !== WebSocket.OPEN} fallback={props.children}>
-      <button
-        class="z-1 absolute bottom-4 left-4 blur-box py-2 px-4 flex items-center font-light"
-        onClick={props.connect}
-      >
-        {props.state === WebSocket.CLOSED ? (
-          <>
-            <Icon path={wifi} class="icon text-red-600 mr-1.5" />
-            Відсутнє з’єднання з сервером
-          </>
-        ) : (
-          <>
-            <Icon path={arrowPath} class="icon text-yellow-400 mr-1.5" />
-            Спроба під’єднання…
-          </>
-        )}
-      </button>
-    </Show>
+    <ConnectionContext.Provider value={connection}>
+      {props.children}
+    </ConnectionContext.Provider>
   )
 }

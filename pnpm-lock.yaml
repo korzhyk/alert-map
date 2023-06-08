@@ -28,6 +28,9 @@ dependencies:
     version: github.com/uNetworking/uWebSockets.js/77bc1fd5577ae42b56675912eb8481a31f3fefd2
 
 devDependencies:
+  '@mapbox/mapbox-gl-supported':
+    specifier: ^2.0.1
+    version: 2.0.1
   '@playcode/worker-rpc':
     specifier: 0.5.0
     version: 0.5.0
@@ -43,6 +46,9 @@ devDependencies:
   fuse.js:
     specifier: 6.6.2
     version: 6.6.2
+  mapbox-gl:
+    specifier: npm:empty-npm-package@1.0.0
+    version: /empty-npm-package@1.0.0
   maplibre-gl:
     specifier: 3.0.1
     version: 3.0.1
@@ -58,6 +64,9 @@ devDependencies:
   solid-js:
     specifier: 1.7.5
     version: 1.7.5
+  solid-map-gl:
+    specifier: ^1.7.2
+    version: 1.7.2(empty-npm-package@1.0.0)
   unocss:
     specifier: 0.52.5
     version: 0.52.5(postcss@8.4.23)(rollup@2.79.1)(vite@4.3.9)
@@ -1561,6 +1570,10 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
+  /@mapbox/mapbox-gl-supported@2.0.1:
+    resolution: {integrity: sha512-HP6XvfNIzfoMVfyGjBckjiAOQK9WfX0ywdLubuPMPv+Vqf5fj0uCbgBQYpiqcWZT6cbyyRnTSXDheT1ugvF6UQ==}
+    dev: true
+
   /@mapbox/point-geometry@0.1.0:
     resolution: {integrity: sha512-6j56HdLTwWGO0fJPlrZtdU/B13q8Uwmo18Ck2GnGgN9PCFyKTZ3UbXeEdRFh18i9XQ92eH2VdtpJHpBD3aripQ==}
     dev: true
@@ -2376,7 +2389,7 @@ packages:
     dev: true
 
   /concat-map@0.0.1:
-    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
     dev: true
 
   /configstore@5.0.1:
@@ -2524,6 +2537,10 @@ packages:
 
   /electron-to-chromium@1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
+    dev: true
+
+  /empty-npm-package@1.0.0:
+    resolution: {integrity: sha512-q4Mq/+XO7UNDdMiPpR/LIBIW1Zl4V0Z6UT9aKGqIAnBCtCb3lvZJM1KbDbdzdC8fKflwflModfjR29Nt0EpcwA==}
     dev: true
 
   /es-abstract@1.20.5:
@@ -3848,6 +3865,14 @@ packages:
     dependencies:
       csstype: 3.1.1
       seroval: 0.5.1
+    dev: true
+
+  /solid-map-gl@1.7.2(empty-npm-package@1.0.0):
+    resolution: {integrity: sha512-VbRw8IRXbHD5rbKFbhIkVG5fcsHyniVC2e/kX+jMzh9qQuTfYE+SJrBOhTB5uKAkdN/z8bIhX8FTXPHeMflMjQ==}
+    peerDependencies:
+      mapbox-gl: ^0.x || ^1.x || ^2.x
+    dependencies:
+      mapbox-gl: /empty-npm-package@1.0.0
     dev: true
 
   /solid-refresh@0.5.0(solid-js@1.7.5):

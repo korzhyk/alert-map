@@ -1,34 +1,51 @@
-import formatDuration from 'date-fns/formatDuration'
-import intervalToDuration from 'date-fns/intervalToDuration'
-import differenceInMinutes from 'date-fns/differenceInMinutes'
+import { formatDuration, intervalToDuration, differenceInSeconds } from 'date-fns'
 import { uk } from 'date-fns/locale'
 import { createSignal, onCleanup, onMount } from 'solid-js'
 
-export default function Duration(props) {
-  let timeout,
-    duration = 1000,
-    format = ['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']
-  const [fresh, setFresh] = createSignal(true)
-  const [formatted, setFormatted] = createSignal()
-  const start = props.start || new Date()
-  const update = () => {
-    const end = props.end || new Date()
-    const interval = intervalToDuration({ start, end })
-    timeout = setTimeout(update, duration)
-    if (duration != 6e4 && differenceInMinutes(end, start) >= 1) {
-      duration = 6e4
-      format.splice(format.indexOf('seconds') >>> 0)
-      setFresh(false)
-    }
-    setFormatted(formatDuration(interval, { format, locale: uk }))
+const timer = {
+  interval: null,
+  subscribers: new Set(),
+  subscribe(fn) {
+    this.subscribers.add(fn)
+    this.interval ??= setInterval(() => {
+      if (this.subscribers.size === 0) {
+        this.interval = clearInterval(this.interval)
+        return
+      }
+      this.subscribers.forEach(fn => fn())
+    }, 1e3)
+    return () => this.subscribers.delete(fn)
   }
-  onMount(() => {
-    update()
-    onCleanup(() => clearTimeout(timeout))
+}
+
+const format = ['years', 'months', 'days', 'hours', 'minutes', 'seconds']
+const limitWindow = (duration, max) => {
+  if (isNaN(+max)) return duration
+  let count = 0
+  for (const item of format) {
+    if (count || duration[item]) {
+      ++count > max && (duration[item] = 0)
+    }
+  }
+  return duration
+}
+
+export default function Duration({ start = new Date, end = () => new Date, maxWindow }) {
+  const [fresh, setFresh] = createSignal(differenceInSeconds(start, end()) > -60)
+  const [duration, setDuration] = createSignal(
+    limitWindow(intervalToDuration({ start, end: end() }), maxWindow)
+  )
+
+  const unsubscribe = timer.subscribe(() => {
+    setFresh(differenceInSeconds(start, end()) > -60)
+    setDuration(limitWindow(intervalToDuration({ start, end: end() }), maxWindow))
   })
+
+  onCleanup(unsubscribe)
+
   return (
-    <span classList={{ '@dark:text-red-300 text-red-600 font-medium': fresh() }}>
-      {formatted()}
+    <span class="transition-color" classList={{ '@dark:text-red-300 text-red-600 font-medium': fresh() }}>
+      {formatDuration(duration(), { locale: uk })}
     </span>
   )
 }

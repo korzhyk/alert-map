@@ -1,6 +1,6 @@
 {
   "name": "alert-map",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Realtime map of active air alerts in Ukraine",
   "author": "Andrii Korzh <andriii.korzh@gmail.com>",
   "license": "MIT",
@@ -14,16 +14,19 @@
     "node": ">=16"
   },
   "devDependencies": {
+    "@mapbox/mapbox-gl-supported": "^2.0.1",
     "@playcode/worker-rpc": "0.5.0",
     "@unocss/preset-wind": "0.52.5",
     "@unocss/reset": "0.52.5",
     "date-fns": "2.30.0",
     "fuse.js": "6.6.2",
+    "mapbox-gl": "npm:empty-npm-package@1.0.0",
     "maplibre-gl": "3.0.1",
     "mitt": "3.0.0",
     "reconnecting-websocket": "4.4.0",
     "solid-heroicons": "3.2.3",
     "solid-js": "1.7.5",
+    "solid-map-gl": "^1.7.2",
     "unocss": "0.52.5",
     "vite": "4.3.9",
     "vite-plugin-pwa": "0.15.2",
