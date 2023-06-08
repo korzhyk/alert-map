@@ -6,9 +6,8 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { useAlerts } from './Alerts'
 
 // TODO: https://github.com/GIShub4/solid-map-gl/issues/66
-Object.assign(maplibre, { supported })
-
-const bboxDefault = new maplibre.LngLatBounds([22.12, 44.00], [40.17, 52.37]) // Ukraine ❤️
+const maplib = { ...maplibre, supported }
+const bboxDefault = new maplib.LngLatBounds([22.12, 44.00], [40.17, 52.37]) // Ukraine ❤️
 const bboxOptions = { padding: 20 }
 
 function fitBounds(map) {
@@ -52,7 +51,7 @@ export default function Map() {
   return (
     <MapGL
       class="h-full bg-[rgba(252, 247, 229, 1)] filter @dark:invert @dark:hue-rotate-180"
-      mapLib={maplibre}
+      mapLib={maplib}
       options={{
         attributionControl: false,
         bounds: bboxDefault,
