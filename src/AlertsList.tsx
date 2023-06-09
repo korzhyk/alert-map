@@ -39,7 +39,7 @@ export default function AlertsList() {
   return (
     <div class="absolute bottom-0 left-0 flex flex-col max-h-screen max-w-screen lt-sm:w-full">
       <Show when={listCount() && show()}>
-        <div class="z-1 blur-box m-4 p-2 flex flex-col min-w-md rounded-xl text-sm overflow-y-auto">
+        <div class="sm:min-w-md z-1 blur-box m-4 p-2 flex flex-col rounded-xl text-sm overflow-y-auto">
           <div class="py-2 mb-2 px-3 flex justify-between font-medium border-b-px border-b-1 border-gray-500/30">
             <h3>Повітряна тривога</h3>
             <h6>Триває</h6>
