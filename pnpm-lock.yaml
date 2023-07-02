@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -65,8 +65,8 @@ devDependencies:
     specifier: 1.7.6
     version: 1.7.6
   solid-map-gl:
-    specifier: ^1.7.2
-    version: 1.7.2(empty-npm-package@1.0.0)
+    specifier: ^1.9.0
+    version: 1.9.0(empty-npm-package@1.0.0)
   unocss:
     specifier: 0.53.1
     version: 0.53.1(postcss@8.4.23)(rollup@2.79.1)(vite@4.3.9)
@@ -2389,7 +2389,7 @@ packages:
     dev: true
 
   /concat-map@0.0.1:
-    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
     dev: true
 
   /configstore@5.0.1:
@@ -3867,8 +3867,8 @@ packages:
       seroval: 0.5.1
     dev: true
 
-  /solid-map-gl@1.7.2(empty-npm-package@1.0.0):
-    resolution: {integrity: sha512-VbRw8IRXbHD5rbKFbhIkVG5fcsHyniVC2e/kX+jMzh9qQuTfYE+SJrBOhTB5uKAkdN/z8bIhX8FTXPHeMflMjQ==}
+  /solid-map-gl@1.9.0(empty-npm-package@1.0.0):
+    resolution: {integrity: sha512-ibcta3CaObUVb8GeEWUkr8GNV77e/oSJceOkOTC562H4VIfcvNAW4xRr2g1tXFPZG2s1WgKconK3FQ4eKBZC5Q==}
     peerDependencies:
       mapbox-gl: ^0.x || ^1.x || ^2.x
     dependencies:

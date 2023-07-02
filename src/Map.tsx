@@ -1,5 +1,5 @@
 import { createSignal, createEffect, onMount, onCleanup } from 'solid-js'
-import MapGL, { Viewport, Control, Layer, Source, useMap } from 'solid-map-gl'
+import MapGL, { Viewport, Control, Layer, Source, useMapContext } from 'solid-map-gl'
 import { supported } from '@mapbox/mapbox-gl-supported'
 import * as maplibre from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -78,12 +78,12 @@ export default function Map() {
 }
 
 function CustomControls() {
-  const [map] = useMap()
+  const [mapContext] = useMapContext()
 
   const mapSnap = (event) => {
     // [Shift] + [S] – toggle snapping
     if (event.keyCode === 83 && event.shiftKey) { 
-      ~(localStorage.disableSnap = ~+localStorage.disableSnap) && fitBounds(map())
+      ~(localStorage.disableSnap = ~+localStorage.disableSnap) && fitBounds(mapContext.map)
     }
   }
 
