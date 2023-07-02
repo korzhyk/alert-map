@@ -22,3 +22,17 @@ registerSW({
       }, 6e5)
   }
 })
+
+document.querySelectorAll('#capture-map').forEach((button) => {
+  button.addEventListener('click', captureMap)
+})
+
+function captureMap() {
+  const canvas = document.querySelector('[aria-label="Map"], canvas') as HTMLCanvasElement
+  canvas?.toBlob((blob) => {
+    if (blob === null) return
+    navigator.clipboard.write([
+      new ClipboardItem({ [blob.type]: blob })
+    ])
+  })
+}
