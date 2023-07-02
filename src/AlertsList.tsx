@@ -50,7 +50,7 @@ export default function AlertsList() {
                 <li
                   class="flex justify-between py-2 px-3 hover:bg-gray-500/20 rounded-xl cursor-pointer transition-bg"
                   onMouseEnter={() => setSelected(id)}
-                  onMouseLeave={() => setSelected()}
+                  onMouseLeave={() => setSelected(-1)}
                 >
                   <span>{andSplit(unit)}</span>
                   <span class="ms-3 text-right">

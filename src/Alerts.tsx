@@ -13,7 +13,7 @@ export function AlertsProvider(props) {
   const [_, { onMessage }] = useConnection()
   const [state, setState] = createSignal()
   const [geoJSON, setGeoJSON] = createSignal()
-  const [selected, setSelected] = createSignal()
+  const [selected, setSelected] = createSignal(-1)
 
   onMessage((event) => {
     try {

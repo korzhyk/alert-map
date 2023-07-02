@@ -22,30 +22,18 @@ function onMoveEnd(event: DragEvent) {
 }
 
 export default function Map() {
-  const [state, geoJSON, { selected }] = useAlerts()
+  const [state, geoJSON, { selected, setSelected }] = useAlerts()
   const [featureState, setFeatureState] = createSignal()
   const [viewport, setViewport] = createSignal({
     center: [0, 0],
     zoom: 0,
   } as Viewport)
 
-  let lastHiglihtedId
   createEffect(() => {
-    switch (selected()) {
-      case null:
-      case false:
-      case undefined:
-        setFeatureState({
-          id: lastHiglihtedId,
-          state: { hover: false }
-        })
-        break;
-      default:
-        setFeatureState({
-          id: (lastHiglihtedId = selected()),
-          state: { hover: true }
-        })
-    }
+    setFeatureState({
+      id: selected(),
+      state: { hover: true }
+    })
   })
 
   return (
@@ -53,7 +41,9 @@ export default function Map() {
       class="h-full bg-[rgba(252, 247, 229, 1)] filter @dark:invert @dark:hue-rotate-180"
       mapLib={maplib}
       options={{
-        attributionControl: false,
+        customAttribution: [
+          'сповіщення <a target="_blank" href="https://t.me/air_alert_ua">Повітряна Тривога</a>'
+        ],
         bounds: bboxDefault,
         fitBoundsOptions: bboxOptions,
         style: import.meta.env.VITE_STYLE_URI,
@@ -63,7 +53,6 @@ export default function Map() {
       onViewportChange={setViewport}
       onMoveEnd={onMoveEnd}
     >
-      <Control type="attribution" options={{ compact: true }} />
       <Source source={{
         type: 'geojson',
         data: geoJSON()
@@ -78,6 +67,8 @@ export default function Map() {
               'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 0.5, 0.3]
             },
           }}
+          onMouseEnter={event => setSelected(event.features[0].id)}
+          onMouseLeave={event => setSelected(-1)}
           featureState={featureState()}
         />
       </Source>
@@ -86,20 +77,15 @@ export default function Map() {
   )
 }
 
-function CustomControls({ setFeatureState }) {
+function CustomControls() {
   const [map] = useMap()
-  const [state, geoJSON, { setSelected }] = useAlerts()
 
   const mapSnap = (event) => {
-    if (event.keyCode === 83 && event.shiftKey && event.ctrlKey) {
+    // [Shift] + [S] – toggle snapping
+    if (event.keyCode === 83 && event.shiftKey) { 
       ~(localStorage.disableSnap = ~+localStorage.disableSnap) && fitBounds(map())
     }
   }
-
-  createEffect(() => {
-    map().on('mousemove', 'alerts', (event) => setSelected(event.features[0].id))
-    map().on('mouseleave', 'alerts', () => setSelected())
-  })
 
   onMount(() => {
     document.addEventListener('keydown', mapSnap)
