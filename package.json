@@ -11,7 +11,7 @@
     "start": "node server"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "devDependencies": {
     "@mapbox/mapbox-gl-supported": "^2.0.1",
