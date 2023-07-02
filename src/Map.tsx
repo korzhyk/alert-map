@@ -67,7 +67,7 @@ export default function Map() {
               'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 0.5, 0.3]
             },
           }}
-          onMouseEnter={event => setSelected(event.features[0].id)}
+          onMouseMove={event => setSelected(event.features[0].id)}
           onMouseLeave={event => setSelected(-1)}
           featureState={featureState()}
         />
