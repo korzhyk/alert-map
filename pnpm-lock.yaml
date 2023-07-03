@@ -59,8 +59,8 @@ devDependencies:
     specifier: 4.4.0
     version: 4.4.0
   solid-heroicons:
-    specifier: 3.2.3
-    version: 3.2.3(solid-js@1.7.6)
+    specifier: 3.2.4
+    version: 3.2.4(solid-js@1.7.6)
   solid-js:
     specifier: 1.7.6
     version: 1.7.6
@@ -3880,8 +3880,8 @@ packages:
       totalist: 3.0.0
     dev: true
 
-  /solid-heroicons@3.2.3(solid-js@1.7.6):
-    resolution: {integrity: sha512-CGWuTGil6pM1Md2T9tVg98oKdl/U7TNHoyT2ogrN4PuZAEx7oNXTGuvdLgg8CQXSqe+Ht7EHQl1nwTWG5NPwzA==}
+  /solid-heroicons@3.2.4(solid-js@1.7.6):
+    resolution: {integrity: sha512-u6BMdFLvkJnvUGYzdFcWp1wvJ4hb9Y1zd3AbZ9D3bUmmiy9jBzNZX+RcqBCI2EKRvdQwAb1UB9bkESfqfhayDg==}
     peerDependencies:
       solid-js: '>= ^1.2.5'
     dependencies:
