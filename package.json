@@ -35,7 +35,7 @@
     "workbox-window": "7.0.0"
   },
   "dependencies": {
-    "@mtproto/core": "6.2.0",
+    "@mtproto/core": "6.3.0",
     "@sifrr/server": "^0.0.9",
     "async-limiter": "2.0.0",
     "debug": "4.3.4",
