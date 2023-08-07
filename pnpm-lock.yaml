@@ -35,8 +35,8 @@ devDependencies:
     specifier: 0.5.0
     version: 0.5.0
   '@unocss/preset-wind':
-    specifier: 0.54.1
-    version: 0.54.1
+    specifier: 0.54.2
+    version: 0.54.2
   '@unocss/reset':
     specifier: 0.54.1
     version: 0.54.1
@@ -69,7 +69,7 @@ devDependencies:
     version: 1.9.0(empty-npm-package@1.0.0)
   unocss:
     specifier: 0.54.1
-    version: 0.54.1(postcss@8.4.26)(rollup@2.79.1)(vite@4.4.9)
+    version: 0.54.1(postcss@8.4.27)(rollup@2.79.1)(vite@4.4.9)
   vite:
     specifier: 4.4.9
     version: 4.4.9
@@ -1924,10 +1924,20 @@ packages:
     resolution: {integrity: sha512-lbwvGD91liMNEZs3jwXxLrIHIn/J4dkJpeKdosRdm1xObqrkg0+Zx1fVn6X+GOX74yvjQlzbu/ODZEXFQC3mGw==}
     dev: true
 
+  /@unocss/core@0.54.2:
+    resolution: {integrity: sha512-PyyJOJtZ2K0BVSawAA/5X46w3Vgj/39jy+2EGKrT0KD4pbYid8oQo84OkXEEms5gAnIAAZHayGqs43zi/FRp0A==}
+    dev: true
+
   /@unocss/extractor-arbitrary-variants@0.54.1:
     resolution: {integrity: sha512-4bV0DbDxECihtUbP1UUIXkzSqOkDQ4vJG4VVmKcWbhSMXoRhuOCRkF7j+b9yaDJQtwTfnYgQws0kZFx6jlCVjg==}
     dependencies:
       '@unocss/core': 0.54.1
+    dev: true
+
+  /@unocss/extractor-arbitrary-variants@0.54.2:
+    resolution: {integrity: sha512-VZ1NCwjwO5UM1HPUDZk/uDjKdb1kN4rRIPhzKJXd2N4TwIVXC/gGVwy92jE26KcoWMlWSbBzjVNLfj1yGfnTRw==}
+    dependencies:
+      '@unocss/core': 0.54.2
     dev: true
 
   /@unocss/inspector@0.54.1:
@@ -1937,7 +1947,7 @@ packages:
       sirv: 2.0.3
     dev: true
 
-  /@unocss/postcss@0.54.1(postcss@8.4.26):
+  /@unocss/postcss@0.54.1(postcss@8.4.27):
     resolution: {integrity: sha512-6f1x/ZIRk6Q7olopWmdVVrVJZv5N45oFT4lSsrYJxbWnyk/D37chH8B+9Q9OrBcahLr7ImxL9DVMkGIBu6rpVw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1948,7 +1958,7 @@ packages:
       css-tree: 2.3.1
       fast-glob: 3.3.1
       magic-string: 0.30.2
-      postcss: 8.4.26
+      postcss: 8.4.27
     dev: true
 
   /@unocss/preset-attributify@0.54.1:
@@ -1972,6 +1982,13 @@ packages:
     dependencies:
       '@unocss/core': 0.54.1
       '@unocss/extractor-arbitrary-variants': 0.54.1
+    dev: true
+
+  /@unocss/preset-mini@0.54.2:
+    resolution: {integrity: sha512-56eaoO0BLtoQFt6GbenH7WFahiCImn3nvTOCSGszKWDD6TWg8pHy6fUWdk3CRludqp2snqLmmibQZxXdoxi9+g==}
+    dependencies:
+      '@unocss/core': 0.54.2
+      '@unocss/extractor-arbitrary-variants': 0.54.2
     dev: true
 
   /@unocss/preset-tagify@0.54.1:
@@ -2007,6 +2024,13 @@ packages:
     dependencies:
       '@unocss/core': 0.54.1
       '@unocss/preset-mini': 0.54.1
+    dev: true
+
+  /@unocss/preset-wind@0.54.2:
+    resolution: {integrity: sha512-XuQzlqNGgLf3GcnRx3q/LidaUyPEFE4+Xsw0lsJQTlVWzmX+6qxkCONJ/SaNi9Mx+JjLFp3C3EuSi4L3v+GNPA==}
+    dependencies:
+      '@unocss/core': 0.54.2
+      '@unocss/preset-mini': 0.54.2
     dev: true
 
   /@unocss/reset@0.54.1:
@@ -3601,15 +3625,6 @@ packages:
       pathe: 1.1.1
     dev: true
 
-  /postcss@8.4.26:
-    resolution: {integrity: sha512-jrXHFF8iTloAenySjM/ob3gSj7pCu0Ji49hnjqzsgSRa50hkWCKD0HQ+gMNJkW38jBI68MpAAg7ZWwHwX8NMMw==}
-    engines: {node: ^10 || ^12 || >=14}
-    dependencies:
-      nanoid: 3.3.6
-      picocolors: 1.0.0
-      source-map-js: 1.0.2
-    dev: true
-
   /postcss@8.4.27:
     resolution: {integrity: sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==}
     engines: {node: ^10 || ^12 || >=14}
@@ -4247,7 +4262,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unocss@0.54.1(postcss@8.4.26)(rollup@2.79.1)(vite@4.4.9):
+  /unocss@0.54.1(postcss@8.4.27)(rollup@2.79.1)(vite@4.4.9):
     resolution: {integrity: sha512-tT2hkDzjf2KV/neYKG/nVYxlpmgn36PGfrT3rE2zk+gaEMU+bU42CisiSkRQ7c2w4d/+zLeCmLz+dj71D8LhFA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4260,7 +4275,7 @@ packages:
       '@unocss/cli': 0.54.1(rollup@2.79.1)
       '@unocss/core': 0.54.1
       '@unocss/extractor-arbitrary-variants': 0.54.1
-      '@unocss/postcss': 0.54.1(postcss@8.4.26)
+      '@unocss/postcss': 0.54.1(postcss@8.4.27)
       '@unocss/preset-attributify': 0.54.1
       '@unocss/preset-icons': 0.54.1
       '@unocss/preset-mini': 0.54.1
