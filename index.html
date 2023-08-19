@@ -32,10 +32,6 @@
 <body class="text-base text-dark-600 @dark:text-light-300 @dark:bg-dark-500">
   <noscript>Для роботи даного додатку потрібно увімкнути JavaScript</noscript>
   <div id="app" class="absolute inset-0"></div>
-  <label id="version" class="fixed bottom-0 left-0 right-0 font-bold font-mono subpixel-antialiased tracking-tighter text-center text-xs opacity-50 h-[1.25em] pt-[1.25em] overflow-hidden hover-pt-0 transition-padding-300">
-    <a href="https://github.com/korzhyk/alert-map" target="_blank" title="Проєкт на GitHub">v.%PACKAGE_VERSION%</a>
-    <input type="radio" class="next-checked:inline hidden" /><span class="hidden"> (%CF_PAGES_COMMIT_SHA%)</span>
-  </label>
   <script type="module" src="/src"></script>
   <div class="absolute right-3 top-3 flex place-items-center gap-3 text-3xl leading-none children-relative active-children:top-1px">
     <a href="https://savelife.in.ua/donate/" target="_blank" title="Повернись живим">
@@ -45,5 +41,9 @@
       📷 <span class="sr-only">Capture map</span>
     </a>
   </div>
+  <label id="version" class="absolute bottom-0 left-1/2 translate-x--1/2 font-bold font-mono tracking-tighter text-xs text-center opacity-50 h-[1.5em] px-5 pt-[1.5em] overflow-hidden hover-pt-0 transition-padding-300 cursor-help">
+    <a href="https://github.com/korzhyk/alert-map" target="_blank" title="Проєкт на GitHub">v.%PACKAGE_VERSION%</a>
+    <input type="checkbox" class="next-checked:inline hidden" /><span class="hidden"> (%CF_PAGES_COMMIT_SHA%)</span>
+  </label>
 </body>
 </html>
