@@ -32,38 +32,19 @@
 <body class="text-base text-dark-600 @dark:text-light-300 @dark:bg-dark-500">
   <noscript>Для роботи даного додатку потрібно увімкнути JavaScript</noscript>
   <div id="app" class="absolute inset-0"></div>
+  <label id="version" class="fixed bottom-0 left-0 right-0 font-bold font-mono subpixel-antialiased tracking-tighter text-center text-xs opacity-50 h-[1.25em] pt-[1.25em] overflow-hidden hover-pt-0 transition-padding-300">
+    <a href="https://github.com/korzhyk/alert-map" target="_blank" title="Проєкт на GitHub">v.%PACKAGE_VERSION%</a>
+    <input type="radio" class="next-checked:inline hidden" /><span class="hidden"> (%CF_PAGES_COMMIT_SHA%)</span>
+  </label>
   <script type="module" src="/src"></script>
-  <div class="absolute right-4 top-4 flex place-items-center">
-    <a class="w-7 h-7 block rounded-full overflow-hidden text-transparent relative active:top-px"
+  <div class="absolute right-3 top-3 flex place-items-center gap-3 text-3xl leading-none">
+    <a class="relative active:top-px"
       href="https://savelife.in.ua/donate/" target="_blank" title="Повернись живим">
-      <div class="h-1/2 bg-[#0057b8]">Повернись</div>
-      <div class="h-1/2 bg-[#ffd700]">живим</div>
+      🇺🇦 <span class="sr-only">Повернись живим</span>
     </a>
-    <a class="ml-3 relative active:top-px opacity-75" href="#capture-map" title="Скопіювати мапу">
-      <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd"
-          d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
-          clip-rule="evenodd"></path>
-      </svg>
-
-      <span class="sr-only">Capture map</span>
-    </a>
-    <a class="ml-2 relative active:top-px" href="mailto:map@air-alert.pp.ua" target="_blank" title="Надіслати листа">
-      <svg class="w-8 h-8 c-blue-500" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-      </svg>
-      <span class="sr-only">Send email to developer</span>
-    </a>
-    <a class="ml-2 relative active:top-px" href="https://github.com/korzhyk/alert-map" target="_blank"
-      title="Проєкт на GitHub">
-      <svg class="w-7 h-7" viewBox="0 0 16 16">
-        <path fill="currentColor" fill-rule="evenodd"
-          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-      </svg>
-      <span class="sr-only">GitHub project repository</span>
+    <a class="relative active:top-px" href="#capture-map" title="Скопіювати мапу">
+      📷 <span class="sr-only">Capture map</span>
     </a>
   </div>
 </body>
-
 </html>
