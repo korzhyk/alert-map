@@ -2,14 +2,18 @@ import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import SolidJS from 'vite-plugin-solid'
 import Unocss from 'unocss/vite'
-import presetWind from '@unocss/preset-wind'
+import { presetUno } from 'unocss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
+    'import.meta.env.CF_PAGES_COMMIT_SHA': JSON.stringify(process.env.CF_PAGES_COMMIT_SHA || '')
+  },
   plugins: [
     SolidJS(),
     Unocss({
-      presets: [presetWind()],
+      presets: [presetUno()],
       shortcuts: {
         'icon': 'w-6 h-6 stroke-2',
         'blur-box':
