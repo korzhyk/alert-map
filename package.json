@@ -19,7 +19,7 @@
     "date-fns": "2.30.0",
     "fuse.js": "7.0.0",
     "mapbox-gl": "npm:empty-npm-package@1.0.0",
-    "maplibre-gl": "3.6.0",
+    "maplibre-gl": "3.6.1",
     "mitt": "3.0.1",
     "reconnecting-websocket": "4.4.0",
     "solid-heroicons": "3.2.4",
