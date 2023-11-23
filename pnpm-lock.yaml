@@ -47,8 +47,8 @@ devDependencies:
     specifier: npm:empty-npm-package@1.0.0
     version: /empty-npm-package@1.0.0
   maplibre-gl:
-    specifier: 3.6.1
-    version: 3.6.1
+    specifier: 3.6.2
+    version: 3.6.2
   mitt:
     specifier: 3.0.1
     version: 3.0.1
@@ -1862,20 +1862,20 @@ packages:
     resolution: {integrity: sha512-mUWlSxAmYLfwnRBmgYV86tgYmMIICX4kza8YnE/eIlywGe2XoOxlpVnXWwir92xRLjwyarqwpu2EJKD2pk0IUA==}
     dev: true
 
-  /@types/mapbox__vector-tile@1.3.3:
-    resolution: {integrity: sha512-d263B3KCQtXKVZMHpMJrEW5EeLBsQ8jvAS9nhpUKC5hHIlQaACG9PWkW8qxEeNuceo9120AwPjeS91uNa4ltqA==}
+  /@types/mapbox__vector-tile@1.3.4:
+    resolution: {integrity: sha512-bpd8dRn9pr6xKvuEBQup8pwQfD4VUyqO/2deGjfpe6AwC8YRlyEipvefyRJUSiCJTZuCb8Pl1ciVV5ekqJ96Bg==}
     dependencies:
       '@types/geojson': 7946.0.13
       '@types/mapbox__point-geometry': 0.1.4
-      '@types/pbf': 3.0.4
+      '@types/pbf': 3.0.5
     dev: true
 
   /@types/node@20.5.1:
     resolution: {integrity: sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==}
     dev: true
 
-  /@types/pbf@3.0.4:
-    resolution: {integrity: sha512-SOFlLGZkLbEXJRwcWCqeP/Koyaf/uAqLXHUsdo/nMfjLsNd8kqauwHe9GBOljSmpcHp/LC6kOjo3SidGjNirVA==}
+  /@types/pbf@3.0.5:
+    resolution: {integrity: sha512-j3pOPiEcWZ34R6a6mN07mUkM4o4Lwf6hPNt8eilOeZhTFbxFXmKhvXl9Y28jotFPaI1bpPDJsbCprUoNke6OrA==}
     dev: true
 
   /@types/resolve@1.17.1:
@@ -3443,8 +3443,8 @@ packages:
       semver: 6.3.1
     dev: false
 
-  /maplibre-gl@3.6.1:
-    resolution: {integrity: sha512-XQpLkNTD6WYJXqF7vTxgHbAyShoZMm5o8fohXCn9PC/S/g3zBk92m7GUsN6KfuECh2rO01uiYbSNCSURkOODyQ==}
+  /maplibre-gl@3.6.2:
+    resolution: {integrity: sha512-krg2KFIdOpLPngONDhP6ixCoWl5kbdMINP0moMSJFVX7wX1Clm2M9hlNKXS8vBGlVWwR5R3ZfI6IPrYz7c+aCQ==}
     engines: {node: '>=16.14.0', npm: '>=8.1.0'}
     dependencies:
       '@mapbox/geojson-rewind': 0.5.2
@@ -3457,8 +3457,8 @@ packages:
       '@maplibre/maplibre-gl-style-spec': 19.3.3
       '@types/geojson': 7946.0.13
       '@types/mapbox__point-geometry': 0.1.4
-      '@types/mapbox__vector-tile': 1.3.3
-      '@types/pbf': 3.0.4
+      '@types/mapbox__vector-tile': 1.3.4
+      '@types/pbf': 3.0.5
       '@types/supercluster': 7.1.3
       earcut: 2.2.4
       geojson-vt: 3.2.1
