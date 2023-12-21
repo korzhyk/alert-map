@@ -38,8 +38,8 @@ devDependencies:
     specifier: 0.5.0
     version: 0.5.0
   date-fns:
-    specifier: 3.0.3
-    version: 3.0.3
+    specifier: 3.0.4
+    version: 3.0.4
   fuse.js:
     specifier: 7.0.0
     version: 7.0.0
@@ -2548,8 +2548,8 @@ packages:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
     dev: true
 
-  /date-fns@3.0.3:
-    resolution: {integrity: sha512-orRh4Qc+Y5fE8RO2fG0FkggCTxgfRR71kypohBPvIlEHi+GZCy0RuaPm5i2oNVhnT96nNMj/0R+LWAjBA/3prA==}
+  /date-fns@3.0.4:
+    resolution: {integrity: sha512-+daptVi95nJ/D4TPS7/gbUqneVMA0Izr4qYAsL2ZZwtcDtEP8Zge765mbXhTqWYdTSG79/VtbBigQTluiE9DBQ==}
     dev: true
 
   /debug@4.3.3:
