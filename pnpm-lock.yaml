@@ -71,8 +71,8 @@ devDependencies:
     specifier: 4.5.2
     version: 4.5.2
   vite-plugin-pwa:
-    specifier: 0.17.4
-    version: 0.17.4(vite@4.5.2)(workbox-build@7.0.0)(workbox-window@7.0.0)
+    specifier: 0.17.5
+    version: 0.17.5(vite@4.5.2)(workbox-build@7.0.0)(workbox-window@7.0.0)
   vite-plugin-solid:
     specifier: 2.9.1
     version: 2.9.1(solid-js@1.8.12)(vite@4.5.2)
@@ -4425,8 +4425,8 @@ packages:
     resolution: {integrity: sha512-hGdgQozCsQJMyfK5urgFcWEqsSSrK63Awe0t/IMR0bZ0QMtnuaiHzThW81guu3qx9abLi99NEuiaN6P9gVYsNg==}
     dev: true
 
-  /vite-plugin-pwa@0.17.4(vite@4.5.2)(workbox-build@7.0.0)(workbox-window@7.0.0):
-    resolution: {integrity: sha512-j9iiyinFOYyof4Zk3Q+DtmYyDVBDAi6PuMGNGq6uGI0pw7E+LNm9e+nQ2ep9obMP/kjdWwzilqUrlfVRj9OobA==}
+  /vite-plugin-pwa@0.17.5(vite@4.5.2)(workbox-build@7.0.0)(workbox-window@7.0.0):
+    resolution: {integrity: sha512-UxRNPiJBzh4tqU/vc8G2TxmrUTzT6BqvSzhszLk62uKsf+npXdvLxGDz9C675f4BJi6MbD2tPnJhi5txlMzxbQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0 || ^5.0.0
