@@ -57,10 +57,10 @@ devDependencies:
     version: 4.4.0
   solid-heroicons:
     specifier: 3.2.4
-    version: 3.2.4(solid-js@1.8.12)
+    version: 3.2.4(solid-js@1.8.14)
   solid-js:
-    specifier: 1.8.12
-    version: 1.8.12
+    specifier: 1.8.14
+    version: 1.8.14
   solid-map-gl:
     specifier: ^1.9.3
     version: 1.9.3(empty-npm-package@1.0.0)
@@ -75,7 +75,7 @@ devDependencies:
     version: 0.17.5(vite@4.5.2)(workbox-build@7.0.0)(workbox-window@7.0.0)
   vite-plugin-solid:
     specifier: 2.9.1
-    version: 2.9.1(solid-js@1.8.12)(vite@4.5.2)
+    version: 2.9.1(solid-js@1.8.14)(vite@4.5.2)
   windicss:
     specifier: 3.5.6
     version: 3.5.6
@@ -3975,16 +3975,16 @@ packages:
       totalist: 3.0.1
     dev: true
 
-  /solid-heroicons@3.2.4(solid-js@1.8.12):
+  /solid-heroicons@3.2.4(solid-js@1.8.14):
     resolution: {integrity: sha512-u6BMdFLvkJnvUGYzdFcWp1wvJ4hb9Y1zd3AbZ9D3bUmmiy9jBzNZX+RcqBCI2EKRvdQwAb1UB9bkESfqfhayDg==}
     peerDependencies:
       solid-js: '>= ^1.2.5'
     dependencies:
-      solid-js: 1.8.12
+      solid-js: 1.8.14
     dev: true
 
-  /solid-js@1.8.12:
-    resolution: {integrity: sha512-sLE/i6M9FSWlov3a2pTC5ISzanH2aKwqXTZj+bbFt4SUrVb4iGEa7fpILBMOxsQjkv3eXqEk6JVLlogOdTe0UQ==}
+  /solid-js@1.8.14:
+    resolution: {integrity: sha512-kDfgHBm+ROVLDVuqaXh/jYz0ZVJ29TYfVsKsgDPtNcjoyaPtOvDX2l0tVnthjLdEXr7vDTYeqEYFfMkZakDsOQ==}
     dependencies:
       csstype: 3.1.2
       seroval: 1.0.3
@@ -3999,7 +3999,7 @@ packages:
       mapbox-gl: /empty-npm-package@1.0.0
     dev: true
 
-  /solid-refresh@0.6.3(solid-js@1.8.12):
+  /solid-refresh@0.6.3(solid-js@1.8.14):
     resolution: {integrity: sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA==}
     peerDependencies:
       solid-js: ^1.3
@@ -4007,7 +4007,7 @@ packages:
       '@babel/generator': 7.23.6
       '@babel/helper-module-imports': 7.22.15
       '@babel/types': 7.23.6
-      solid-js: 1.8.12
+      solid-js: 1.8.14
     dev: true
 
   /sort-asc@0.2.0:
@@ -4450,7 +4450,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid@2.9.1(solid-js@1.8.12)(vite@4.5.2):
+  /vite-plugin-solid@2.9.1(solid-js@1.8.14)(vite@4.5.2):
     resolution: {integrity: sha512-RC4hj+lbvljw57BbMGDApvEOPEh14lwrr/GeXRLNQLcR1qnOdzOwwTSFy13Gj/6FNIZpBEl0bWPU+VYFawrqUw==}
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
@@ -4464,8 +4464,8 @@ packages:
       '@types/babel__core': 7.20.5
       babel-preset-solid: 1.8.6(@babel/core@7.23.5)
       merge-anything: 5.1.7
-      solid-js: 1.8.12
-      solid-refresh: 0.6.3(solid-js@1.8.12)
+      solid-js: 1.8.14
+      solid-refresh: 0.6.3(solid-js@1.8.14)
       vite: 4.5.2
       vitefu: 0.2.5(vite@4.5.2)
     transitivePeerDependencies:

@@ -23,7 +23,7 @@
     "mitt": "3.0.1",
     "reconnecting-websocket": "4.4.0",
     "solid-heroicons": "3.2.4",
-    "solid-js": "1.8.12",
+    "solid-js": "1.8.14",
     "solid-map-gl": "^1.9.3",
     "unocss": "0.55.2",
     "vite": "4.5.2",
