@@ -28,7 +28,7 @@
     "unocss": "0.58.5",
     "vite": "5.1.1",
     "vite-plugin-pwa": "0.18.1",
-    "vite-plugin-solid": "2.9.1",
+    "vite-plugin-solid": "2.10.0",
     "windicss": "3.5.6",
     "workbox-window": "7.0.0"
   },
