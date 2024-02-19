@@ -34,20 +34,7 @@ export default defineConfig({
       ],
       workbox: {
         runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/api\.maptiler\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'maptiler-resources',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 // <== 1 day
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
+          
         ]
       },
       manifest: {
