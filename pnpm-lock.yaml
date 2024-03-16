@@ -47,8 +47,8 @@ devDependencies:
     specifier: npm:empty-npm-package@1.0.0
     version: /empty-npm-package@1.0.0
   maplibre-gl:
-    specifier: '=4.1.0'
-    version: 4.1.0
+    specifier: '=4.1.1'
+    version: 4.1.1
   mitt:
     specifier: 3.0.1
     version: 3.0.1
@@ -3656,8 +3656,8 @@ packages:
       semver: 6.3.1
     dev: false
 
-  /maplibre-gl@4.1.0:
-    resolution: {integrity: sha512-4RQFJSroo/JAJml6Rj2FFIZOfnjsqPp0O9kSp8aVXQUY0HGXNupltzPKbBZeucqi7ynRQHFeu+onTM3hY0Makw==}
+  /maplibre-gl@4.1.1:
+    resolution: {integrity: sha512-DmHru9FTHCOngNHzIx9W2+MlUziYPfPxd2qjyeWwczBYNx2SDpmH394MkuCvSgnfUm5Zvs4NaYCqMu44jUga1Q==}
     engines: {node: '>=16.14.0', npm: '>=8.1.0'}
     dependencies:
       '@mapbox/geojson-rewind': 0.5.2
