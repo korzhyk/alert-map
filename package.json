@@ -27,7 +27,7 @@
     "solid-map-gl": "^1.9.3",
     "unocss": "0.58.5",
     "vite": "5.2.8",
-    "vite-plugin-pwa": "0.19.7",
+    "vite-plugin-pwa": "0.19.8",
     "vite-plugin-solid": "2.10.2",
     "windicss": "3.5.6",
     "workbox-window": "7.0.0"
