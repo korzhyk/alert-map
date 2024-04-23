@@ -30,7 +30,7 @@
     "vite-plugin-pwa": "0.19.8",
     "vite-plugin-solid": "2.10.2",
     "windicss": "3.5.6",
-    "workbox-window": "7.0.0"
+    "workbox-window": "7.1.0"
   },
   "dependencies": {
     "@mtproto/core": "6.3.0",
