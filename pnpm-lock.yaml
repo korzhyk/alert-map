@@ -49,8 +49,8 @@ importers:
         specifier: npm:empty-npm-package@1.0.0
         version: empty-npm-package@1.0.0
       maplibre-gl:
-        specifier: '=4.5.0'
-        version: 4.5.0
+        specifier: '=4.5.1'
+        version: 4.5.1
       mitt:
         specifier: 3.0.1
         version: 3.0.1
@@ -1215,9 +1215,6 @@ packages:
   '@types/geojson@7946.0.14':
     resolution: {integrity: sha512-WCfD5Ht3ZesJUsONdhvm84dmzWOiOzOAqOncN0++w0lBw1o8OuDNJF2McvvCef/yBqb/HYRahp1BYtODFQ8bRg==}
 
-  '@types/junit-report-builder@3.0.2':
-    resolution: {integrity: sha512-R5M+SYhMbwBeQcNXYWNCZkl09vkVfAtcPIaCGdzIkkbeaTrVbGQ7HVgi4s+EmM/M1K4ZuWQH0jGcvMvNePfxYA==}
-
   '@types/mapbox__point-geometry@0.1.4':
     resolution: {integrity: sha512-mUWlSxAmYLfwnRBmgYV86tgYmMIICX4kza8YnE/eIlywGe2XoOxlpVnXWwir92xRLjwyarqwpu2EJKD2pk0IUA==}
 
@@ -1631,8 +1628,8 @@ packages:
   duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
 
-  earcut@2.2.4:
-    resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
+  earcut@3.0.0:
+    resolution: {integrity: sha512-41Fs7Q/PLq1SDbqjsgcY7GA42T0jvaCNGXgGtsNdvg+Yv8eIu06bxv4/PoREkZ9nMDNwnUSG9OFB9+yv8eKhDg==}
 
   ejs@3.1.10:
     resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
@@ -2145,8 +2142,8 @@ packages:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
 
-  maplibre-gl@4.5.0:
-    resolution: {integrity: sha512-qOS1hn4d/pn2i0uva4S5Oz+fACzTkgBKq+NpwT/Tqzi4MSyzcWNtDELzLUSgWqHfNIkGCl5CZ/w7dtis+t4RCw==}
+  maplibre-gl@4.5.1:
+    resolution: {integrity: sha512-pKFDK8ZU2atwZWC8gdPVhN7Bf5HIPgtA+IG/iQ7J6WgmqSwCSmylc5q3stahWqXfx9PYUwVNJITrp1Hw96SUiA==}
     engines: {node: '>=16.14.0', npm: '>=8.1.0'}
 
   mdn-data@2.0.30:
@@ -2291,8 +2288,8 @@ packages:
   pathe@1.1.2:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
 
-  pbf@3.2.1:
-    resolution: {integrity: sha512-ClrV7pNOn7rtmoQVF4TS1vyU0WhYRnP92fzbfF75jAIwpnzdJXf8iTd4CMEqO4yUenH6NDqLiwjqlh6QgZzgLQ==}
+  pbf@3.3.0:
+    resolution: {integrity: sha512-XDF38WCH3z5OV/OVa8GKUNtLAyneuzbCisx7QUCF8Q6Nutx0WnJrQe5O+kOtBlLfRNUws98Y58Lblp+NJG5T4Q==}
     hasBin: true
 
   perfect-debounce@1.0.0:
@@ -2347,6 +2344,9 @@ packages:
 
   quickselect@2.0.0:
     resolution: {integrity: sha512-RKJ22hX8mHe3Y6wH/N3wCM6BWtjaxIyyUIkpHOvfFnxdI4yD4tBXEBKSbriGujF6jnSVkJrffuo6vxACiSSxIw==}
+
+  quickselect@3.0.0:
+    resolution: {integrity: sha512-XdjUArbK4Bm5fLLvlm5KpTFOiOThgfWWI4axAZDWg4E/0mKdZyI9tNEfds27qCi1ze/vwTR16kvmmGhRra3c2g==}
 
   randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
@@ -2647,6 +2647,9 @@ packages:
 
   tinyqueue@2.0.3:
     resolution: {integrity: sha512-ppJZNDuKGgxzkHihX8v9v9G5f+18gzaTfrukGrq6ueg0lmH4nqVnA2IPG0AEH3jKEk2GRJCUhDoqpoiw3PHLBA==}
+
+  tinyqueue@3.0.0:
+    resolution: {integrity: sha512-gRa9gwYU3ECmQYv3lslts5hxuIa90veaEcxDYuu3QGOIAEM2mOZkVHp48ANJuu1CURtRdHKUBY5Lm1tHV+sD4g==}
 
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
@@ -4177,8 +4180,6 @@ snapshots:
 
   '@types/geojson@7946.0.14': {}
 
-  '@types/junit-report-builder@3.0.2': {}
-
   '@types/mapbox__point-geometry@0.1.4': {}
 
   '@types/mapbox__vector-tile@1.3.4':
@@ -4669,7 +4670,7 @@ snapshots:
 
   duplexer@0.1.2: {}
 
-  earcut@2.2.4: {}
+  earcut@3.0.0: {}
 
   ejs@3.1.10:
     dependencies:
@@ -5209,7 +5210,7 @@ snapshots:
     dependencies:
       semver: 6.3.1
 
-  maplibre-gl@4.5.0:
+  maplibre-gl@4.5.1:
     dependencies:
       '@mapbox/geojson-rewind': 0.5.2
       '@mapbox/jsonlint-lines-primitives': 2.0.2
@@ -5221,22 +5222,21 @@ snapshots:
       '@maplibre/maplibre-gl-style-spec': 20.3.0
       '@types/geojson': 7946.0.14
       '@types/geojson-vt': 3.2.5
-      '@types/junit-report-builder': 3.0.2
       '@types/mapbox__point-geometry': 0.1.4
       '@types/mapbox__vector-tile': 1.3.4
       '@types/pbf': 3.0.5
       '@types/supercluster': 7.1.3
-      earcut: 2.2.4
+      earcut: 3.0.0
       geojson-vt: 4.0.2
       gl-matrix: 3.4.3
       global-prefix: 3.0.0
       kdbush: 4.0.2
       murmurhash-js: 1.0.0
-      pbf: 3.2.1
+      pbf: 3.3.0
       potpack: 2.0.0
-      quickselect: 2.0.0
+      quickselect: 3.0.0
       supercluster: 8.0.1
-      tinyqueue: 2.0.3
+      tinyqueue: 3.0.0
       vt-pbf: 3.1.3
 
   mdn-data@2.0.30: {}
@@ -5354,7 +5354,7 @@ snapshots:
 
   pathe@1.1.2: {}
 
-  pbf@3.2.1:
+  pbf@3.3.0:
     dependencies:
       ieee754: 1.2.1
       resolve-protobuf-schema: 2.1.0
@@ -5401,6 +5401,8 @@ snapshots:
   queue-microtask@1.2.3: {}
 
   quickselect@2.0.0: {}
+
+  quickselect@3.0.0: {}
 
   randombytes@2.1.0:
     dependencies:
@@ -5749,6 +5751,8 @@ snapshots:
 
   tinyqueue@2.0.3: {}
 
+  tinyqueue@3.0.0: {}
+
   to-fast-properties@2.0.0: {}
 
   to-regex-range@5.0.1:
@@ -5934,7 +5938,7 @@ snapshots:
     dependencies:
       '@mapbox/point-geometry': 0.1.0
       '@mapbox/vector-tile': 1.3.1
-      pbf: 3.2.1
+      pbf: 3.3.0
 
   webidl-conversions@4.0.2: {}
 
