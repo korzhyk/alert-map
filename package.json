@@ -26,7 +26,7 @@
     "solid-js": "1.8.22",
     "solid-map-gl": "^1.9.3",
     "unocss": "0.58.5",
-    "vite": "5.4.2",
+    "vite": "5.4.3",
     "vite-plugin-pwa": "0.20.3",
     "vite-plugin-solid": "2.10.2",
     "windicss": "3.5.6",
