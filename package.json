@@ -34,7 +34,7 @@
     "vite": "4.5.5",
     "vite-plugin-pwa": "0.20.5",
     "vite-plugin-solid": "2.8.0",
-    "workbox-window": "7.0.0"
+    "workbox-window": "7.1.0"
   },
   "dependencies": {
     "consola": "^3.2.3",
