@@ -8,8 +8,8 @@
   "scripts": {
     "server": "bun --watch server/index.ts",
     "dev": "bunx --bun vite",
-    "build": "vite build",
-    "serve": "vite preview",
+    "build": "bunx --bun vite build",
+    "serve": "bunx --bun vite preview",
     "start": "bun server",
     "test": "bun test"
   },
