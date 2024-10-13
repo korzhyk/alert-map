@@ -1,10 +1,7 @@
-import debug from 'debug'
-import { createSignal, createEffect, createContext, useContext, onMount, onCleanup } from 'solid-js'
+import { createContext, createEffect, createSignal, onCleanup, onMount, useContext } from 'solid-js'
 import { useConnection } from './Connection'
-// @ts-ignore
 import GeoDecodeWorker from './geodecode?worker'
 
-const log = debug('app')
 const AlertsContext = createContext()
 export const useAlerts = () => useContext(AlertsContext)
 
@@ -17,20 +14,20 @@ export function AlertsProvider(props) {
 
   onMessage((event) => {
     try {
-      log(event)
       const json = JSON.parse(event.data)
       if (json.state) {
         const stateMap = new Map()
         for (const [unit, ts] of Object.entries(json.state)) {
           stateMap.set(unit, {
             id: null,
-            timestamp: +ts
+            timestamp: +ts,
           })
         }
         return setState(stateMap)
       }
-    } catch (e) {
-      log('error during JSON parse', event.data)
+    }
+    catch (e) {
+      console.warn('error during JSON parse', event.data)
     }
   })
 
@@ -48,11 +45,11 @@ export function AlertsProvider(props) {
           })
           setGeoJSON({
             type: 'FeatureCollection',
-            features
+            features,
           })
-          break;
+          break
         default:
-          log('no handler for action', event.data)
+          console.warn('no handler for action', event.data)
       }
     }
   })
@@ -60,7 +57,7 @@ export function AlertsProvider(props) {
   createEffect(() => {
     worker.postMessage({
       type: 'decode',
-      payload: state()
+      payload: state(),
     })
   })
 
