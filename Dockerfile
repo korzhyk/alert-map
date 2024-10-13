@@ -1,34 +1,31 @@
-FROM node:18-alpine AS production
+FROM cloudflare/cloudflared:latest AS cf
+FROM oven/bun:alpine AS base
+WORKDIR /home/bun/app
 
-RUN apk add git libc6-compat
-RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
-RUN npm install pnpm@8 --location=global
+FROM base AS install
+WORKDIR /usr/src/app
+COPY bun.lockb ./
+COPY package.json ./
+RUN bun install --frozen-lockfile --production
 
-COPY package.json /app/package.json
-COPY pnpm-lock.yaml /app/pnpm-lock.yaml
+FROM base AS prerelease
+WORKDIR /usr/src/app
+COPY --from=install /usr/src/app/node_modules node_modules
+COPY . .
 
 ENV NODE_ENV=production
-WORKDIR "/app"
-RUN pnpm install --frozen-lockfile
+RUN bun test
+RUN bun build server/index.js --target=bun --outfile=compiled/server.js
 
-FROM production AS builder
+FROM base AS release
 
-ENV NODE_ENV=build
+COPY --from=prerelease /usr/src/app/compiled/server.js ./
+COPY --from=prerelease /usr/src/app/package.json ./
+COPY --from=cf /usr/local/bin/cloudflared /usr/local/bin/
 
-COPY src /app/src
-COPY index.html /app/index.html
-COPY vite.config.js /app/vite.config.js
+ENV PORT 3000
 
-WORKDIR "/app"
-RUN pnpm install --frozen-lockfile
-RUN pnpm run build
+USER bun
+EXPOSE $PORT
 
-FROM production AS app
-
-COPY --from=builder /app/dist /app/dist
-COPY server /app/server
-
-EXPOSE 5000
-
-WORKDIR "/app"
-CMD [ "sh", "-c", "pnpm start"]
+CMD [ "bun", "--smol", "server.js" ]

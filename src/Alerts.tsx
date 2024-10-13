@@ -2,7 +2,7 @@ import debug from 'debug'
 import { createSignal, createEffect, createContext, useContext, onMount, onCleanup } from 'solid-js'
 import { useConnection } from './Connection'
 // @ts-ignore
-import GeoDecodeWorker from './worker?worker'
+import GeoDecodeWorker from './geodecode?worker'
 
 const log = debug('app')
 const AlertsContext = createContext()
@@ -17,6 +17,7 @@ export function AlertsProvider(props) {
 
   onMessage((event) => {
     try {
+      log(event)
       const json = JSON.parse(event.data)
       if (json.state) {
         const stateMap = new Map()
