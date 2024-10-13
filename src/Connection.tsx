@@ -1,40 +1,55 @@
-import { createSignal, createContext, useContext, onMount, onCleanup } from "solid-js"
-import { createWebsocket } from './websocket'
+import {
+  createContext,
+  createSignal,
+  onCleanup,
+  onMount,
+  useContext,
+} from 'solid-js'
+
+import Sockette from 'sockette'
 
 const ConnectionContext = createContext()
 
-export function useConnection() { return useContext(ConnectionContext) }
+export function useConnection() {
+  return useContext(ConnectionContext)
+}
 
 export function ConnectionProvider(props) {
-  let websocket
-  const pendingHandlers = []
+  let ws
+
+  const handlers = []
   const [state, setState] = createSignal(-1)
 
   const connection = [
     state,
     {
       onMessage(callback) {
-        if (websocket) {
-          websocket.addEventListener('message', callback)
-        } else {
-          pendingHandlers.push(callback)
-        }
-      }
-    }
+        handlers.push(callback)
+        return () => handlers.splice(handlers.indexOf(callback) >>> 0)
+      },
+    },
   ]
 
+  const connect = () => {
+    const url = props.urlProvider()
+
+    ws = new Sockette(url, {
+      onopen: () => setState(WebSocket.OPEN),
+      onmessage: e => handlers.forEach(handler => handler(e)),
+      onreconnect: () => setState(WebSocket.CONNECTING),
+      onmaximum: () => setState(4),
+      onclose: () => setState(WebSocket.CLOSED),
+      onerror: () => setState(WebSocket.CLOSED),
+    })
+  }
+
   onMount(() => {
-    websocket = createWebsocket(props.urlProvider, props.options)
-    const updateState = () => setState(websocket.readyState)
-    websocket.addEventListener('open', updateState)
-    websocket.addEventListener('close', updateState)
-    websocket.addEventListener('error', updateState)
-    pendingHandlers.forEach(handler => websocket.addEventListener('message', handler))
-    pendingHandlers.length = 0
+    connect()
   })
 
   onCleanup(() => {
-    websocket?.close(1000, 'disconnect')
+    handlers.length = 0
+    ws?.close()
   })
 
   return (

@@ -3,7 +3,7 @@ import Fuse from 'fuse.js'
 enum Unit {
   REGION = 'regiony',
   PROVINCE = 'rayony',
-  DISTRICT = 'hromady'
+  DISTRICT = 'hromady',
 }
 
 const ONE = { limit: 1 }

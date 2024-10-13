@@ -1,45 +1,44 @@
 {
   "name": "alert-map",
-  "version": "0.3.0",
+  "type": "module",
+  "version": "0.5.0",
   "description": "Realtime map of active air alerts in Ukraine",
-  "author": "Andrii Korzh <andriii.korzh@gmail.com>",
+  "author": "Andrii Korzh <andrii.korzh@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
-    "start": "node server"
-  },
-  "engines": {
-    "node": ">=18"
+    "server": "bun --watch server/index.ts",
+    "dev": "bunx --bun vite",
+    "build": "bunx vite build",
+    "serve": "bunx vite preview",
+    "start": "bun server",
+    "test": "bun test"
   },
   "devDependencies": {
-    "@mapbox/mapbox-gl-supported": "^3.0.0",
+    "@antfu/eslint-config": "^2.24.1",
+    "@mapbox/mapbox-gl-supported": "^2.0.1",
     "@playcode/worker-rpc": "0.5.0",
-    "date-fns": "4.1.0",
+    "@types/bun": "^1.1.6",
+    "@unocss/eslint-plugin": "^0.61.9",
+    "@unocss/reset": "^0.63.0",
+    "date-fns": "3.1.0",
+    "eslint-plugin-solid": "^0.14.1",
     "fuse.js": "7.0.0",
     "mapbox-gl": "npm:empty-npm-package@1.0.0",
-    "maplibre-gl": "=4.7.1",
+    "maplibre-gl": "3.6.2",
     "mitt": "3.0.1",
-    "reconnecting-websocket": "4.4.0",
+    "sockette": "^2.0.6",
     "solid-heroicons": "3.2.4",
-    "solid-js": "1.9.2",
-    "solid-map-gl": "^1.9.3",
-    "unocss": "0.58.5",
-    "vite": "5.4.8",
-    "vite-plugin-pwa": "0.20.5",
-    "vite-plugin-solid": "2.10.2",
-    "windicss": "3.5.6",
-    "workbox-window": "7.1.0"
+    "solid-js": "1.8.8",
+    "solid-map-gl": "^1.11.3",
+    "unocss": "0.61.9",
+    "vite": "4.5.1",
+    "vite-plugin-pwa": "0.17.4",
+    "vite-plugin-solid": "2.8.0",
+    "workbox-window": "7.0.0"
   },
   "dependencies": {
-    "@mtproto/core": "6.3.0",
-    "@sifrr/server": "^0.0.9",
-    "@unocss/reset": "^0.58.0",
-    "async-limiter": "2.0.0",
-    "debug": "4.3.4",
-    "input": "1.0.1",
-    "redis": "4.6.13",
-    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.15.0"
+    "consola": "^3.2.3",
+    "ioredis": "^5.4.1",
+    "telegram": "^2.23.2"
   }
 }

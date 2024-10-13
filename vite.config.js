@@ -1,24 +1,26 @@
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import SolidJS from 'vite-plugin-solid'
-import Unocss from 'unocss/vite'
-import { presetUno } from 'unocss'
+import UnoCSS from 'unocss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   define: {
-    'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
-    'import.meta.env.CF_PAGES_COMMIT_SHA': JSON.stringify(process.env.CF_PAGES_COMMIT_SHA || '')
+    'import.meta.env.PACKAGE_VERSION': JSON.stringify(
+      Bun.env.npm_package_version,
+    ),
+    'import.meta.env.CF_PAGES_COMMIT_SHA': JSON.stringify(
+      Bun.env.CF_PAGES_COMMIT_SHA || '',
+    ),
   },
   plugins: [
     SolidJS(),
-    Unocss({
-      presets: [presetUno()],
+    UnoCSS({
       shortcuts: {
         'icon': 'w-6 h-6 stroke-2',
         'blur-box':
-          'bg-white/70 @dark:bg-black/70 backdrop-filter backdrop-blur rounded-full shadow-xl'
-      }
+          'bg-white/70 @dark:bg-black/70 backdrop-filter backdrop-blur rounded-full shadow-xl',
+      },
     }),
     VitePWA({
       registerType: 'autoUpdate',
@@ -30,7 +32,7 @@ export default defineConfig({
         'robots.txt',
         'ukrainian_geodata/hromady.geojson',
         'ukrainian_geodata/rayony.geojson',
-        'ukrainian_geodata/regiony.geojson'
+        'ukrainian_geodata/regiony.geojson',
       ],
       workbox: {
         runtimeCaching: [
@@ -41,14 +43,14 @@ export default defineConfig({
               cacheName: 'maptiler-resources',
               expiration: {
                 maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 // <== 1 day
+                maxAgeSeconds: 60 * 60 * 24, // <== 1 day
               },
               cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
-        ]
+                statuses: [0, 200],
+              },
+            },
+          },
+        ],
       },
       manifest: {
         short_name: 'Повітряна тривога',
@@ -62,31 +64,31 @@ export default defineConfig({
           {
             src: 'favicon.png',
             sizes: '32x32',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'android-chrome-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'android-chrome-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'android-chrome-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'maskable'
-          }
-        ]
-      }
-    })
+          },
+          {
+            src: 'android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+        ],
+      },
+    }),
   ],
   server: {
     hmr: {
-      timeout: 3000
-    }
-  }
+      timeout: 3000,
+    },
+  },
 })

@@ -1,19 +1,19 @@
-const mainRx = /тривог[аи] в (.+?)\.?$/m
+const mainRx = /\s[ву] (.+?)(?: арт.+|\.?)$/m
 const stillRx = /-(.+?)\.?$/gm
 const clearRx = /(🟢|відбій)/i
 const pendingRx = /(🟡|триває)/i
-const airalertRx = /(🔴|повітряна)/i
+const airalertRx = /(🔴|повітряна|загроза)/i
 
-function parseMessage(message) {
+export function parseMessage(message) {
   const except = []
   const main = []
   const type = pendingRx.test(message)
     ? 'pending'
     : airalertRx.test(message)
-    ? 'alert'
-    : clearRx.test(message)
-    ? 'clear'
-    : 'unknown'
+      ? 'alert'
+      : clearRx.test(message)
+        ? 'clear'
+        : 'unknown'
 
   let m = mainRx.exec(message)
 
@@ -34,5 +34,3 @@ function parseMessage(message) {
       return [[], []]
   }
 }
-
-module.exports = { parseMessage }

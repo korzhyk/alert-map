@@ -1,48 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
-
-<head>
-  <link rel="dns-prefetch" href="https://api.maptiler.com" />
-  <link rel="preconnect" crossorigin="anonymous" href="https://api.maptiler.com" />
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-  <link rel="alternate icon" type="image/png" sizes="48x48" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#1351af" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Інтерактивна мапа повітряної тривоги в Україні" />
-  <title>Мапа повітряної тривоги в Україні</title>
-  <meta property="og:locale" content="uk_UA" />
-  <meta property="og:title" content="Мапа повітряної тривоги в Україні" />
-  <meta property="og:description"
-    content="Інтерактивна мапа повітряної тривоги в режимі реального часу відображає райони в яких лунає повітряна тривога." />
-  <meta property="og:site_name" content="Мапа повітряної тривоги в Україні" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://air-alert.pp.ua/" />
-  <meta property="og:image" content="https://air-alert.pp.ua/preview.png" />
-  <meta property="og:image:alt" content="https://air-alert.pp.ua/preview.png" />
-  <meta property="og:image:secure_url" content="https://air-alert.pp.ua/preview.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <script async src="https://u.korzhyk.pp.ua/script.js" data-website-id="149c9f1c-6316-46ed-a791-c79c36b61d5a"></script>
-</head>
-
-<body class="text-base text-dark-600 @dark:text-light-300 @dark:bg-dark-500">
-  <noscript>Для роботи даного додатку потрібно увімкнути JavaScript</noscript>
-  <div id="app" class="absolute inset-0"></div>
-  <script type="module" src="/src"></script>
-  <div class="absolute right-3 top-3 flex place-items-center gap-3 text-3xl leading-none children-relative active-children:top-1px">
-    <a href="https://savelife.in.ua/donate/" target="_blank" title="Повернись живим">
-      🇺🇦 <span class="sr-only">Повернись живим</span>
-    </a>
-    <a href="#capture-map" title="Скопіювати мапу">
-      📷 <span class="sr-only">Capture map</span>
-    </a>
-  </div>
-  <label id="version" class="absolute bottom-0 left-1/2 translate-x--1/2 font-bold font-mono tracking-tighter text-xs text-center opacity-50 h-[1.5em] px-5 pt-[1.5em] overflow-hidden hover-pt-0 transition-padding-300 cursor-help">
-    <a href="https://github.com/korzhyk/alert-map" target="_blank" title="Проєкт на GitHub">v.%PACKAGE_VERSION%</a>
-    <input type="radio" class="next-checked:inline hidden" /><span class="hidden"> (%CF_PAGES_COMMIT_SHA%)</span>
-  </label>
-</body>
+  <head>
+    <link rel="dns-prefetch" href="https://api.maptiler.com" />
+    <link
+      rel="preconnect"
+      crossorigin="anonymous"
+      href="https://api.maptiler.com"
+    />
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link
+      rel="alternate icon"
+      type="image/png"
+      sizes="48x48"
+      href="/favicon.ico"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#1351af" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Інтерактивна мапа повітряної тривоги в Україні"
+    />
+    <title>Мапа повітряної тривоги в Україні</title>
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:title" content="Мапа повітряної тривоги в Україні" />
+    <meta
+      property="og:description"
+      content="Інтерактивна мапа повітряної тривоги в режимі реального часу відображає райони в яких лунає повітряна тривога."
+    />
+    <meta property="og:site_name" content="Мапа повітряної тривоги в Україні" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://air-alert.pp.ua/" />
+    <meta property="og:image" content="https://air-alert.pp.ua/preview.png" />
+    <meta
+      property="og:image:alt"
+      content="https://air-alert.pp.ua/preview.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://air-alert.pp.ua/preview.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <script
+      async
+      src="https://u.korzhyk.pp.ua/script.js"
+      data-website-id="149c9f1c-6316-46ed-a791-c79c36b61d5a"
+    ></script>
+  </head>
+  <body class="text-base text-dark-600 @dark:text-light-300 @dark:bg-dark-500">
+    <noscript>Для роботи даного додатку потрібно увімкнути JavaScript</noscript>
+    <div id="app" class="absolute inset-0"></div>
+    <script type="module" src="/src"></script>
+    <div
+      class="absolute right-3 top-3 flex place-items-center gap-3 text-3xl leading-none children-relative active-children:top-1px"
+    >
+      <a
+        href="https://savelife.in.ua/donate/"
+        target="_blank"
+        title="Повернись живим"
+      >
+        🇺🇦 <span class="sr-only">Повернись живим</span>
+      </a>
+      <a href="#capture-map" title="Скопіювати мапу">
+        📷 <span class="sr-only">Capture map</span>
+      </a>
+    </div>
+    <label
+      id="version"
+      class="absolute bottom-0 left-1/2 translate-x--1/2 font-bold font-mono tracking-tighter text-xs text-center opacity-50 h-[1.5em] px-5 pt-[1.5em] overflow-hidden hover-pt-0 transition-padding-300 cursor-help"
+    >
+      <a
+        href="https://github.com/korzhyk/alert-map"
+        target="_blank"
+        title="Проєкт на GitHub"
+        >v.%PACKAGE_VERSION%</a
+      >
+      <input type="radio" class="next-checked:inline hidden" /><span
+        class="hidden"
+      >
+        (%CF_PAGES_COMMIT_SHA%)</span
+      >
+    </label>
+  </body>
 </html>

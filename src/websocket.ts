@@ -1,5 +1,6 @@
-import ReconnectingWebSocket from 'reconnecting-websocket'
+import type { SocketteOptions } from "sockette"
+import Sockette from "sockette"
 
-export function createWebsocket(url, options) {
-  return new ReconnectingWebSocket(url, [], options)
+export function createWebsocket(url: string, options: SocketteOptions) {
+  return new Sockette(url, options)
 }
