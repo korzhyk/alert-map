@@ -33,7 +33,7 @@
     "unocss": "0.63.4",
     "vite": "4.5.5",
     "vite-plugin-pwa": "0.20.5",
-    "vite-plugin-solid": "2.8.0",
+    "vite-plugin-solid": "2.10.2",
     "workbox-window": "7.1.0"
   },
   "dependencies": {
