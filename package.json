@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "3",
-    "@mapbox/mapbox-gl-supported": "^2.0.1",
+    "@mapbox/mapbox-gl-supported": "^3.0.0",
     "@playcode/worker-rpc": "0.5.0",
     "@types/bun": "^1.1.6",
     "@unocss/eslint-plugin": "0.63",
