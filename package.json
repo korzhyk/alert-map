@@ -14,7 +14,7 @@
     "test": "bun test"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "3",
+    "@antfu/eslint-config": "4",
     "@mapbox/mapbox-gl-supported": "^3.0.0",
     "@playcode/worker-rpc": "0.5.0",
     "@types/bun": "^1.1.6",
