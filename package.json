@@ -22,7 +22,7 @@
     "@unocss/reset": "^65.0.0",
     "date-fns": "4.1.0",
     "eslint-plugin-solid": "^0.14.1",
-    "fuse.js": "7.0.0",
+    "fuse.js": "7.1.0",
     "mapbox-gl": "npm:empty-npm-package@1.0.0",
     "maplibre-gl": "5.1.0",
     "mitt": "3.0.1",
