@@ -31,7 +31,7 @@
     "solid-js": "1.9",
     "solid-map-gl": "^1.11.3",
     "unocss": "66.0.0",
-    "vite": "6.3.2",
+    "vite": "6.3.3",
     "vite-plugin-pwa": "1.0.0",
     "vite-plugin-solid": "2.11.6",
     "workbox-window": "7.3.0"
