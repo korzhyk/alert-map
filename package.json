@@ -30,7 +30,7 @@
     "solid-heroicons": "3.2.4",
     "solid-js": "1.9",
     "solid-map-gl": "^1.11.3",
-    "unocss": "66.5.1",
+    "unocss": "66.5.2",
     "vite": "7.1.7",
     "vite-plugin-pwa": "1.0.3",
     "vite-plugin-solid": "2.11.8",
