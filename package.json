@@ -32,7 +32,7 @@
     "solid-map-gl": "^1.11.3",
     "unocss": "66.5.12",
     "vite": "7.3.1",
-    "vite-plugin-pwa": "1.0.3",
+    "vite-plugin-pwa": "1.2.0",
     "vite-plugin-solid": "2.11.10",
     "workbox-window": "7.3.0"
   },
