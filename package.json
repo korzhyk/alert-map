@@ -20,7 +20,7 @@
     "@types/bun": "^1.1.6",
     "@unocss/eslint-plugin": "66.7",
     "@unocss/reset": "^66.0.0",
-    "date-fns": "4.2.1",
+    "date-fns": "4.3.0",
     "eslint-plugin-solid": "^0.14.1",
     "fuse.js": "7.3.0",
     "mapbox-gl": "npm:empty-npm-package@1.0.0",
