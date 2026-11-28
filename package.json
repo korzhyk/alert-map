@@ -28,7 +28,7 @@
     "mitt": "3.0.1",
     "sockette": "^2.0.6",
     "solid-heroicons": "3.2.4",
-    "solid-js": "1.9",
+    "solid-js": "2.0",
     "solid-map-gl": "^2.0.0",
     "unocss": "66.13.0",
     "vite": "8.4.0",
